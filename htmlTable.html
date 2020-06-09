@@ -1,0 +1,130 @@
+<!--Each table row is defined with the <tr> tag. A table header is defined with the <th> tag.
+By default, table headings are bold and centered. A table data/cell is defined with the <td> tag.-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        #graph {
+          border-collapse: collapse;
+          border: 1px solid black;
+        }
+
+        .row{
+            height: 5px;
+        }
+        .col{
+            width: 5px;
+            border: 1px solid black;
+            background-color: green;
+        }
+        tr{
+          height: 2px;
+        }
+        td{
+          width: 2px;
+            border: 1px solid black;
+            background-color: green;
+        }
+
+        </style>
+    </head>
+
+    <body>
+        
+        <h2>Possible graph using a table:</h2>
+        <!--
+        <table id="graph">
+          <tr class="row">
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+            <td class="col"></td>
+          </tr>
+        </table>
+      -->
+    
+
+
+    <!--<button onclick="myFunction()">Try it</button> -->
+<script>
+  /*
+    function myFunction() {
+
+        
+        var x = document.getElementsByClassName("col");
+        x[0].style.backgroundColor = "red";
+        
+        var y = document.getElementById("graph").rows[0].cells.length;
+        console.log(y);
+        var tab = document.getElementById("graph");
+        var row = tab.insertRow(-1);
+        row.style.height = "5px";
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.style.backgroundColor = "green";
+        cell1.style.border = "1px solid black";
+        cell1.style.width = "5px";
+        cell2.style.backgroundColor = "green";
+        cell2.style.border = "1px solid black";
+        cell2.style.width = "5px";
+        document.getElementById("myTable").rows[0].cells[0].style.backgroundColor = 'orange'; 
+        
+    }
+    */
+</script>
+</br>
+
+
+<script>
+  /*var table = "<table class=graph><tr class=row><td class=col></td><td class=col></td></tr>"; //this works
+  table += "<tr class=row><td class=col></td><td class = col></td></tr></table>";
+  */
+  var table = "<table Id = graph>";
+
+  for(i = 0; i < 260; i++)
+  {
+      table += "<tr>"
+      for(j = 0; j < 260; j++)
+      {
+         table +="<td></td>";
+      }
+    table += "</tr>"
+  }
+  table += "</table>";
+  
+  document.write(table); 
+  var x = document.getElementsByTagName("td");//getting all the columns in the table
+  for(i=0; i < x.length; i++)
+  {
+    if(i %2 === 0)
+    {
+      x[i].style.backgroundColor = "green";
+    }
+    else
+    {
+      x[i].style.backgroundColor = "gray";
+    }
+  }
+</script>
+
+<script>
+  var table = document.getElementById("graph");
+  var row = table.insertRow(0);
+  row.height="5px";
+
+</script>
+
+    </body>
+</html>
