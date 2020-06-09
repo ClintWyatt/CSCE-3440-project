@@ -1,0 +1,76 @@
+<!--Each table row is defined with the <tr> tag. A table header is defined with the <th> tag.
+By default, table headings are bold and centered. A table data/cell is defined with the <td> tag.-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        #graph {
+          border-collapse: collapse;
+          border: 1px solid black;
+        }
+
+        .row{
+            height: 12px;
+        }
+        .col{
+            width: 10px;
+            border: 1px solid black;
+            background-color: green;
+        }
+        tr{
+          height: 12px;
+        }
+        td{
+            width: 10px;
+            border: 1px solid black;
+           
+           background-color: green;
+        }
+        .redOnHover:hover{
+          background-color: red;
+        }
+        .blueOnClick:active{
+          background-color: blue;
+        }
+        .greenOnInactive:disabled{
+          background-color: green;
+        }
+        #selectedLabel{
+          padding-left: 250px;
+        }
+
+        </style>
+    </head>
+
+    <body>
+      <h2>Possible graph using a table:<span id="selectedLabel">Selected grid #: </span></h2>
+
+</br>
+
+
+<script>
+  var table = "<table Id = graph>";
+
+  for(i = 0; i < 100; i++)
+  {
+      table += "<tr>"
+      for(j = 0; j < 100; j++)
+      {
+         table +="<td class=\"redOnHover blueOnClick greenOnInactive\" onclick=\"changeSelected(this)\"></td>";
+      }
+    table += "</tr>"
+  }
+  table += "</table>";
+  
+  document.write(table); 
+</script>
+
+<script>
+  function changeSelected(cell) {
+    var number = cell.parentNode.rowIndex * 100 +  cell.cellIndex;
+    document.getElementById("selectedLabel").innerText = "Selected grid #: " + number;
+  }
+</script>
+
+    </body>
+</html>
