@@ -1,0 +1,37 @@
+#graph {
+  table-layout: fixed;
+  width: 755px;
+  height: 469px;
+  border-collapse: collapse;
+  border: 1px solid black;
+  background-image: url("../images/testMap.jpg");
+  background-size: 104% 100%;
+}
+tr {
+  height: 12px;
+}
+td {
+  width: 10px;
+  border: 1px solid grey;
+  background-color: green;
+}
+.redOnHover:hover {
+  background-color: red;
+  opacity: 75%;
+}
+.redOnHover {
+  opacity: 20%;
+}
+.blueOnClick:active {
+  background-color: blue;
+}
+.greenOnInactive:disabled {
+  background-color: green;
+}
+#textBoxes div {
+  float: left;
+}
+#totalsText {
+  padding-left: 550px;
+  position: fixed;
+}
