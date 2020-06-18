@@ -3,6 +3,7 @@ var express = require('express');
 var session = require('express-session');
 var bodyparser = require('body-parser');
 var path = require('path');
+const { connect } = require('http2');
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -31,14 +32,19 @@ app.get('/', function(request, response){
 app.post('/auth', function(request, response) {
 	var userName = request.body.username;
 	var password = request.body.password;
+	//console.log(userName);
+	//console.log(password);
 	if (userName && password) {
-		connection.query('SELECT userName, password from login', [userName, password], function(error, results, fields) {
+		
+		connection.query('SELECT * FROM login WHERE userName = ? AND password = ?', [userName, password], function(error, results, fields) {
+			console.log(results.length);
 			if (results.length > 0) {
 				request.session.loggedin = true;
 				request.session.username = userName;
-				response.redirect('/home');
+				//need to do something here.....
 			} else {
 				response.send('Incorrect Username and/or Password!');
+				//response.sendFile(path.join(__dirname + '/login.html'));
 			}			
 			response.end();
 		});
