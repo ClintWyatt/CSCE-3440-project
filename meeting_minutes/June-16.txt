@@ -1,0 +1,2 @@
+Established that we will work on login page and home page to start our project to have a foundation to build upon.
+We want this done by the start of July in order for us to have the month of July to work on our disease simulation.
