@@ -25,12 +25,14 @@ app.use(bodyparser.json());
 //the app function below directs the user to the login.html when
 //the user goes to the port number for the site
 app.get('/', function(request, response){
-    response.sendFile(path.join(__dirname + '/login.html'));
+    response.sendFile(path.join(__dirname, 'views', '/login.html'));
 });
 
+/*
 app.get('/views', function(request, response){
 	response.sendFile(path.join(__dirname + '../views/htmlTable.html'));
 });
+*/
 
 //the app method below will validate the user login credientals
 app.post('/login', function(request, response) {
@@ -45,10 +47,11 @@ app.post('/login', function(request, response) {
 			if (results.length > 0) {
 				request.session.loggedin = true;
 				request.session.username = userName;
-				//need to do something here.....
+				//response.sendFile(path.join(__dirname, 'views', '/htmlTable.html'));
+				return response.sendFile(path.join(__dirname, 'views', '/htmlTable.html'));//must return for this method to work. Will redirect to the htmlTable.html
 			} else {
 				//response.send('Incorrect Username and/or Password!');
-				response.redirect('/views');
+				response.redirect('/');
 			}			
 			response.end();
 		});
