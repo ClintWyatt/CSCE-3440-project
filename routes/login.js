@@ -28,8 +28,12 @@ app.get('/', function(request, response){
     response.sendFile(path.join(__dirname + '/login.html'));
 });
 
+app.get('/views', function(request, response){
+	response.sendFile(path.join(__dirname + '../views/htmlTable.html'));
+});
+
 //the app method below will validate the user login credientals
-app.post('/auth', function(request, response) {
+app.post('/login', function(request, response) {
 	var userName = request.body.username;
 	var password = request.body.password;
 	//console.log(userName);
@@ -43,8 +47,8 @@ app.post('/auth', function(request, response) {
 				request.session.username = userName;
 				//need to do something here.....
 			} else {
-				response.send('Incorrect Username and/or Password!');
-				//response.sendFile(path.join(__dirname + '/login.html'));
+				//response.send('Incorrect Username and/or Password!');
+				response.redirect('/views');
 			}			
 			response.end();
 		});
