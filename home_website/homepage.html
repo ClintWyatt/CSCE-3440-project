@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="fadein.js">      
+    $(document).on("scroll", function () {
+    var pageTop = $(document).scrollTop()
+    var pageBottom = pageTop + $(window).height()
+    var tags = $("section")
+    
+    for (var i = 0; i < tags.length; i++) { 
+    var tag=tags[i] 
+
+    if ($(tag).position().top < pageBottom) {
+    $(tag).addClass("visible") 
+    }   else { 
+        $(tag).removeClass("visible") 
+    } 
+    } 
+    })
+    </script>
+    <head>
+        <link href='https://css.gg/push-chevron-up.css' rel='stylesheet'>
+        <link href='https://css.gg/chevron-double-down-o.css' rel='stylesheet'>
+        <link href='https://css.gg/arrow-right-o.css' rel='stylesheet'>
+        <style>
+            section {
+                opacity: 0;
+                transform: translate(0, 20px); 
+                transition: all 1s;
+            }
+            section.visible {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+            body {
+                font-family: 'Times New Roman', Times, serif;
+        } 
+            a { text-decoration: none; }
+            a:hover { text-decoration: underline; }
+            #banner {
+                background-color: rgb(19, 19, 19);
+                color: white;
+                width: 100%;
+                height: 150px;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                align-content: center;
+                flex-direction: column;
+            }
+            #title {
+                font-size: 60px;
+                font-weight: 700;
+                padding-top: 15px;
+            }
+            #title-footer {
+                font-size: 18px;
+                padding-top: 5px;
+                color: rgb(238, 238, 238);
+            }
+            #simulator-shortcut {
+                position: fixed;
+                border-radius: 10px;
+                background-color: rgb(19, 19, 19);
+                color: white;
+                padding: 5px;
+                padding-right: 10px;
+                right: 10px;
+                display: block;
+            }
+            #simulator-shortcut:hover {
+                color: lightgrey;
+            }
+            #down-arrow {
+                display: block;
+                float: right;
+                position: relative;
+                left: 5px;
+            }
+            #top-shortcut {
+                position: relative;
+                border-radius: 10px;
+                background-color: rgb(19, 19, 19);
+                color: white;
+                padding: 5px;
+                padding-right: 10px;
+                right: 10px;
+                display: block;
+                float: right;
+                top: 40px;
+            }
+            #top-shortcut:hover {
+                color: lightgrey;
+            }
+            #up-arrow {
+                display: block;
+                float: right;
+                position: relative;
+                left: 5px;
+            }
+            #disease-header {
+                color: rgba(0, 0, 0, 0.95);
+                font-size: 24px;
+                font-weight: 300;
+            }
+            #disease-names {
+                font-size: 20px;
+                font-weight: 300;
+            }
+            #disease-text {
+                color:#313333 ;
+                margin-left:50px;
+                margin-right:135px;
+                text-align:center;
+                font-size: 18px;
+                font-weight: 300;
+                font-family: 'Times New Roman', Times, serif;
+                
+                
+            }
+            #screenshot {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+                padding-top: 40px;
+            }
+            #btn {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 10px;
+                line-height: 15px;
+                font-size: 18px;
+                padding: 8px;
+                padding-top: 3px;
+                padding-bottom: 10px;
+            }
+            #right-arrow {
+                display:inline-block;
+                position: relative;
+                top: 5px;
+                left: 5px;
+            }
+            #footer-banner {
+                background-color: rgb(19, 19, 19);
+                color: white;
+                width: 100%;
+                height: 75px;
+                flex-direction: column;
+                margin-top: 75px;
+            }
+            #sources {
+                padding: 5px;
+                color: lightgrey;
+            }
+        </style>
+
+        <div id="banner">
+            <div id="title">Project Outbreak</div>
+            <div id="title-footer">By: Clint Wyatt, Ryan Schick and Ty Rozell</div>
+        </div>
+    </head>
+    <body> 
+        <a id="simulator-shortcut" href="#screenshot">Simulator<i id="down-arrow" class="gg-chevron-double-down-o"></i></a>
+        <div id="disease-header">
+            <h2>Diseases Simulated</h2>
+        </div>
+        <ul>
+           <div id="disease-names">
+               <li><h3>Orthocoronavirinae <em><span>&#40;</span>COVID-19 or Coronavirus<span>&#41;</span></em></h3></li>
+               <img id ="coronaPic" src="coronavirus.jpg" width="1200" height="350" alt="micro scale picture of corona virus">
+            </div>
+               <div id="disease-text">
+                
+                   <p>A 55-year-old individual from Hubei province in China may have been the first person to have contracted COVID-19, the
+                        disease caused by the new coronavirus spreading across the globe. That case dates back to Nov. 17, 2019, according to
+                        the South China Morning Post.</p>
+                    <p>On February 11, 2020 the <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank" style="color:rgba(66, 73, 73,.60)">World Health Organiation</a> announced an official name for the disease that is causing the 2019
+                    novel coronavirus outbreak, first identified in Wuhan China. The new name of this disease is coronavirus disease 2019,
+                    abbreviated as COVID-19. In COVID-19, ‘CO’ stands for ‘corona,’ ‘VI’ for ‘virus,’ and ‘D’ for disease. Formerly, this
+                    disease was referred to as “2019 novel coronavirus” or “2019-nCoV” COVID-19 is caused by a coronavirus called SARS-CoV-2. Older adults and people who have severe underlying medical
+                    conditions like heart or lung disease or diabetes seem to be at higher risk for developing more serious complications
+                    from COVID-19 illness. Some symptoms of Orthocoronavirinae are fever or chills, cough, shortness of breath, fatigue, muscle or body aches, 
+                    new loss of taste or smell, nausea or vomiting, and diarrhea.</p>
+                    <p> Add more...</p>
+                </div>
+            <div id ="disease-names">
+                <li><h3>Bubonic Plague <em<span>&#40;Black Plague<span>&#41;</span></h3></li>
+            </div>
+            <div id="disease-text">
+                <p>The Black Death was a devastating global epidemic of bubonic plague that struck Europe and Asia in the mid-1300s. The
+                plague arrived in Europe in October 1347, when 12 ships from the Black Sea docked at the Sicilian port of Messina.
+                People gathered on the docks were met with a horrifying surprise: Most sailors aboard the ships were dead, and those
+                still alive were gravely ill and covered in black boils that oozed blood and pus.</p>
+                <p>Today, it's best known as the Black Death or the bubonic plague. Medieval people called it "the blue sickness," La pest
+                ("the Pestilence"), and "the Great Mortality." The name bubonic comes from the medieval Latin word bubo via Italian
+                bilbo--meaning a pustule, growth, or swelling. Some symptoms of the disease were fever, trembling, weakness, and profuse sweating are initial symptoms of the bubonic version. In the pneumatic version,
+                coughing and parched throats are additional symptoms. In advanced cases, the most distinctive sign is the agonizing rise
+                of dark "buboes": sensitive black-blue swellings under the armpit and near the groin--spots where dead blood and pus
+                builds up in the lymph nodes. If the buboes are not lanced, the buildup of infected blood will cause the buboes in the
+                armpit and groin area to expand in size (typically the swelling is about golf-ball sized, but sometimes as large as
+                softballs). Untreated, the patient will die from the buildup of dead blood in these buboes. On the other hand, lancing
+                the bilbo or popping it can still kill the victim from toxic shock, and the spray from the bubo is profoundly infectious
+                to those who come into contact with it.</p>
+            </div>
+        </ul>
+        <br>
+        <img id="screenshot" src="./place-holder.jpg" alt ="Screenshot of simulator">
+        <button id="btn">Go to Simulator<i id="right-arrow" class="gg-arrow-right-o"></i></button>
+        <a id="top-shortcut" href="#banner">Top<i id="up-arrow" class="gg-push-chevron-up"></i></a>
+        <footer id="footer-banner">
+            <div id="sources">
+                <cite>Sources: [1] https://www.who.int/emergencies/diseases/novel-coronavirus-2019 [2] https://www.history.com/</cite>
+            </div>
+        </footer>
+    </body>
+</html>
