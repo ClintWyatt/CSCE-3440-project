@@ -1,5 +1,5 @@
-body{
-    background-color: azure;
+.body{
+    background-color: lime;
 
 };
 
@@ -14,3 +14,12 @@ body{
     color: yellow;
 
 }
+
+
+.login-form h1 {
+    text-align: center;
+    color: limegreen;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+}
+
