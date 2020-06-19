@@ -1,0 +1,16 @@
+body{
+    background-color: azure;
+
+};
+
+.jumbotron{
+    background-color:#9633FF;
+    border-color: crimson;
+    border: 100px;
+    padding: 30px;
+}
+
+.nav-link{
+    color: yellow;
+
+}

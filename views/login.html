@@ -2,7 +2,10 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Login Form Tutorial</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+		<link rel="stylesheet" type="text/css" href="style.css"> 
+		<title>Login</title>
 		<style>
 		.login-form {
 			width: 300px;
@@ -36,13 +39,24 @@
 		</style>
 	</head>
 	<body>
+		<nav class="navbar navbar-expand-sm bg-dark">
+
+			<ul class="navbar-nav">
+				  <li class="nav-item">
+					<a class="nav-link" href='welcome.php'>Register</a>
+				  </li>
+			</ul>
+		
+		</nav>
+		<section class="jumbotron">
 		<div class="login-form">
-			<h1>Login Form</h1>
+			<h1>Login</h1>
 			<form action="login" method="POST">
 				<input type="text" name="username" placeholder="Username" required>
 				<input type="password" name="password" placeholder="Password" required>
 				<input type="submit">
 			</form>
 		</div>
+		</section>
 	</body>
 </html> 

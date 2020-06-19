@@ -48,7 +48,7 @@ app.post('/login', function(request, response) {
 				request.session.loggedin = true;
 				request.session.username = userName;
 				//response.sendFile(path.join(__dirname, 'views', '/htmlTable.html'));
-				return response.sendFile(path.join(__dirname, 'views', '/htmlTable.html'));//must return for this method to work. Will redirect to the htmlTable.html
+				return response.sendFile(path.join(__dirname, 'home_website', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
 			} else {
 				//response.send('Incorrect Username and/or Password!');
 				response.redirect('/');
