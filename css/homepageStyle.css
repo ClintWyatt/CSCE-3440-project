@@ -1,0 +1,120 @@
+section {
+  opacity: 0;
+  transform: translate(0, 20px);
+  transition: all 1s;
+}
+section.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: grey;
+  text-decoration: underline;
+}
+p a {
+  color: rgba(66, 73, 73, 0.6);
+}
+#banner {
+  background-color: rgb(19, 19, 19);
+  color: white;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  flex-direction: column;
+}
+#title {
+  font-size: 60px;
+  font-weight: 700;
+  padding-top: 15px;
+}
+#title-names {
+  font-size: 18px;
+  padding-top: 5px;
+  color: rgb(238, 238, 238);
+}
+.shortcut {
+  border-radius: 10px;
+  background-color: rgb(19, 19, 19);
+  color: lightgrey;
+  padding: 7px;
+  padding-right: 10px;
+  right: 10px;
+  display: block;
+  font-size: 18px;
+}
+.shortcut-icon {
+  display: block;
+  float: right;
+  position: relative;
+  left: 5px;
+}
+#simulator-shortcut {
+  position: fixed;
+}
+#top-shortcut {
+  position: relative;
+  float: right;
+  top: 37px;
+}
+#disease-header {
+  color: rgba(0, 0, 0, 0.95);
+  font-size: 24px;
+  font-weight: 300;
+}
+#disease-names {
+  font-size: 20px;
+  font-weight: 300;
+}
+#disease-text {
+  color: #313333;
+  margin-left: 50px;
+  margin-right: 135px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+}
+#screenshot {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  padding-top: 40px;
+}
+#btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  line-height: 15px;
+  font-size: 18px;
+  padding: 8px;
+  padding-top: 3px;
+  padding-bottom: 10px;
+}
+#btn-icon {
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  left: 5px;
+}
+#footer-banner {
+  background-color: rgb(19, 19, 19);
+  color: white;
+  width: 100%;
+  height: 75px;
+  flex-direction: column;
+  margin-top: 75px;
+}
+#sources {
+  padding: 5px;
+  color: lightgrey;
+}

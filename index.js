@@ -13,6 +13,7 @@ var connection = mysql.createConnection({
 });
 
 var app = express();
+app.use(express.static(__dirname));
 
 app.use(session({
     secret: 'secret',
@@ -48,7 +49,7 @@ app.post('/login', function(request, response) {
 				request.session.loggedin = true;
 				request.session.username = userName;
 				//response.sendFile(path.join(__dirname, 'views', '/htmlTable.html'));
-				return response.sendFile(path.join(__dirname, 'home_website', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
+				return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
 			} else {
 				//response.send('Incorrect Username and/or Password!');
 				response.redirect('/');
@@ -72,3 +73,4 @@ app.get('/home', function(request, response) {
 });
 
 app.listen(3000);//listening on port 3000
+console.log("Server running on port 3000!");
