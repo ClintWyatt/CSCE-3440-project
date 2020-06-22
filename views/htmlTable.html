@@ -91,8 +91,9 @@ By default, table headings are bold and centered. A table data/cell is defined w
   /*var table = "<table class=graph><tr class=row><td class=col></td><td class=col></td></tr>"; //this works
   table += "<tr class=row><td class=col></td><td class = col></td></tr></table>";
   */
-  var table = "<table Id = graph>";
+  var table = "<table Id = graph>";//represents a html table
 
+  //generating tha table graph  
   for(i = 0; i < 260; i++)
   {
       table += "<tr>"
@@ -104,18 +105,24 @@ By default, table headings are bold and centered. A table data/cell is defined w
   }
   table += "</table>";
   
-  document.write(table); 
+  document.write(table); //writting the table to the document
   var x = document.getElementsByTagName("td");//getting all the columns in the table
+  var infection = 101 % 100;
   for(i=0; i < x.length; i++)
   {
-    if(i %2 === 0)
+    if(infection <10)
     {
-      x[i].style.backgroundColor = "green";
+      x[i].style.backgroundColor = "red";//infected
+    }
+    else if(infection > 10 && infection < 15)
+    {
+      x[i].style.backgroundColor = "blue";//vacinated
     }
     else
     {
-      x[i].style.backgroundColor = "gray";
+      x[i].style.backgroundColor = "yellow";//suceptible
     }
+    infection = 101 % 100;
   }
 </script>
 
