@@ -107,7 +107,8 @@ By default, table headings are bold and centered. A table data/cell is defined w
   
   document.write(table); //writting the table to the document
   var x = document.getElementsByTagName("td");//getting all the columns in the table
-  var infection = 101 % 100;
+  var infection = Math.floor(Math.random()*101);
+  console.log(infection); 
   for(i=0; i < x.length; i++)
   {
     if(infection <10)
@@ -122,7 +123,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
     {
       x[i].style.backgroundColor = "yellow";//suceptible
     }
-    infection = 101 % 100;
+    infection = Math.floor(Math.random()*101);
   }
 </script>
 
