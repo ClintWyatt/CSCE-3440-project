@@ -24,12 +24,19 @@ p a {
   background-color: rgb(19, 19, 19);
   color: white;
   width: 100%;
-  height: 150px;
+  height: 160px;
   display: flex;
   justify-content: center;
   text-align: center;
   align-content: center;
   flex-direction: column;
+  background-image: url('../images/virus-banner.jpg');
+  background-size: 100% 300%;
+}
+@media (max-width: 1500px) {
+  #banner {
+    background-size: 1500px 300%;
+  }
 }
 #title {
   font-size: 60px;
@@ -38,8 +45,7 @@ p a {
 }
 #title-names {
   font-size: 18px;
-  padding-top: 5px;
-  color: rgb(238, 238, 238);
+  color: lightgrey;
 }
 .shortcut {
   border-radius: 10px;
