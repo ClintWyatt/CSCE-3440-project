@@ -133,10 +133,7 @@ p a {
 	transform: translateY(-7px);
 }
 #disease-header {
-	position: relative;
-	animation: disease-header 2s;
-	animation-timing-function: ease;
-	animation-fill-mode: forwards;
+	text-align: center;
 	font-family: 'Bitter', serif;
 	line-height: 54px;
 	margin: 0 0 54px;
@@ -144,21 +141,17 @@ p a {
 	font-size: 36px;
 	font-weight: normal;
 }
-#covid {
-	position: relative;
-	animation: covid-19 2s;
-	animation-timing-function: ease;
-	animation-fill-mode: forwards;
-	font-size: 20px;
-	font-weight: 300;
-}
-#bubonic-plague {
-	position: relative;
+.covid {
 	text-align: center;
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: 300;
 }
-#disease-text {
+.bubonic-plague {
+	text-align: center;
+	font-size: 24px;
+	font-weight: 300;
+}
+.disease-text {
 	color: #313333;
 	margin-left: 75px;
 	margin-right: 100px;
@@ -166,6 +159,31 @@ p a {
 	font-size: 18px;
 	font-weight: 300;
 }
+
+.fade-in {
+	opacity: 0;
+	transition: opacity 250ms ease-in;
+}
+
+.fade-in.appear {
+	opacity: 1;
+}
+
+.from-left,
+.from-right {
+	transition: opacity 250ms ease-in, -webkit-transform 400ms ease-in;
+	transition: opacity 250ms ease-in, transform 400ms ease-in;
+	transition: opacity 250ms ease-in, transform 400ms ease-in, -webkit-transform 400ms ease-in;
+	opacity: 0;
+}
+
+.from-left.appear,
+.from-right.appear {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	opacity: 1;
+}
+
 #screenshot {
 	display: block;
 	margin-left: auto;
@@ -222,25 +240,4 @@ p a {
 #sources {
 	padding: 5px;
 	color: lightgrey;
-}
-
-@keyframes covid-19 {
-	from {
-		left: 10px;
-		opacity: 0;
-	}
-	to {
-		left: 425px;
-		opacity: 1;
-	}
-}
-@keyframes disease-header {
-	from {
-		left: 10px;
-		opacity: 0;
-	}
-	to {
-		left: 441px;
-		opacity: 1;
-	}
 }

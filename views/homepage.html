@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
         <link href='../css/homepagestyle.css' rel='stylesheet'>
         <link href='https://css.gg/push-chevron-up.css' rel='stylesheet'>
         <link href='https://css.gg/chevron-double-down-o.css' rel='stylesheet'>
         <link href='https://css.gg/arrow-right-o.css' rel='stylesheet'>
         <meta name="viewport" contents="width=device-width">
-        <script scr='sdtest.js'></script>
 
         <div id="banner">
             <div id="title">Project Outbreak</div>
@@ -19,11 +20,11 @@
         <div id="disease-header">
             <h2>Diseases Simulated</h2>
         </div>
-           <div id="covid">
+           <div class="covid">
                <h3>Orthocoronavirinae <em><span>&#40;</span>COVID-19 or Coronavirus<span>&#41;</span></em></h3>
                </div>
             <img id ="coronaPic" src="../images/coronavirus.jpg" width="100%" height="350" alt="micro scale picture of corona virus">
-               <div id="disease-text">
+               <div class="disease-text">
                 
                    <p>A 55-year-old individual from Hubei province in China may have been the first person to have contracted COVID-19, the
                         disease caused by the new coronavirus spreading across the globe. That case dates back to Nov. 17, 2019, according to
@@ -37,12 +38,12 @@
                     new loss of taste or smell, nausea or vomiting, and diarrhea.</p>
                     <a class = "read-more" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">Read more...</a>
                 </div>
-            <div id ="bubonic-plague">
+            <div class ="bubonic-plague fade-in">
                 <h3>Bubonic Plague <em><span>&#40;Black Plague<span>&#41;</span></em></h3>
             </div>
-            <img id="blackPlague_pic" src="../images/blackPlague.jpg" width="100%" height="400" alt="micro scale picture of black plague">
+            <img class="blackPlague_pic fade-in" src="../images/blackPlague.jpg" width="100%" height="400" alt="micro scale picture of black plague">
             
-            <div id="disease-text">
+            <div class="disease-text">
                 <p>The <a href="https://www.history.com/topics/middle-ages/black-death#:~:text=The%20Black%20Death%20was%20a,the%20Sicilian%20port%20of%20Messina." target="_blank">
                     Black Plague[2]</a> was a devastating global epidemic of bubonic plague that struck Europe and Asia in the mid-1300s. The
                 plague arrived in Europe in October 1347, when 12 ships from the Black Sea docked at the Sicilian port of Messina.
@@ -68,5 +69,52 @@
                 <cite>Sources: [1] https://www.who.int/emergencies/diseases/novel-coronavirus-2019 [2] https://www.history.com/</cite>
             </div>
         </footer>
+    <script type="text/javascript">
+            const sectionOne = document.querySelector('.bubonic-plague');
+
+            const faders = document.querySelectorAll('.fade-in');
+            const sliders = document.querySelectorAll('.slide-in');
+            const options = {
+                root: null, //it is the viewpoint
+                threshold: 0.25,
+                rootMargin: '-150px'
+            };
+            const observer = new IntersectionObserver(function (entries, observer) {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    console.log(entry);
+                    observer.unobserve(entry);
+                });
+            }, options);
+
+            observer.observe(sectionOne);
+
+            const appearOptions = {
+                threshold: 0,
+                rootMargin: '0px 0px -250px 0px'
+            };
+
+            const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('appear');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach((fader) => {
+                appearOnScroll.observe(fader);
+            });
+
+            sliders.forEach((slider) => {
+                appearOnScroll.observe(slider);
+            });
+
+    </script>
     </body>
 </html>
