@@ -1,61 +1,74 @@
-class Neighborhood{
- constructor()
+class State{
+ /*constructor(color)//color represents a color, which will determine the state
  {
-     this.exposed = false;
-     this.vacinated = false;
-     this.infected = false;
-     this.recovered = false;
-     this.exposedPeriod = 0;
-     this.infectionDay = 7;//time it takes for someone to go from exposed to infected
-     this.infectionPeriod = 7; //time someone is infected with the virus
-     this.infectionDay =0;
+     this.status = color;
  }
- setExposed()
+ */
+ getStatus()
  {
-     this.exposed = true;
+     return this.status;//returning the status
  }
- setVacinated()
+ setStatus(color)//color represents 
  {
-     this.vacinated = true;
- }
- setInfected()
- {
-     this.infected = true;
- }
- setRecovered()
- {
-     this.recovered = true;
- }
- getExposedPeriod()
- {
-     return this.exposedPeriod;
- }
- getInfected()
- {
-     return this.infected;
- }
- getVacinated()
- {
-     return this.vacinated;
- }
- getRecovered()
- {
-     return this.recovered;
- }
- incrementExposed()
- {
-     this.exposedPeriod++;
- }
- isInfected()
- {
-     if(this.vacinated === false)
+     if(color === "green")
      {
-        if(this.exposedPeriod === this.infectionDay)
-        {
-            
-        }
-    }
+        this.status = "recovered";
+     }
+     else if(color === "blue")
+     {
+         this.status = "vacinated";
+     }
+     else if(color === "red")
+     {
+         this.status = "infected";
+     }
+     else if(color === "yellow")
+     {
+         this.status = "susceptible";
+     }
  }
+}
+
+class Neighborhood extends State{
+
+    /*constructor(color){
+        super(color);
+        this.status = color;
+    }
+    */
+    isInfected(color)
+    {
+        if(color === "red")
+        {
+            return true;
+        }
+        return false;
+    }
+    isVacinated(color)
+    {
+        if(color === "blue")
+        {
+            return true;
+        }
+        return false;
+    }
+    isSuceptible(color)
+    {
+        if(color === "yellow")
+        {
+            return true;
+        }
+        return false;
+    }
+    isRecovered(color)
+    {
+        if(color ==="green")
+        {
+            return true;
+        }
+        return false;
+    }
+ 
 
 }
 
