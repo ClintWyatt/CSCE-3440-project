@@ -3,6 +3,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
 <!DOCTYPE html>
 <html>
     <head>
+      <script src="../scripts/outbreak.js"></script>
         <style>
         #graph {
           border-collapse: collapse;
@@ -40,7 +41,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
   /*var table = "<table class=graph><tr class=row><td class=col></td><td class=col></td></tr>"; //this works
   table += "<tr class=row><td class=col></td><td class = col></td></tr></table>";
   */
-  import {State, Neighborhood} from '../scripts/outbreak.js';
+  //import {State, Neighborhood} from '../scripts/outbreak.js';
   var table = "<table Id = graph>";//represents a html table
 
   neighbor = new Neighborhood[260][260];//creating a 2d array of neighborhoods
