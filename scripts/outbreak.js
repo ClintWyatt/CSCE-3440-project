@@ -4,11 +4,15 @@ class State{
      this.status = color;
  }
  */
+constructor()
+{
+    this.status ="";
+}
  getStatus()
  {
      return this.status;//returning the status
  }
- setStatus(color)//color represents 
+ setStatus(color)//color represents the state of the neighborhood
  {
      if(color === "green")
      {
@@ -36,6 +40,14 @@ class Neighborhood extends State{
         this.status = color;
     }
     */
+   constructor()
+   {
+       super();
+       this.threshold =0;//represents how many adjacent neighborhoods must be infected for this neighborhood to be infected
+       this.infectionPeriod =0;//represents how long the neihgborhood must be infected for
+       this.infection =0; //represents the amount of days the neighborhood has been infected. If it is equal to infection period, the neighborhood's 
+       //state goes to recovered.
+   }
     isInfected(color)
     {
         if(color === "red")
@@ -68,7 +80,29 @@ class Neighborhood extends State{
         }
         return false;
     }
- 
+    setThreshold(x)
+    {
+        this.threshold = x;
+    }
+    incrementThreshold()
+    {
+        this.threshold++;
+    }
+    setInfectionPeriod(x)
+    {
+        this.infectionPeriod = x;
+    }
+    stillInfected()
+    {
+        if(this.infection < this.infectionPeriod)
+        {
+            this.infection++;
+        }
+        else
+        {
+            this.setStatus("green");//set the neighborhood to recovered
+        }
+    }
 
 }
 
