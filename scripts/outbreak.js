@@ -1,4 +1,4 @@
-export class State{
+class State{
  /*constructor(color)//color represents a color, which will determine the state
  {
      this.status = color;
@@ -33,7 +33,7 @@ constructor()
  }
 }
 
-export class Neighborhood extends State{
+class Neighborhood extends State{
 
     /*constructor(color){
         super(color);
@@ -105,7 +105,8 @@ export class Neighborhood extends State{
     }
 
 }
-
+export {State, Neighborhood};
+/*
 class DiseaseGraph {
 
     neighbor = new Neighborhood[260][260];
@@ -114,3 +115,5 @@ class DiseaseGraph {
 
 
 }
+*/ 
+
