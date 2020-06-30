@@ -72,5 +72,10 @@ app.get('/home', function(request, response) {
 	response.end();
 });
 
+app.get('/scripts/outbreak.js', function(request, response){
+	console.log(request.params);
+	
+
+});
 app.listen(3000);//listening on port 3000
 console.log("Server running on port 3000!");
