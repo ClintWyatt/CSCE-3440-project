@@ -1,4 +1,4 @@
-class State{
+export class State{
  /*constructor(color)//color represents a color, which will determine the state
  {
      this.status = color;
@@ -33,7 +33,7 @@ constructor()
  }
 }
 
-class Neighborhood extends State{
+export class Neighborhood extends State{
 
     /*constructor(color){
         super(color);
@@ -100,7 +100,7 @@ class Neighborhood extends State{
         }
         else
         {
-            this.setStatus("green");//set the neighborhood to recovered
+            this.setStatus("green");//set status of the neighborhood to recovered
         }
     }
 
