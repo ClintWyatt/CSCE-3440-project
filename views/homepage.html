@@ -16,32 +16,38 @@
         
     </head>
     <body> 
-        <a id="simulator-shortcut" class="shortcut" href="#screenshot">Simulator<i class="shortcut-icon gg-chevron-double-down-o"></i></a>
+        <a id="simulator-shortcut" class="special-link-format" href="#screenshot">
+            <div class="shortcut-text">Simulator</div>
+            <i class="shortcut-icon gg-chevron-double-down-o"></i>
+        </a>
+
         <div id="disease-header">
             <h2>Diseases Simulated</h2>
         </div>
+
            <div class="covid">
                <h3>Orthocoronavirinae <em><span>&#40;</span>COVID-19 or Coronavirus<span>&#41;</span></em></h3>
                </div>
-            <img id ="coronaPic" src="../images/coronavirus.jpg" width="100%" height="350" alt="micro scale picture of corona virus">
+            <img class="wide-image" src="../images/coronavirus.jpg" width="100%" height="350" alt="micro scale picture of corona virus">
                <div class="disease-text">
                 
                    <p>A 55-year-old individual from Hubei province in China may have been the first person to have contracted COVID-19, the
                         disease caused by the new coronavirus spreading across the globe. That case dates back to Nov. 17, 2019, according to
                         the South China Morning Post.</p>
-                    <p>On February 11, 2020 the <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank">World Health Organiation[1]</a> announced an official name for the disease that is causing the 2019
+                    <p>On February 11, 2020 the <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank">World Health Organiation[1]</a> announced
+                    an official name for the disease that is causing the 2019
                     novel coronavirus outbreak, first identified in Wuhan China. The new name of this disease is coronavirus disease 2019,
                     abbreviated as COVID-19. In COVID-19, ‘CO’ stands for ‘corona,’ ‘VI’ for ‘virus,’ and ‘D’ for disease. Formerly, this
-                    disease was referred to as “2019 novel coronavirus” or “2019-nCoV” COVID-19 is caused by a coronavirus called SARS-CoV-2. Older adults and people who have severe underlying medical
-                    conditions like heart or lung disease or diabetes seem to be at higher risk for developing more serious complications
+                    disease was referred to as “2019 novel coronavirus” or “2019-nCoV” COVID-19 is caused by a coronavirus called SARS-CoV-2. Older adults and people who have severe 
+                    underlying medical conditions like heart or lung disease or diabetes seem to be at higher risk for developing more serious complications
                     from COVID-19 illness. Some symptoms of Orthocoronavirinae are fever or chills, cough, shortness of breath, fatigue, muscle or body aches, 
                     new loss of taste or smell, nausea or vomiting, and diarrhea.</p>
-                    <a class = "read-more" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">Read more...</a>
-                </div>
+                    <a class = "read-more special-link-format" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">Read more...</a>
+            </div>
             <div class ="bubonic-plague fade-in">
                 <h3>Bubonic Plague <em><span>&#40;Black Plague<span>&#41;</span></em></h3>
             </div>
-            <img class="blackPlague_pic fade-in" src="../images/blackPlague.jpg" width="100%" height="400" alt="micro scale picture of black plague">
+            <img class="wide-image fade-in" src="../images/blackPlague.jpg" width="100%" height="400" alt="micro scale picture of black plague">
             
             <div class="disease-text">
                 <p>The <a href="https://www.history.com/topics/middle-ages/black-death#:~:text=The%20Black%20Death%20was%20a,the%20Sicilian%20port%20of%20Messina." target="_blank">
@@ -51,8 +57,8 @@
                 still alive were gravely ill and covered in black boils that oozed blood and pus.</p>
                 <p>Today, it's best known as the Black Death or the bubonic plague. Medieval people called it "the blue sickness," La pest
                 ("the Pestilence"), and "the Great Mortality." The name bubonic comes from the medieval Latin word bubo via Italian
-                bilbo--meaning a pustule, growth, or swelling. Some symptoms of the disease were fever, trembling, weakness, and profuse sweating are initial symptoms of the bubonic version. In the pneumatic version,
-                coughing and parched throats are additional symptoms. In advanced cases, the most distinctive sign is the agonizing rise
+                bilbo--meaning a pustule, growth, or swelling. Some symptoms of the disease were fever, trembling, weakness, and profuse sweating are initial symptoms of 
+                the bubonic version. In the pneumatic version, coughing and parched throats are additional symptoms. In advanced cases, the most distinctive sign is the agonizing rise
                 of dark "buboes": sensitive black-blue swellings under the armpit and near the groin--spots where dead blood and pus
                 builds up in the lymph nodes. If the buboes are not lanced, the buildup of infected blood will cause the buboes in the
                 armpit and groin area to expand in size (typically the swelling is about golf-ball sized, but sometimes as large as
@@ -60,61 +66,24 @@
                 the bilbo or popping it can still kill the victim from toxic shock, and the spray from the bubo is profoundly infectious
                 to those who come into contact with it.</p>
             </div>
-        <br>
+
         <img id="screenshot" src="../images/place-holder.jpg" alt ="Screenshot of simulator">
-        <button id="btn">Go to Simulator<i id="btn-icon" class="gg-arrow-right-o"></i></button>
-        <a id="top-shortcut" class="shortcut" href="#banner">Top<i class="shortcut-icon gg-push-chevron-up"></i></a>
+        <button id="btn" class="special-link-format">
+            <div id="btn-text">Go to Simulator</div>
+            <i id="btn-icon" class="gg-arrow-right-o"></i>
+        </button>
+        <a id="top-shortcut" class="special-link-format" href="#banner">
+            <div class="shortcut-text">Top</div>
+            <i class="shortcut-icon gg-push-chevron-up"></i>
+        </a>
+
         <footer id="footer-banner">
             <div id="sources">
                 <cite>Sources: [1] https://www.who.int/emergencies/diseases/novel-coronavirus-2019 [2] https://www.history.com/</cite>
             </div>
         </footer>
-    <script type="text/javascript">
-            const sectionOne = document.querySelector('.bubonic-plague');
 
-            const faders = document.querySelectorAll('.fade-in');
-            const sliders = document.querySelectorAll('.slide-in');
-            const options = {
-                root: null, //it is the viewpoint
-                threshold: 0.25,
-                rootMargin: '-150px'
-            };
-            const observer = new IntersectionObserver(function (entries, observer) {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-                    console.log(entry);
-                    observer.unobserve(entry);
-                });
-            }, options);
+    <script src="../scripts/scrollEffect.js"></script>
 
-            observer.observe(sectionOne);
-
-            const appearOptions = {
-                threshold: 0,
-                rootMargin: '0px 0px -250px 0px'
-            };
-
-            const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
-                        entry.target.classList.add('appear');
-                        appearOnScroll.unobserve(entry.target);
-                    }
-                });
-            }, appearOptions);
-
-            faders.forEach((fader) => {
-                appearOnScroll.observe(fader);
-            });
-
-            sliders.forEach((slider) => {
-                appearOnScroll.observe(slider);
-            });
-
-    </script>
     </body>
 </html>
