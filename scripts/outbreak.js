@@ -1,12 +1,8 @@
-class State{
- /*constructor(color)//color represents a color, which will determine the state
- {
-     this.status = color;
- }
- */
+class State{//represents the state of the neighborhood (infected, recovered, vacinated, etc)
+
 constructor()
 {
-    this.status ="";
+    this.status ="";//the status refers to "recovered", "vacinated", "suceptible", etc
 }
  getStatus()
  {
@@ -33,7 +29,7 @@ constructor()
  }
 }
 
-class Neighborhood extends State{
+class Neighborhood extends State{//represents the squares on the graph in htmlTable.html
 
     /*constructor(color){
         super(color);
@@ -105,18 +101,5 @@ class Neighborhood extends State{
     }
 
 }
-module.exports ={ 
-    State: State,
-    Neighborhood: Neighborhood
-};
-/*
-class DiseaseGraph {
 
-    neighbor = new Neighborhood[260][260];
-
-
-
-
-}
-*/ 
 
