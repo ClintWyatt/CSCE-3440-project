@@ -105,7 +105,10 @@ class Neighborhood extends State{
     }
 
 }
-export {State, Neighborhood};
+module.exports ={ 
+    State: State,
+    Neighborhood: Neighborhood
+};
 /*
 class DiseaseGraph {
 
