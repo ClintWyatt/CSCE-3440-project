@@ -40,22 +40,20 @@ By default, table headings are bold and centered. A table data/cell is defined w
 
 
 <script>
-  /*var table = "<table class=graph><tr class=row><td class=col></td><td class=col></td></tr>"; //this works
-  table += "<tr class=row><td class=col></td><td class = col></td></tr></table>";
-  */
-  //const {State, Neighbor} = require('../scripts/outbreak.js');
+  
+  /*functions for the outbreak */
   function topLeftCorner(){
     if(neighborhood[0].getStatus() === "suceptible"){//if the current neighborhood is suceptible
 
-      if(neighborhood[1].getStatus() === "infected")//if the adjacent neighbor is infected
+      if(neighborhood[1].getStatus() === "infected")//if the neighbor to the right is infected
       {
         neighborhood[0].incrementThreshold();
       }
-      if(neighborhood[size].getStatus() === "infected")//if the adjacent neighbor is infected
+      if(neighborhood[size].getStatus() === "infected")//if the neighbor below is infected
       {
         neighborhood[0].incrementThreshold();
       }
-      if(neighborhood[size + 1].getStatus() === "infected")//if the adjacent neighbor is infected
+      if(neighborhood[size + 1].getStatus() === "infected")//if the neighbor's bottom right diagonal is infected
       {
         neighborhood[0].incrementThreshold();
       }
@@ -64,25 +62,53 @@ By default, table headings are bold and centered. A table data/cell is defined w
   function topRightCorner(){
     if(neighborhood[size-1].getStatus() === "suceptible"){//if the current neighborhood is suceptible
 
-      if(neighborhood[size -2].getStatus() === "infected")//if the adjacent neighbor is infected
+      if(neighborhood[size -2].getStatus() === "infected")//if the neighbor to the left is infected
       {
         neighborhood[size -1].incrementThreshold();
       }
-      if(neighborhood[(2 * size) -1].getStatus() === "infected")//if the adjacent neighbor is infected
+      if(neighborhood[(2 * size) -1].getStatus() === "infected")//if the neighbor below is infected
       {
         neighborhood[size -1].incrementThreshold();
       }
-      if(neighborhood[(2 * size) -2].getStatus() === "infected")//if the adjacent neighbor is infected
+      if(neighborhood[(2 * size) -2].getStatus() === "infected")//if the neighbor bottom left diagonal is infected
       {
         neighborhood[size -1].incrementThreshold();
       }
     }
   }
   function bottomLeftCorner(){
+    if(neighborhood[size *(size -1)].getStatus() === "suceptible"){//if the current neighborhood is suceptible
 
+      if(neighborhood[size *(size -2)].getStatus() === "infected")//if the neighbor above is infected
+      {
+        neighborhood[size *(size -1)].incrementThreshold();
+      }
+      if(neighborhood[size *(size -2) +1].getStatus() === "infected")//if the upper right neighbor is infected
+      {
+        neighborhood[size *(size -1)].incrementThreshold();
+      }
+      if(neighborhood[size *(size -1)+1].getStatus() === "infected")//if the neighbor to the right is infected
+      {
+        neighborhood[size *(size -1)].incrementThreshold();
+      }
+    }
   } 
   function bottomRightCorner(){
+    if(neighborhood[(size * size) -1].getStatus() === "suceptible"){//if the current neighborhood is suceptible
 
+      if(neighborhood[size * (size -1)].getStatus() === "infected")//if the neighbor above is infected
+      {
+      neighborhood[(size * size) -1].incrementThreshold();
+      }
+      if(neighborhood[size *(size -1) -1].getStatus() === "infected")//if the upper left neighbor is infected
+      {
+        neighborhood[(size * size) -1].incrementThreshold();
+      }
+      if(neighborhood[(size * size) -2].getStatus() === "infected")//if the neighbor to the left is infected
+      {
+        neighborhood[(size * size) -1].incrementThreshold();
+      }
+    }
   }
   function leftSide(){
 
@@ -138,22 +164,22 @@ By default, table headings are bold and centered. A table data/cell is defined w
     if(infection <10)
     {
       x[i].style.backgroundColor = "red";//infected
-      neighborhood[i].setStatus(red);
+      neighborhood[i].setStatus("red");
     }
     else if(infection > 10 && infection < 15)
     {
       x[i].style.backgroundColor = "blue";//vacinated
-      neighborhood[i].setStatus(blue);
+      neighborhood[i].setStatus("blue");
     }
     else if(infection > 15 && infection < 20)
     {
       x[i].style.backgroundColor = "green";//recovered
-      neighborhood[i].setStatus(green);
+      neighborhood[i].setStatus("green");
     }
     else
     {
       x[i].style.backgroundColor = "yellow";//suceptible
-      neighborhood[i].setStatus(yellow);
+      neighborhood[i].setStatus("yellow");
     }
     infection = Math.floor(Math.random()*260);
   }
@@ -200,7 +226,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
         innerGraph();
       }
     }
-
+    noInfected = true;
     //get information about infected neighborhoods from the graph
   }
 </script>
