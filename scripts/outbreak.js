@@ -2,7 +2,7 @@ class State{//represents the state of the neighborhood (infected, recovered, vac
 
 constructor()
 {
-    this.status ="";//the status refers to "recovered", "vacinated", "suceptible", etc
+    this.status ="nope";//the status refers to "recovered", "vacinated", "suceptible", etc
 }
  getStatus()
  {

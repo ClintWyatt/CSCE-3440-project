@@ -46,7 +46,13 @@ By default, table headings are bold and centered. A table data/cell is defined w
   //const {State, Neighbor} = require('../scripts/outbreak.js');
   var table = "<table Id = graph>";//represents a html table
 
-  const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
+  var neighborhood = [];
+  var n = new Neighborhood();
+  for(i =0; i < 67600; i++)
+  {
+    neighborhood.push(n);
+  }
+  //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
   
   //generating tha table graph  
   for(i = 0; i < 260; i++)
@@ -62,29 +68,36 @@ By default, table headings are bold and centered. A table data/cell is defined w
   
   document.write(table); //writting the table to the document
   var x = document.getElementsByTagName("td");//getting all the columns in the table
-  var infection = Math.floor(Math.random()*260);
-  console.log(infection); 
-
-  for(i=0; i < x.length; i++)
+  var infection = Math.floor(Math.random()*260); 
+  var green = "green";
+  var red = "red";
+  var yellow = "yellow";
+  var blue = "blue";
+  for(i=0; i < x.length; i++)//number of columns in the graph
   {
     if(infection <10)
     {
       x[i].style.backgroundColor = "red";//infected
+      neighborhood[i].setStatus(red);
     }
     else if(infection > 10 && infection < 15)
     {
       x[i].style.backgroundColor = "blue";//vacinated
+      neighborhood[i].setStatus(blue);
     }
     else if(infection > 15 && infection < 20)
     {
       x[i].style.backgroundColor = "green";//recovered
+      neighborhood[i].setStatus(green);
     }
     else
     {
       x[i].style.backgroundColor = "yellow";//suceptible
+      neighborhood[i].setStatus(yellow);
     }
     infection = Math.floor(Math.random()*260);
   }
+  //console.log(neighborhood[50].getStatus());
 </script>
 
 <script>
