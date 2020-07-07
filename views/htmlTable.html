@@ -98,7 +98,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
 
       if(neighborhood[size * (size -1)].getStatus() === "infected")//if the neighbor above is infected
       {
-      neighborhood[(size * size) -1].incrementThreshold();
+        neighborhood[(size * size) -1].incrementThreshold();
       }
       if(neighborhood[size *(size -1) -1].getStatus() === "infected")//if the upper left neighbor is infected
       {
@@ -110,19 +110,19 @@ By default, table headings are bold and centered. A table data/cell is defined w
       }
     }
   }
-  function leftSide(){
+  function leftSide(x){
 
   }
-  function rightSide(){
+  function rightSide(x){
 
   }
-  function topRow(){
+  function topRow(x){
 
   }
-  function bottomRow(){
+  function bottomRow(x){
 
   }
-  function innerGraph(){
+  function innerGraph(x){
 
   }
   var table = "<table Id = graph>";//represents a html table
@@ -185,6 +185,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
   }
   //console.log(neighborhood[50].getStatus());
 
+  //start outbreak
   while(noInfected===false)
   {
     for(i=0; i < neighborhood.length; i++)//number of columns in the graph
@@ -207,28 +208,30 @@ By default, table headings are bold and centered. A table data/cell is defined w
       }
       else if(i % size ===0)
       {
-        leftSide();
+        leftSide(i);
       }
       else if(i % size === size-1)
       {
-        rightSide();
+        rightSide(i);
       }
       else if(i > (size * size-1))
       {
-        bottomRow();
+        bottomRow(i);
       }
       else if(i < size)
       {
-        topRow();
+        topRow(i);
       }
       else
       {
-        innerGraph();
+        innerGraph(i);
       }
     }
-    noInfected = true;
+    noInfected = true;//for debugging purposes
     //get information about infected neighborhoods from the graph
   }
+
+  //another loop needed to chenge states (infected to recovered or suceptible to infected)
 </script>
 
 <script>
