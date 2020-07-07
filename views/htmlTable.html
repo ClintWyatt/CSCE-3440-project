@@ -44,8 +44,63 @@ By default, table headings are bold and centered. A table data/cell is defined w
   table += "<tr class=row><td class=col></td><td class = col></td></tr></table>";
   */
   //const {State, Neighbor} = require('../scripts/outbreak.js');
-  var table = "<table Id = graph>";//represents a html table
+  function topLeftCorner(){
+    if(neighborhood[0].getStatus() === "suceptible"){//if the current neighborhood is suceptible
 
+      if(neighborhood[1].getStatus() === "infected")//if the adjacent neighbor is infected
+      {
+        neighborhood[0].incrementThreshold();
+      }
+      if(neighborhood[size].getStatus() === "infected")//if the adjacent neighbor is infected
+      {
+        neighborhood[0].incrementThreshold();
+      }
+      if(neighborhood[size + 1].getStatus() === "infected")//if the adjacent neighbor is infected
+      {
+        neighborhood[0].incrementThreshold();
+      }
+    }
+  }
+  function topRightCorner(){
+    if(neighborhood[size-1].getStatus() === "suceptible"){//if the current neighborhood is suceptible
+
+      if(neighborhood[size -2].getStatus() === "infected")//if the adjacent neighbor is infected
+      {
+        neighborhood[size -1].incrementThreshold();
+      }
+      if(neighborhood[(2 * size) -1].getStatus() === "infected")//if the adjacent neighbor is infected
+      {
+        neighborhood[size -1].incrementThreshold();
+      }
+      if(neighborhood[(2 * size) -2].getStatus() === "infected")//if the adjacent neighbor is infected
+      {
+        neighborhood[size -1].incrementThreshold();
+      }
+    }
+  }
+  function bottomLeftCorner(){
+
+  } 
+  function bottomRightCorner(){
+
+  }
+  function leftSide(){
+
+  }
+  function rightSide(){
+
+  }
+  function topRow(){
+
+  }
+  function bottomRow(){
+
+  }
+  function innerGraph(){
+
+  }
+  var table = "<table Id = graph>";//represents a html table
+  const size = 260;
   var neighborhood = [];
   var n = new Neighborhood();
   for(i =0; i < 67600; i++)
@@ -55,10 +110,10 @@ By default, table headings are bold and centered. A table data/cell is defined w
   //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
   
   //generating tha table graph  
-  for(i = 0; i < 260; i++)
+  for(i = 0; i < size; i++)
   {
       table += "<tr>"
-      for(j = 0; j < 260; j++)
+      for(j = 0; j < size; j++)
       {
          table +="<td></td>";
       }
@@ -69,10 +124,15 @@ By default, table headings are bold and centered. A table data/cell is defined w
   document.write(table); //writting the table to the document
   var x = document.getElementsByTagName("td");//getting all the columns in the table
   var infection = Math.floor(Math.random()*260); 
-  var green = "green";
-  var red = "red";
-  var yellow = "yellow";
-  var blue = "blue";
+
+  /*variables for the count of different states neighborhoods could be in */
+  let numInfected =0;
+  let numVacinated =0;
+  let numRecovered =0;
+  let numSuceptible =0;
+  var noInfected = false;
+
+  //randomly set states to the graph
   for(i=0; i < x.length; i++)//number of columns in the graph
   {
     if(infection <10)
@@ -98,6 +158,51 @@ By default, table headings are bold and centered. A table data/cell is defined w
     infection = Math.floor(Math.random()*260);
   }
   //console.log(neighborhood[50].getStatus());
+
+  while(noInfected===false)
+  {
+    for(i=0; i < neighborhood.length; i++)//number of columns in the graph
+    {
+      if(i === 0)
+      {
+        topLeftCorner();
+      }
+      else if(i === size*(size -1))
+      {
+        bottomLeftCorner();
+      }
+      else if(i === size - 1)
+      {
+        topRightCorner();
+      }
+      else if(i === (size * size) -1)
+      {
+        bottomRightCorner();
+      }
+      else if(i % size ===0)
+      {
+        leftSide();
+      }
+      else if(i % size === size-1)
+      {
+        rightSide();
+      }
+      else if(i > (size * size-1))
+      {
+        bottomRow();
+      }
+      else if(i < size)
+      {
+        topRow();
+      }
+      else
+      {
+        innerGraph();
+      }
+    }
+
+    //get information about infected neighborhoods from the graph
+  }
 </script>
 
 <script>
