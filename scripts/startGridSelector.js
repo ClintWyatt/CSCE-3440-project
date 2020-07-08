@@ -15,7 +15,7 @@ function changeSelected(cell) {
     "Dead: " + boxes[getCellId(cell)].dead;
 }
 
-//this would be moved to '../models' once node is installed
+//represents a cell in the html table
 class Box {
   constructor(population, infected, dead) {
     this.population = population;

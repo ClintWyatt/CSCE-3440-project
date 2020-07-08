@@ -1,31 +1,114 @@
 <!--Each table row is defined with the <tr> tag. A table header is defined with the <th> tag.
-By default, table headings are bold and centered. A table data/cell is defined with the <td> tag.-->
+  By default, table headings are bold and centered. A table data/cell is defined with the <td> tag.-->
 <!DOCTYPE html>
 <html>
-    <head>
-      <!--<script type="module" src="../scripts/outbreak.js"></script> -->
-        <style>
-        #graph {
-          border-collapse: collapse;
-          border: 1px solid black;
-        }
+  <head>
+    <title>The Simulator</title>
 
-        .row{
-            height: 5px;
+    <!-- Inherits some styles from the homepage -->
+    <link href="../css/homepageStyle.css" rel="stylesheet">
+    <link href="../css/htmlTableStyle.css" rel="stylesheet">
+    <link href='https://css.gg/arrow-left-o.css' rel='stylesheet'>
+    <link href='https://css.gg/menu.css' rel='stylesheet'>
+    
+    <script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
+    
+  </head>
+  
+  <body>
+    <div id="grey-overlay"></div>
+    
+    <div id="banner">
+      <div id="title">The Simulator</div>
+    </div>
+    
+    <div id="slide-menu">
+      <div id="menu-text">
+        This menu is where you could create a disease by entering things into fields or choose a premade one from a dropdown list. This is also where buttons like 'reset',
+        'save disease' (sql), 'start', etc. could go. Once the simulation has started, those text fields should become inactive until the reset button is pressed.
+        The menu could automatically pause the simulation when opened and resume when minimized.
+      </div>
+      <div id="slide-menu-btn" onclick="toggleSlideMenu()">
+        <i id="slide-menu-btn-icon" class="gg-menu"></i>
+      </div>
+    </div>
+    
+    <a id="return-shortcut" class="special-link-format" href="homepage.html#screenshot">
+      <div class="shortcut-text">Return</div>
+      <i class="shortcut-icon gg-arrow-left-o"></i>
+    </a>
+    
+    <script>
+      
+      /*functions for the outbreak */
+      function topLeftCorner(){
+        if(neighborhood[0].getStatus() === "suceptible"){//if the current neighborhood is suceptible
+
+          if(neighborhood[1].getStatus() === "infected")//if the neighbor to the right is infected
+          {
+            neighborhood[0].incrementThreshold();
+          }
+          if(neighborhood[size].getStatus() === "infected")//if the neighbor below is infected
+          {
+            neighborhood[0].incrementThreshold();
+          }
+          if(neighborhood[size + 1].getStatus() === "infected")//if the neighbor's bottom right diagonal is infected
+          {
+            neighborhood[0].incrementThreshold();
+          }
         }
-        .col{
-            width: 5px;
-            border: 1px solid black;
-            
+      }
+      function topRightCorner(){
+        if(neighborhood[size-1].getStatus() === "suceptible"){//if the current neighborhood is suceptible
+
+          if(neighborhood[size -2].getStatus() === "infected")//if the neighbor to the left is infected
+          {
+            neighborhood[size -1].incrementThreshold();
+          }
+          if(neighborhood[(2 * size) -1].getStatus() === "infected")//if the neighbor below is infected
+          {
+            neighborhood[size -1].incrementThreshold();
+          }
+          if(neighborhood[(2 * size) -2].getStatus() === "infected")//if the neighbor bottom left diagonal is infected
+          {
+            neighborhood[size -1].incrementThreshold();
+          }
         }
-        tr{
-          height: 2px;
+      }
+      function bottomLeftCorner(){
+        if(neighborhood[size *(size -1)].getStatus() === "suceptible"){//if the current neighborhood is suceptible
+
+          if(neighborhood[size *(size -2)].getStatus() === "infected")//if the neighbor above is infected
+          {
+            neighborhood[size *(size -1)].incrementThreshold();
+          }
+          if(neighborhood[size *(size -2) +1].getStatus() === "infected")//if the upper right neighbor is infected
+          {
+            neighborhood[size *(size -1)].incrementThreshold();
+          }
+          if(neighborhood[size *(size -1)+1].getStatus() === "infected")//if the neighbor to the right is infected
+          {
+            neighborhood[size *(size -1)].incrementThreshold();
+          }
         }
-        td{
-          width: 2px;
-            border: 1px solid black;
-            
+      } 
+      function bottomRightCorner(){
+        if(neighborhood[(size * size) -1].getStatus() === "suceptible"){//if the current neighborhood is suceptible
+
+          if(neighborhood[size * (size -1)].getStatus() === "infected")//if the neighbor above is infected
+          {
+            neighborhood[(size * size) -1].incrementThreshold();
+          }
+          if(neighborhood[size *(size -1) -1].getStatus() === "infected")//if the upper left neighbor is infected
+          {
+            neighborhood[(size * size) -1].incrementThreshold();
+          }
+          if(neighborhood[(size * size) -2].getStatus() === "infected")//if the neighbor to the left is infected
+          {
+            neighborhood[(size * size) -1].incrementThreshold();
+          }
         }
+<<<<<<< HEAD
 
         </style>
     </head>
@@ -61,32 +144,23 @@ By default, table headings are bold and centered. A table data/cell is defined w
   }
   function topRightCorner(){
     if(neighborhood[size-1].getStatus() === "susceptible"){//if the current neighborhood is susceptible
+=======
+      }
+      function leftSide(x){
+>>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
 
-      if(neighborhood[size -2].getStatus() === "infected")//if the neighbor to the left is infected
-      {
-        neighborhood[size -1].incrementThreshold();
       }
-      if(neighborhood[(2 * size) -1].getStatus() === "infected")//if the neighbor below is infected
-      {
-        neighborhood[size -1].incrementThreshold();
-      }
-      if(neighborhood[(2 * size) -2].getStatus() === "infected")//if the neighbor bottom left diagonal is infected
-      {
-        neighborhood[size -1].incrementThreshold();
-      }
+<<<<<<< HEAD
     }
   }
   function bottomLeftCorner(){
     if(neighborhood[size *(size -1)].getStatus() === "susceptible"){//if the current neighborhood is susceptible
+=======
+      function rightSide(x){
+>>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
 
-      if(neighborhood[size *(size -2)].getStatus() === "infected")//if the neighbor above is infected
-      {
-        neighborhood[size *(size -1)].incrementThreshold();
       }
-      if(neighborhood[size *(size -2) +1].getStatus() === "infected")//if the upper right neighbor is infected
-      {
-        neighborhood[size *(size -1)].incrementThreshold();
-      }
+<<<<<<< HEAD
       if(neighborhood[size *(size -1)+1].getStatus() === "infected")//if the neighbor to the right is infected
       {
         neighborhood[size *(size -1)].incrementThreshold();
@@ -95,11 +169,12 @@ By default, table headings are bold and centered. A table data/cell is defined w
   } 
   function bottomRightCorner(){
     if(neighborhood[(size * size) -1].getStatus() === "susceptible"){//if the current neighborhood is susceptible
+=======
+      function topRow(x){
+>>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
 
-      if(neighborhood[size * (size -1)].getStatus() === "infected")//if the neighbor above is infected
-      {
-        neighborhood[(size * size) -1].incrementThreshold();
       }
+<<<<<<< HEAD
       if(neighborhood[size *(size -1) -1].getStatus() === "infected")//if the upper left neighbor is infected
       {
         neighborhood[(size * size) -1].incrementThreshold();
@@ -311,23 +386,124 @@ By default, table headings are bold and centered. A table data/cell is defined w
       else if(i % size ===0)
       {
         leftSide(i);
+=======
+      function bottomRow(x){
+
+>>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
       }
-      else if(i % size === size-1)
-      {
-        rightSide(i);
+      function innerGraph(x){
+
       }
+<<<<<<< HEAD
       else if(i > (size * size) - size)
+=======
+      var table = "<table Id = graph>";//represents a html table
+      const size = 260;
+      var neighborhood = [];
+      var n = new Neighborhood();
+      for(i =0; i < 67600; i++)
+>>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
       {
-        bottomRow(i);
+        neighborhood.push(n);
       }
-      else if(i < size)
+      //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
+      
+      //generating tha table graph  
+      for(i = 0; i < size; i++)
       {
-        topRow(i);
+          table += "<tr>"
+          for(j = 0; j < size; j++)
+          {
+            table +="<td></td>";
+          }
+        table += "</tr>"
       }
-      else
+      table += "</table>";
+      
+      document.write(table); //writting the table to the document
+      var x = document.getElementsByTagName("td");//getting all the columns in the table
+      var infection = Math.floor(Math.random()*260); 
+
+      /*variables for the count of different states neighborhoods could be in */
+      let numInfected =0;
+      let numVacinated =0;
+      let numRecovered =0;
+      let numSuceptible =0;
+      var noInfected = false;
+
+      //randomly set states to the graph
+      for(i=0; i < x.length; i++)//number of columns in the graph
       {
-        innerGraph(i);
+        if(infection <10)
+        {
+          x[i].style.backgroundColor = "red";//infected
+          neighborhood[i].setStatus("red");
+        }
+        else if(infection > 10 && infection < 15)
+        {
+          x[i].style.backgroundColor = "blue";//vacinated
+          neighborhood[i].setStatus("blue");
+        }
+        else if(infection > 15 && infection < 20)
+        {
+          x[i].style.backgroundColor = "green";//recovered
+          neighborhood[i].setStatus("green");
+        }
+        else
+        {
+          x[i].style.backgroundColor = "yellow";//suceptible
+          neighborhood[i].setStatus("yellow");
+        }
+        infection = Math.floor(Math.random()*260);
       }
+      //console.log(neighborhood[50].getStatus());
+
+      //start outbreak
+      while(noInfected===false)
+      {
+        for(i=0; i < neighborhood.length; i++)//number of columns in the graph
+        {
+          if(i === 0)
+          {
+            topLeftCorner();
+          }
+          else if(i === size*(size -1))
+          {
+            bottomLeftCorner();
+          }
+          else if(i === size - 1)
+          {
+            topRightCorner();
+          }
+          else if(i === (size * size) -1)
+          {
+            bottomRightCorner();
+          }
+          else if(i % size ===0)
+          {
+            leftSide(i);
+          }
+          else if(i % size === size-1)
+          {
+            rightSide(i);
+          }
+          else if(i > (size * size-1))
+          {
+            bottomRow(i);
+          }
+          else if(i < size)
+          {
+            topRow(i);
+          }
+          else
+          {
+            innerGraph(i);
+          }
+        }
+        noInfected = true;//for debugging purposes
+        //get information about infected neighborhoods from the graph
+      }
+<<<<<<< HEAD
     }
     noInfected = true;//for debugging purposes
     //get information about infected neighborhoods from the graph
@@ -340,13 +516,20 @@ By default, table headings are bold and centered. A table data/cell is defined w
 
   //another loop needed to chenge states (infected to recovered or susceptible to infected)
 </script>
+=======
 
-<script>
-  var table = document.getElementById("graph");
-  var row = table.insertRow(0);
-  row.height="5px";
+      //another loop needed to chenge states (infected to recovered or suceptible to infected)
+    </script>
+>>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
 
-</script>
+    <script>
+      var table = document.getElementById("graph");
+      var row = table.insertRow(0);
+      row.height="5px";
+      
+    </script>
 
-    </body>
+    <script src="../scripts/toggleSlideMenu.js"></script>
+
+  </body>
 </html>
