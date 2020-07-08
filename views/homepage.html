@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- adding jquery, and open-source css styels for animation and more functionality-->
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
             crossorigin="anonymous"></script>
         <link href='../css/homepagestyle.css' rel='stylesheet'>
@@ -8,7 +9,7 @@
         <link href='https://css.gg/chevron-double-down-o.css' rel='stylesheet'>
         <link href='https://css.gg/arrow-right-o.css' rel='stylesheet'>
         <meta name="viewport" contents="width=device-width">
-
+        <!--main banner used for the home page-->
         <div id="banner">
             <div id="title">Project Outbreak</div>
             <div id="title-names">By: Clint Wyatt, Ryan Schick and Ty Rozell</div>
@@ -16,6 +17,7 @@
         
     </head>
     <body> 
+        <!--Fixed simulation button shortcut-->
         <a id="simulator-shortcut" class="special-link-format" href="#screenshot">
             <div class="shortcut-text">Simulator</div>
             <i class="shortcut-icon gg-chevron-double-down-o"></i>
@@ -25,11 +27,12 @@
             <h2>Diseases Simulated</h2>
         </div>
 
+            <!--Describing the diseases that will be simulated-->
            <div class="covid">
                <h3>Orthocoronavirinae <em><span>&#40;</span>COVID-19 or Coronavirus<span>&#41;</span></em></h3>
                </div>
-            <img class="wide-image" src="../images/coronavirus.jpg" width="100%" height="350" alt="micro scale picture of corona virus">
-               <div class="disease-text">
+            <img class="wide-image" src="../images/coronavirus.jpg" width="100%" height="400" alt="micro scale picture of corona virus">
+               <div class="disease-text fade-in">
                 
                    <p>A 55-year-old individual from Hubei province in China may have been the first person to have contracted COVID-19, the
                         disease caused by the new coronavirus spreading across the globe. That case dates back to Nov. 17, 2019, according to
@@ -42,7 +45,7 @@
                     underlying medical conditions like heart or lung disease or diabetes seem to be at higher risk for developing more serious complications
                     from COVID-19 illness. Some symptoms of Orthocoronavirinae are fever or chills, cough, shortness of breath, fatigue, muscle or body aches, 
                     new loss of taste or smell, nausea or vomiting, and diarrhea.</p>
-                    <a class = "read-more special-link-format" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">Read more...</a>
+                    <a class = "read-more special-link-format" href="https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/cases-in-us.html" target="_blank">Read more...</a>
             </div>
             <div class ="bubonic-plague fade-in">
                 <h3>Bubonic Plague <em><span>&#40;Black Plague<span>&#41;</span></em></h3>
@@ -65,8 +68,11 @@
                 softballs). Untreated, the patient will die from the buildup of dead blood in these buboes. On the other hand, lancing
                 the bilbo or popping it can still kill the victim from toxic shock, and the spray from the bubo is profoundly infectious
                 to those who come into contact with it.</p>
+                <a class="read-more special-link-format" href="https://www.historytoday.com/archive/black-death-greatest-catastrophe-ever"
+                    target="_blank">Read more...</a>
             </div>
 
+        <!--picture of simluation with link to simulation page-->
         <img id="screenshot" src="../images/place-holder.jpg" alt ="Screenshot of simulator">
         <a id="simulator-page-link" class="special-link-format" href="htmlTable.html">
             <div id="simulator-page-link-text">Go to Simulator</div>
@@ -77,12 +83,13 @@
             <i class="shortcut-icon gg-push-chevron-up"></i>
         </a>
 
+        <!--sources and cited work that we used for the information on diseases-->
         <footer id="footer-banner">
             <div id="sources">
                 <cite>Sources: [1] https://www.who.int/emergencies/diseases/novel-coronavirus-2019 [2] https://www.history.com/</cite>
             </div>
         </footer>
-
+        <!--javascript file for fading scroll effect-->
     <script src="../scripts/scrollEffect.js"></script>
 
     </body>
