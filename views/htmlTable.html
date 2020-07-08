@@ -37,11 +37,13 @@
       <div class="shortcut-text">Return</div>
       <i class="shortcut-icon gg-arrow-left-o"></i>
     </a>
-    
-    <script>
-      
-      /*functions for the outbreak */
-      function topLeftCorner(){
+
+
+
+<script>
+  
+   /*functions for the outbreak */
+   function topLeftCorner(){
         if(neighborhood[0].getStatus() === "suceptible"){//if the current neighborhood is suceptible
 
           if(neighborhood[1].getStatus() === "infected")//if the neighbor to the right is infected
@@ -108,84 +110,7 @@
             neighborhood[(size * size) -1].incrementThreshold();
           }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-        </style>
-    </head>
-
-    <body>
-        
-        <h2>Possible graph using a table:</h2>
-       
-</br>
-
-<script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
-
-
-<script>
-  
-  /*functions for the outbreak */
-  function topLeftCorner(){
-    if(neighborhood[0].getStatus() === "susceptible"){//if the current neighborhood is susceptible
-
-      if(neighborhood[1].getStatus() === "infected")//if the neighbor to the right is infected
-      {
-        neighborhood[0].incrementThreshold();
       }
-      if(neighborhood[size].getStatus() === "infected")//if the neighbor below is infected
-      {
-        neighborhood[0].incrementThreshold();
-      }
-      if(neighborhood[size + 1].getStatus() === "infected")//if the neighbor's bottom right diagonal is infected
-      {
-        neighborhood[0].incrementThreshold();
-      }
-    }
-  }
-  function topRightCorner(){
-    if(neighborhood[size-1].getStatus() === "susceptible"){//if the current neighborhood is susceptible
-=======
-      }
-      function leftSide(x){
->>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
-
-      }
-<<<<<<< HEAD
-    }
-  }
-  function bottomLeftCorner(){
-    if(neighborhood[size *(size -1)].getStatus() === "susceptible"){//if the current neighborhood is susceptible
-=======
-      function rightSide(x){
->>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
-
-      }
-<<<<<<< HEAD
-      if(neighborhood[size *(size -1)+1].getStatus() === "infected")//if the neighbor to the right is infected
-      {
-        neighborhood[size *(size -1)].incrementThreshold();
-      }
-    }
-  } 
-  function bottomRightCorner(){
-    if(neighborhood[(size * size) -1].getStatus() === "susceptible"){//if the current neighborhood is susceptible
-=======
-      function topRow(x){
->>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
-
-      }
-<<<<<<< HEAD
-      if(neighborhood[size *(size -1) -1].getStatus() === "infected")//if the upper left neighbor is infected
-      {
-        neighborhood[(size * size) -1].incrementThreshold();
-      }
-      if(neighborhood[(size * size) -2].getStatus() === "infected")//if the neighbor to the left is infected
-      {
-        neighborhood[(size * size) -1].incrementThreshold();
-      }
-    }
-  }
   function leftSide(x){
     if(neighborhood[x].getStatus() === "susceptible"){
 
@@ -361,188 +286,11 @@
     infection = Math.floor(Math.random()*size);
   }
   //console.log(neighborhood[50].getStatus());
-  
- 
-  //start outbreak
-  while(noInfected===false)
-  {
-    for(i=0; i < neighborhood.length; i++)//number of columns in the graph
-    {
-      if(i === 0)
-      {
-        topLeftCorner();
-      }
-      else if(i === size*(size -1))
-      {
-        bottomLeftCorner();
-      }
-      else if(i === size - 1)
-      {
-        topRightCorner();
-      }
-      else if(i === (size * size) -1)
-      {
-        bottomRightCorner();
-      }
-      else if(i % size ===0)
-      {
-        leftSide(i);
-=======
-      function bottomRow(x){
-
->>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
-      }
-      function innerGraph(x){
-
-      }
-<<<<<<< HEAD
-      else if(i > (size * size) - size)
-=======
-      var table = "<table Id = graph>";//represents a html table
-      const size = 260;
-      var neighborhood = [];
-      var n = new Neighborhood();
-      for(i =0; i < 67600; i++)
->>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
-      {
-        neighborhood.push(n);
-      }
-      //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
-      
-      //generating tha table graph  
-      for(i = 0; i < size; i++)
-      {
-          table += "<tr>"
-          for(j = 0; j < size; j++)
-          {
-            table +="<td></td>";
-          }
-        table += "</tr>"
-      }
-      table += "</table>";
-      
-      document.write(table); //writting the table to the document
-      var x = document.getElementsByTagName("td");//getting all the columns in the table
-      var infection = Math.floor(Math.random()*260); 
-
-      /*variables for the count of different states neighborhoods could be in */
-      let numInfected =0;
-      let numVacinated =0;
-      let numRecovered =0;
-      let numSuceptible =0;
-      var noInfected = false;
-
-      //randomly set states to the graph
-      for(i=0; i < x.length; i++)//number of columns in the graph
-      {
-        if(infection <10)
-        {
-          x[i].style.backgroundColor = "red";//infected
-          neighborhood[i].setStatus("red");
-        }
-        else if(infection > 10 && infection < 15)
-        {
-          x[i].style.backgroundColor = "blue";//vacinated
-          neighborhood[i].setStatus("blue");
-        }
-        else if(infection > 15 && infection < 20)
-        {
-          x[i].style.backgroundColor = "green";//recovered
-          neighborhood[i].setStatus("green");
-        }
-        else
-        {
-          x[i].style.backgroundColor = "yellow";//suceptible
-          neighborhood[i].setStatus("yellow");
-        }
-        infection = Math.floor(Math.random()*260);
-      }
-      //console.log(neighborhood[50].getStatus());
 
       //start outbreak
       while(noInfected===false)
       {
-=======
-      }
-      function leftSide(x){
 
-      }
-      function rightSide(x){
-
-      }
-      function topRow(x){
-
-      }
-      function bottomRow(x){
-
-      }
-      function innerGraph(x){
-
-      }
-      var table = "<table Id = graph>";//represents a html table
-      const size = 260;
-      var neighborhood = [];
-      var n = new Neighborhood();
-      for(i =0; i < 67600; i++)
-      {
-        neighborhood.push(n);
-      }
-      //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
-      
-      //generating tha table graph  
-      for(i = 0; i < size; i++)
-      {
-          table += "<tr>"
-          for(j = 0; j < size; j++)
-          {
-            table +="<td></td>";
-          }
-        table += "</tr>"
-      }
-      table += "</table>";
-      
-      document.write(table); //writting the table to the document
-      var x = document.getElementsByTagName("td");//getting all the columns in the table
-      var infection = Math.floor(Math.random()*260); 
-
-      /*variables for the count of different states neighborhoods could be in */
-      let numInfected =0;
-      let numVacinated =0;
-      let numRecovered =0;
-      let numSuceptible =0;
-      var noInfected = false;
-
-      //randomly set states to the graph
-      for(i=0; i < x.length; i++)//number of columns in the graph
-      {
-        if(infection <10)
-        {
-          x[i].style.backgroundColor = "red";//infected
-          neighborhood[i].setStatus("red");
-        }
-        else if(infection > 10 && infection < 15)
-        {
-          x[i].style.backgroundColor = "blue";//vacinated
-          neighborhood[i].setStatus("blue");
-        }
-        else if(infection > 15 && infection < 20)
-        {
-          x[i].style.backgroundColor = "green";//recovered
-          neighborhood[i].setStatus("green");
-        }
-        else
-        {
-          x[i].style.backgroundColor = "yellow";//suceptible
-          neighborhood[i].setStatus("yellow");
-        }
-        infection = Math.floor(Math.random()*260);
-      }
-      //console.log(neighborhood[50].getStatus());
-
-      //start outbreak
-      while(noInfected===false)
-      {
->>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
         for(i=0; i < neighborhood.length; i++)//number of columns in the graph
         {
           if(i === 0)
@@ -569,7 +317,7 @@
           {
             rightSide(i);
           }
-          else if(i > (size * size-1))
+          else if(i > (size * size) - size)
           {
             bottomRow(i);
           }
@@ -583,27 +331,18 @@
           }
         }
         noInfected = true;//for debugging purposes
-        //get information about infected neighborhoods from the graph
-      }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    }
-    noInfected = true;//for debugging purposes
     //get information about infected neighborhoods from the graph
     /*for(j =0; j < neighborhood.length; j++)
     {
       if(neighborhood[j].getThreshold() > 1){ console.log(neighborhood[j].getThreshold() + " at " +j);}
     }
   */
-  }
+}
+    
+
 
   //another loop needed to chenge states (infected to recovered or susceptible to infected)
 </script>
-=======
-
-      //another loop needed to chenge states (infected to recovered or suceptible to infected)
-    </script>
->>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
 
     <script>
       var table = document.getElementById("graph");
@@ -612,19 +351,6 @@
       
     </script>
 
-=======
-
-      //another loop needed to chenge states (infected to recovered or suceptible to infected)
-    </script>
-
-    <script>
-      var table = document.getElementById("graph");
-      var row = table.insertRow(0);
-      row.height="5px";
-      
-    </script>
-
->>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
     <script src="../scripts/toggleSlideMenu.js"></script>
 
   </body>
