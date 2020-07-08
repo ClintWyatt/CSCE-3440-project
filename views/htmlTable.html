@@ -109,6 +109,7 @@
           }
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         </style>
     </head>
@@ -461,6 +462,87 @@
       //start outbreak
       while(noInfected===false)
       {
+=======
+      }
+      function leftSide(x){
+
+      }
+      function rightSide(x){
+
+      }
+      function topRow(x){
+
+      }
+      function bottomRow(x){
+
+      }
+      function innerGraph(x){
+
+      }
+      var table = "<table Id = graph>";//represents a html table
+      const size = 260;
+      var neighborhood = [];
+      var n = new Neighborhood();
+      for(i =0; i < 67600; i++)
+      {
+        neighborhood.push(n);
+      }
+      //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
+      
+      //generating tha table graph  
+      for(i = 0; i < size; i++)
+      {
+          table += "<tr>"
+          for(j = 0; j < size; j++)
+          {
+            table +="<td></td>";
+          }
+        table += "</tr>"
+      }
+      table += "</table>";
+      
+      document.write(table); //writting the table to the document
+      var x = document.getElementsByTagName("td");//getting all the columns in the table
+      var infection = Math.floor(Math.random()*260); 
+
+      /*variables for the count of different states neighborhoods could be in */
+      let numInfected =0;
+      let numVacinated =0;
+      let numRecovered =0;
+      let numSuceptible =0;
+      var noInfected = false;
+
+      //randomly set states to the graph
+      for(i=0; i < x.length; i++)//number of columns in the graph
+      {
+        if(infection <10)
+        {
+          x[i].style.backgroundColor = "red";//infected
+          neighborhood[i].setStatus("red");
+        }
+        else if(infection > 10 && infection < 15)
+        {
+          x[i].style.backgroundColor = "blue";//vacinated
+          neighborhood[i].setStatus("blue");
+        }
+        else if(infection > 15 && infection < 20)
+        {
+          x[i].style.backgroundColor = "green";//recovered
+          neighborhood[i].setStatus("green");
+        }
+        else
+        {
+          x[i].style.backgroundColor = "yellow";//suceptible
+          neighborhood[i].setStatus("yellow");
+        }
+        infection = Math.floor(Math.random()*260);
+      }
+      //console.log(neighborhood[50].getStatus());
+
+      //start outbreak
+      while(noInfected===false)
+      {
+>>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
         for(i=0; i < neighborhood.length; i++)//number of columns in the graph
         {
           if(i === 0)
@@ -504,6 +586,7 @@
         //get information about infected neighborhoods from the graph
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
     }
     noInfected = true;//for debugging purposes
     //get information about infected neighborhoods from the graph
@@ -529,6 +612,19 @@
       
     </script>
 
+=======
+
+      //another loop needed to chenge states (infected to recovered or suceptible to infected)
+    </script>
+
+    <script>
+      var table = document.getElementById("graph");
+      var row = table.insertRow(0);
+      row.height="5px";
+      
+    </script>
+
+>>>>>>> 8708f8f679ac78705630d72cede9234a0872d0b3
     <script src="../scripts/toggleSlideMenu.js"></script>
 
   </body>
