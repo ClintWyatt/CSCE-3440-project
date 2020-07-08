@@ -43,7 +43,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
   
   /*functions for the outbreak */
   function topLeftCorner(){
-    if(neighborhood[0].getStatus() === "suceptible"){//if the current neighborhood is suceptible
+    if(neighborhood[0].getStatus() === "susceptible"){//if the current neighborhood is susceptible
 
       if(neighborhood[1].getStatus() === "infected")//if the neighbor to the right is infected
       {
@@ -60,7 +60,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
     }
   }
   function topRightCorner(){
-    if(neighborhood[size-1].getStatus() === "suceptible"){//if the current neighborhood is suceptible
+    if(neighborhood[size-1].getStatus() === "susceptible"){//if the current neighborhood is susceptible
 
       if(neighborhood[size -2].getStatus() === "infected")//if the neighbor to the left is infected
       {
@@ -77,7 +77,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
     }
   }
   function bottomLeftCorner(){
-    if(neighborhood[size *(size -1)].getStatus() === "suceptible"){//if the current neighborhood is suceptible
+    if(neighborhood[size *(size -1)].getStatus() === "susceptible"){//if the current neighborhood is susceptible
 
       if(neighborhood[size *(size -2)].getStatus() === "infected")//if the neighbor above is infected
       {
@@ -94,7 +94,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
     }
   } 
   function bottomRightCorner(){
-    if(neighborhood[(size * size) -1].getStatus() === "suceptible"){//if the current neighborhood is suceptible
+    if(neighborhood[(size * size) -1].getStatus() === "susceptible"){//if the current neighborhood is susceptible
 
       if(neighborhood[size * (size -1)].getStatus() === "infected")//if the neighbor above is infected
       {
@@ -111,27 +111,124 @@ By default, table headings are bold and centered. A table data/cell is defined w
     }
   }
   function leftSide(x){
+    if(neighborhood[x].getStatus() === "susceptible"){
 
+      if(neighborhood[x - size].getStatus()  === "infected"){//if the neighbor above is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x - size +1].getStatus() === "infected"){//if the neighbor to the top right is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x+1].getStatus() === "infected"){//if the neighbor to the right is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + size +1].getStatus() === "infected"){//if the neighbor to the bottom right is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + size].getStatus() === "infected"){//if the neighbor to the bottom is infected
+        neighborhood[x].incrementThreshold();
+      }
+    }
   }
   function rightSide(x){
+    if(neighborhood[x].getStatus() === "susceptible"){//if the neighbor has not been infected yet and is not vacinated
 
+      if(neighborhood[x - size].getStatus()  === "infected"){//if the neighbor above is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x -(size - 1)].getStatus() === "infected"){//if the neighbor to the top left is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x-1].getStatus() === "infected"){//if the neighbor to the left is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + (size - 1)].getStatus() === "infected"){//if the neighbor to the bottom left is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + size].getStatus() === "infected"){//if the neighbor to the bottom is infected
+        neighborhood[x].incrementThreshold();
+      }
+    }
   }
   function topRow(x){
+    if(neighborhood[x].getStatus() === "susceptible"){//if the neighbor has not been infected yet and is not vacinated
 
+      if(neighborhood[x - 1].getStatus() === "infected"){//if the neighbor to the left is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + (size -1)].getStatus() === "infected"){//if the neighbor to the bottom left is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + size].getStatus() === "infected"){//if the neighbor below is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + (size + 1)].getStatus() === "infected"){//if the bottom right neighbor is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + 1].getStatus() === "infected"){//if the neighbor right is infected
+        neighborhood[x].incrementThreshold();
+      }
+    }
   }
   function bottomRow(x){
+    if(neighborhood[x].getStatus() === "susceptible"){//if the neighbor has not been infected yet and is not vacinated
 
+      if(neighborhood[x - 1].getStatus() === "infected"){//if the neighbor to the left is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x - (size -1)].getStatus() === "infected"){//if the neighbor to the top left is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x - size].getStatus() === "infected"){//if the neighbor above is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x - (size + 1)].getStatus() === "infected"){//if the top right neighbor is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + 1].getStatus() === "infected"){//if the neighbor right is infected
+        neighborhood[x].incrementThreshold();
+      }
+    }
   }
   function innerGraph(x){
-
+    
+    if(neighborhood[x].getStatus() === "susceptible"){//if the neighbor has not been infected yet and is not vacinated
+      
+      if(neighborhood[x - 1].getStatus() === "infected"){//if the neighbor to the left is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x - (size -1)].getStatus() === "infected"){//if the neighbor to the top left is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x - size].getStatus() === "infected"){//if the neighbor above is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x - (size + 1)].getStatus() === "infected"){//if the top right neighbor is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + 1].getStatus() === "infected"){//if the neighbor right is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + (size -1)].getStatus() === "infected"){//if the neighbor to the bottom left is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + size].getStatus() === "infected"){//if the neighbor below is infected
+        neighborhood[x].incrementThreshold();
+      }
+      if(neighborhood[x + (size + 1)].getStatus() === "infected"){//if the bottom right neighbor is infected
+        neighborhood[x].incrementThreshold();
+      }
+    }
   }
+  /*end of simulation functions */
   var table = "<table Id = graph>";//represents a html table
-  const size = 260;
-  var neighborhood = [];
+  const size = 200;
+  let neighborhood = [];
   var n = new Neighborhood();
-  for(i =0; i < 67600; i++)
+  for(i =0; i < size*size; i++)
   {
     neighborhood.push(n);
+    n = new Neighborhood();//must do this to prevent all objects refering to 1 object
   }
   //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
   
@@ -149,42 +246,47 @@ By default, table headings are bold and centered. A table data/cell is defined w
   
   document.write(table); //writting the table to the document
   var x = document.getElementsByTagName("td");//getting all the columns in the table
-  var infection = Math.floor(Math.random()*260); 
+  var infection = Math.floor(Math.random()*size); 
 
   /*variables for the count of different states neighborhoods could be in */
   let numInfected =0;
   let numVacinated =0;
   let numRecovered =0;
-  let numSuceptible =0;
+  let numsusceptible =0;
   var noInfected = false;
 
   //randomly set states to the graph
   for(i=0; i < x.length; i++)//number of columns in the graph
   {
-    if(infection <10)
+    if(infection < size * .01)
     {
       x[i].style.backgroundColor = "red";//infected
       neighborhood[i].setStatus("red");
+      //console.log(neighborhood[i].getStatus());
     }
-    else if(infection > 10 && infection < 15)
+    else if(infection > (size * .02) && infection <= (size * .03))
     {
+      //console.log("vacinated at " +i);
       x[i].style.backgroundColor = "blue";//vacinated
       neighborhood[i].setStatus("blue");
+      //console.log(neighborhood[i].getStatus());
     }
-    else if(infection > 15 && infection < 20)
+    else if(infection > (size *.03) && infection <= (size *.04))
     {
       x[i].style.backgroundColor = "green";//recovered
       neighborhood[i].setStatus("green");
+      //console.log(neighborhood[i].getStatus());
     }
     else
     {
-      x[i].style.backgroundColor = "yellow";//suceptible
+      x[i].style.backgroundColor = "yellow";//susceptible
       neighborhood[i].setStatus("yellow");
     }
-    infection = Math.floor(Math.random()*260);
+    infection = Math.floor(Math.random()*size);
   }
   //console.log(neighborhood[50].getStatus());
-
+  
+ 
   //start outbreak
   while(noInfected===false)
   {
@@ -214,7 +316,7 @@ By default, table headings are bold and centered. A table data/cell is defined w
       {
         rightSide(i);
       }
-      else if(i > (size * size-1))
+      else if(i > (size * size) - size)
       {
         bottomRow(i);
       }
@@ -229,9 +331,14 @@ By default, table headings are bold and centered. A table data/cell is defined w
     }
     noInfected = true;//for debugging purposes
     //get information about infected neighborhoods from the graph
+    /*for(j =0; j < neighborhood.length; j++)
+    {
+      if(neighborhood[j].getThreshold() > 1){ console.log(neighborhood[j].getThreshold() + " at " +j);}
+    }
+  */
   }
 
-  //another loop needed to chenge states (infected to recovered or suceptible to infected)
+  //another loop needed to chenge states (infected to recovered or susceptible to infected)
 </script>
 
 <script>
