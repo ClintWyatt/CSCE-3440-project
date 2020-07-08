@@ -1,0 +1,97 @@
+#graph {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: 75px auto 50px;
+  width: 1250px;
+  height: 469px;
+}
+.row {
+  height: 5px;
+}
+.col {
+  width: 5px;
+  border: 1px solid black;
+}
+tr {
+  height: 2px;
+}
+td {
+  width: 2px;
+  border: 1px solid black;
+}
+#grey-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transition: opacity 0.4s;
+  opacity: 0%;
+}
+#grey-overlay.active {
+  opacity: 50%;
+}
+#banner {
+  height: 100px;
+  background-size: 100% 400%;
+}
+@media (max-width: 1500px) {
+  #banner {
+    background-size: 1500px 400%;
+  }
+}
+#title {
+  position: relative;
+  bottom: 6px;
+  right: 10px;
+  font-size: 45px;
+}
+#return-shortcut {
+  position: absolute;
+  width: 80px;
+  height: 25px;
+  z-index: 2;
+}
+#slide-menu {
+  left: 0px;
+  right: 0px;
+  top: -150px;
+  position: absolute;
+  margin: 0 auto;
+  width: 1150px;
+  height: 250px;
+  transition: 0.4s;
+  background-image: linear-gradient(rgb(19, 19, 19), rgb(48, 48, 48));
+  border-radius: 20px;
+}
+#slide-menu.active {
+  top: 84px;
+}
+#menu-text {
+  padding: 10px;
+  position: relative;
+  top: 50px;
+  font-size: 20px;
+  color: white;
+}
+#slide-menu-btn {
+  position: absolute;
+  top: 210px;
+  left: 0px;
+  right: 40px;
+  margin: 0 auto;
+  width: 60px;
+  height: 80px;
+  background-image: linear-gradient(rgb(43, 43, 43), rgb(56, 56, 56));
+  border-radius: 50px;
+  color: white;
+}
+#slide-menu-btn:hover {
+  color: grey;
+}
+#slide-menu-btn-icon {
+  position: relative;
+  left: 20px;
+  top: 55px;
+  transform: scale(var(--ggs,1.2))
+}

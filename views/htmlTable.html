@@ -1,43 +1,43 @@
 <!--Each table row is defined with the <tr> tag. A table header is defined with the <th> tag.
-By default, table headings are bold and centered. A table data/cell is defined with the <td> tag.-->
+  By default, table headings are bold and centered. A table data/cell is defined with the <td> tag.-->
 <!DOCTYPE html>
 <html>
-    <head>
-      <!--<script type="module" src="../scripts/outbreak.js"></script> -->
-        <style>
-        #graph {
-          border-collapse: collapse;
-          border: 1px solid black;
-        }
+  <head>
+    <title>The Simulator</title>
 
-        .row{
-            height: 5px;
-        }
-        .col{
-            width: 5px;
-            border: 1px solid black;
-            
-        }
-        tr{
-          height: 2px;
-        }
-        td{
-          width: 2px;
-            border: 1px solid black;
-            
-        }
+    <!-- Inherits some styles from the homepage -->
+    <link href="../css/homepageStyle.css" rel="stylesheet">
+    <link href="../css/htmlTableStyle.css" rel="stylesheet">
+    <link href='https://css.gg/arrow-left-o.css' rel='stylesheet'>
+    <link href='https://css.gg/menu.css' rel='stylesheet'>
+    
+  </head>
+  
+  <body>
+    <div id="grey-overlay"></div>
+    
+    <div id="banner">
+      <div id="title">The Simulator</div>
+    </div>
+    
+    <div id="slide-menu">
+      <div id="menu-text">
+        This menu is where you could create a disease by entering things into fields or choose a premade one from a dropdown list. This is also where buttons like 'reset',
+        'save disease' (sql), 'start', etc. could go. Once the simulation has started, those text fields should become inactive until the reset button is pressed.
+        The menu could automatically pause the simulation when opened and resume when minimized.
+      </div>
+      <div id="slide-menu-btn" onclick="toggleSlideMenu()">
+        <i id="slide-menu-btn-icon" class="gg-menu"></i>
+      </div>
+    </div>
+    
+    <a id="return-shortcut" class="special-link-format" href="homepage.html#screenshot">
+      <div class="shortcut-text">Return</div>
+      <i class="shortcut-icon gg-arrow-left-o"></i>
+    </a>
 
-        </style>
-    </head>
-
-    <body>
-        
-        <h2>Possible graph using a table:</h2>
-       
-</br>
-
-<script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
-
+    <script src="../scripts/toggleSlideMenu.js"></script>
+    <script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
 
 <script>
   
@@ -238,8 +238,8 @@ By default, table headings are bold and centered. A table data/cell is defined w
   var table = document.getElementById("graph");
   var row = table.insertRow(0);
   row.height="5px";
-
+  
 </script>
 
-    </body>
+</body>
 </html>
