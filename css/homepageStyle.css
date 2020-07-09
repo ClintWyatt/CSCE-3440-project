@@ -1,189 +1,308 @@
 body {
-  font-family: "Times New Roman", Times, serif;
-  overflow-x: hidden;
-  padding: 0px;
-  margin: 0px;
+	font-family: "Times New Roman", Times, serif;
+	overflow-x: hidden;
+	padding: 0px;
+	margin: 0px;
 }
 .special-link-format {
-  position: relative;
-  font-family: "Roboto", sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  background-color: #1f2020;
-  border: 1px solid #333333;
-  border-radius: 3px;
-  color: #f5f5f5;
-  padding: 5px;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
+	position: relative;
+	font-family: "Roboto", sans-serif;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	background-color: #1f2020;
+	border: 1px solid #333333;
+	border-radius: 3px;
+	color: #f5f5f5;
+	padding: 5px;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+	outline: none;
 }
 .special-link-format:hover {
-  background-color: #313333;
-  border-radius: 3px;
-  text-decoration: none;
-  box-shadow: 0px 15px 20px rgba(107, 104, 104, 0.4);
-  color: #fff;
-  transform: translateY(-7px);
+	background-color: #313333;
+	border-radius: 3px;
+	text-decoration: none;
+	box-shadow: 0px 15px 20px rgba(107, 104, 104, 0.4);
+	color: #fff;
+	transform: translateY(-7px);
 }
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 a.read-more {
-  float: center;
+	float: center;
 }
 p a {
-  color: rgba(66, 73, 73, 0.6);
+	color: rgba(66, 73, 73, 0.6);
 }
 p a:hover {
-  color: grey;
-  text-decoration: underline;
+	color: grey;
+	text-decoration: underline;
+}
+.banner-homepage {
+	position: relative;
+	color: white;
+	width: 100%;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-content: center;
+	flex-direction: column;
+	background-image: url("../images/virus-banner.jpg");
+	background-size: 100% 100%;
+	padding: 30vh 0;
+	z-index: 3;
 }
 #banner {
-  position: relative;
-  color: white;
-  width: 100%;
-  height: 160px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-content: center;
-  flex-direction: column;
-  background-image: url("../images/virus-banner.jpg");
-  background-size: 100% 300%;
-  z-index: 3;
+	position: relative;
+	color: white;
+	width: 100%;
+	height: 160px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-content: center;
+	flex-direction: column;
+	background-image: url("../images/virus-banner.jpg");
+	background-size: 100% 300%;
+	z-index: 3;
 }
 @media (max-width: 1500px) {
-  #banner {
-    background-size: 1500px 300%;
-  }
-  .wide-image {
-    width: 1500px;
-  }
+	.banner-homepage {
+		background-size: 2000px 100%;
+		background-blend-mode: multiply;
+		opacity: 0.95;
+	}
+	#banner {
+		background-size: 1500px 300%;
+	}
+	.wide-image {
+		width: 1500px;
+	}
 }
+.site-logo {
+	font-weight: 900;
+	font-size: 0.8rem;
+	color: var(--text);
+	text-decoration: none;
+}
+
+header {
+	--text: #f4f4f4;
+	--text-inverse: #333;
+	--background: transparent;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2em 3em;
+	transition: background 250ms ease-in;
+	background: var(--background);
+	color: var(--text);
+}
+.nav__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+}
+
+.nav__link {
+	--spacing: 1em;
+	text-decoration: none;
+	color: inherit;
+	display: inline-block;
+	padding: calc(var(--spacing) / 2) var(--spacing);
+	position: relative;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 0.9rem;
+}
+
+.nav__link:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: var(--spacing);
+	right: var(--spacing);
+	height: 2px;
+	background: currentColor;
+	-webkit-transform: scaleX(0);
+	transform: scaleX(0);
+	transition: -webkit-transform 150ms ease-in-out;
+	transition: transform 150ms ease-in-out;
+	transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+
+.nav__link:hover::after {
+	-webkit-transform: scaleX(1);
+	transform: scaleX(1);
+}
+
+.nav__link--btn {
+	border: 1.5px solid currentColor;
+	border-radius: 2em;
+	margin-left: 1em;
+	transition: background 250ms ease-in-out;
+	letter-spacing: 1px;
+	padding: 0.75em 1.5em;
+}
+
+.nav__link--btn:hover {
+	background: var(--text);
+	color: var(--text-inverse);
+	border-color: var(--text);
+}
+
+.nav__link--btn::after {
+	display: none;
+}
+
+.nav__link--btn--highlight {
+	background: limegreen;
+	border-color: limegreen;
+	color: #333;
+}
+
+.nav__link--btn--highlight:hover {
+	background: var(--text);
+	border-color: var(--text);
+}
+
+.nav-scrolled {
+	--text: #333;
+	--text-inverse: #f4f4f4;
+	--background: #f4f4f4;
+	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
+}
+
 #title {
-  font-size: 60px;
-  font-weight: 700;
-  padding-top: 15px;
+	font-size: 60px;
+	font-weight: 700;
+	padding-top: 15px;
 }
 #title-names {
-  font-size: 18px;
-  color: lightgrey;
+	font-size: 18px;
+	color: lightgrey;
 }
 .shortcut-text {
-  position: relative;
-  top: 6px;
+	position: relative;
+	top: 6px;
 }
 .shortcut-icon {
-  float: right;
-  position: relative;
-  left: 3px;
-  bottom: 10px;
+	float: right;
+	position: relative;
+	left: 3px;
+	bottom: 10px;
 }
 #simulator-shortcut {
-  position: fixed;
-  width: 100px;
-  height: 25px;
-  right: 0px;
-  z-index: 1;
+	position: fixed;
+	width: 100px;
+	height: 25px;
+	right: 0px;
+	z-index: 1;
 }
 #top-shortcut {
-  float: right;
-  top: 35px;
-  width: 50px;
-  height: 25px;
+	float: right;
+	top: 35px;
+	width: 50px;
+	height: 25px;
 }
 #disease-header {
-  text-align: center;
-  font-family: "Bitter", serif;
-  line-height: 54px;
-  margin-top: 60px;
-  color: rgba(0, 0, 0, 0.95);
-  font-size: 32px;
-  font-weight: normal;
+	text-align: center;
+	font-family: "Bitter", serif;
+	line-height: 54px;
+	margin-top: 60px;
+	color: rgba(0, 0, 0, 0.95);
+	font-size: 32px;
+	font-weight: normal;
 }
 .covid {
-  text-align: center;
-  font-size: 24px;
-  font-weight: 300;
+	text-align: center;
+	font-size: 24px;
+	font-weight: 300;
 }
 .bubonic-plague {
-  text-align: center;
-  font-size: 24px;
-  font-weight: 300;
+	text-align: center;
+	font-size: 24px;
+	font-weight: 300;
 }
 .disease-text {
-  color: #313333;
-  margin-left: 75px;
-  margin-right: 100px;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 300;
+	color: #313333;
+	margin-left: 75px;
+	margin-right: 100px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 300;
 }
 
 .fade-in {
-  opacity: 0;
-  transition: opacity 250ms ease-in;
+	opacity: 0;
+	transition: opacity 250ms ease-in;
 }
 
 .fade-in.appear {
-  opacity: 1;
+	opacity: 1;
 }
 
 .from-left,
 .from-right {
-  transition: opacity 250ms ease-in, -webkit-transform 400ms ease-in;
-  transition: opacity 250ms ease-in, transform 400ms ease-in;
-  transition: opacity 250ms ease-in, transform 400ms ease-in,
-    -webkit-transform 400ms ease-in;
-  opacity: 0;
+	transition: opacity 250ms ease-in, -webkit-transform 400ms ease-in;
+	transition: opacity 250ms ease-in, transform 400ms ease-in;
+	transition: opacity 250ms ease-in, transform 400ms ease-in, -webkit-transform 400ms ease-in;
+	opacity: 0;
 }
 
 .from-left.appear,
 .from-right.appear {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  opacity: 1;
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	opacity: 1;
 }
 
 #screenshot {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  padding-top: 55px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	padding-top: 55px;
 }
 #simulator-page-link {
-  display: block;
-  width: 163px;
-  height: 28px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
+	display: block;
+	width: 163px;
+	height: 28px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
 }
 #simulator-page-link-icon {
-  display: inline-block;
-  position: relative;
-  top: 3px;
-  left: 8px;
+	display: inline-block;
+	position: relative;
+	top: 3px;
+	left: 8px;
 }
 #simulator-page-link-text {
-  display: inline-block;
-  position: relative;
-  left: 5px;
-  bottom: 3px;
+	display: inline-block;
+	position: relative;
+	left: 5px;
+	bottom: 3px;
 }
 #footer-banner {
-  background-color: rgb(19, 19, 19);
-  color: white;
-  width: 100%;
-  height: 75px;
-  flex-direction: column;
-  margin-top: 75px;
+	background-color: rgb(19, 19, 19);
+	color: white;
+	width: 100%;
+	height: 75px;
+	flex-direction: column;
+	margin-top: 75px;
 }
 #sources {
-  padding: 5px;
-  color: lightgrey;
+	padding: 5px;
+	color: lightgrey;
 }

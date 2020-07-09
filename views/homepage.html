@@ -9,19 +9,41 @@
         <link href='https://css.gg/chevron-double-down-o.css' rel='stylesheet'>
         <link href='https://css.gg/arrow-right-o.css' rel='stylesheet'>
         <meta name="viewport" contents="width=device-width">
-        <!--main banner used for the home page-->
-        <div id="banner">
-            <div id="title">Project Outbreak</div>
-            <div id="title-names">By: Clint Wyatt, Ryan Schick and Ty Rozell</div>
-        </div>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,900&display=swap" rel="stylesheet" />
         
     </head>
     <body> 
-        <!--Fixed simulation button shortcut-->
-        <a id="simulator-shortcut" class="special-link-format" href="#screenshot">
-            <div class="shortcut-text">Simulator</div>
-            <i class="shortcut-icon gg-chevron-double-down-o"></i>
-        </a>
+
+        <header>
+            <a href="homepage.html" class="site-logo" aria-label="homepage">Project Outbreak</a>
+            <nav class="main-nav">
+                <ul class="nav__list">
+                    <li class="nav__list-item"><a href="#" class="nav__link">Home</a></li>
+                    <li class="nav__list-item">
+                        <a href="htmlTable.html" class="nav__link">Simulation</a>
+                    </li>
+                    <li class="nav__list-item">
+                        <a href="#" class="nav__link">About us</a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="account">
+                <ul class="nav__list">
+                    <li class="nav__list-item">
+                        <a class="nav__link nav__link--btn" href="login.html">Login</a>
+                    </li>
+                    <li class="nav__list-item">
+                        <a class="nav__link nav__link--btn nav__link--btn--highlight" href="#">Join</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!--main banner used for the home page-->
+        <div class="banner-homepage">
+            <div id="title">Project Outbreak</div>
+            <div id="title-names">By: Clint Wyatt, Ryan Schick and Ty Rozell</div>
+        </div>
 
         <div id="disease-header">
             <h2>Diseases Simulated</h2>
