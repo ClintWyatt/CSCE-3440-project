@@ -76,7 +76,7 @@ class Neighborhood extends State{//represents the squares on the graph in htmlTa
         }
         return false;
     }
-    setThreshold(x)
+    setThreshold(x)//setting the amount of adjacent neighbors (that are infected) that will make the neighbor infected
     {
         this.threshold = x;
     }
@@ -92,16 +92,17 @@ class Neighborhood extends State{//represents the squares on the graph in htmlTa
     {
         this.infectionPeriod = x;
     }
-    stillInfected()
+    incrementInfection()//increment the number of days a neighborhood has been infected
     {
-        if(this.infection < this.infectionPeriod)
-        {
-            this.infection++;
-        }
-        else
-        {
-            this.setStatus("green");//set status of the neighborhood to recovered
-        }
+        this.infection++;
+    }
+    getInfection()//get the number of days a neighborhood has been infected. 
+    {
+        return this.infection;
+    }
+    getThreshold()
+    {
+        return this.threshold;//returning the current threshold for the neighborhood object
     }
 
 }
