@@ -81,7 +81,7 @@
   let numVacinated =0;
   let numRecovered =0;
   let numsusceptible =0;
-  var noInfected = false;
+  var outbreak = true;
 
   //randomly set states to the graph
   for(i=0; i < x.length; i++)//number of columns in the graph
@@ -297,7 +297,8 @@ function innerGraph(x){
 }
 
       //start outbreak
-      while(noInfected===false)
+      
+      while(outbreak===false)
       {
 
         for(i=0; i < neighborhood.length; i++)//number of columns in the graph
@@ -340,7 +341,7 @@ function innerGraph(x){
             innerGraph(i);
           }
         }
-        //noInfected = true;//for debugging purposes
+        //outbreak = true;//for debugging purposes
         for(i =0; i < neighborhood.length; i++)
         {
           if(neighborhood[i].getStatus() === "susceptible")
@@ -350,6 +351,7 @@ function innerGraph(x){
             {
               neighborhood[i].setStatus("infected");
               x[i].style.backgroundColor = "red";//infected
+              numInfected++;
             }
           }
           else if(neighborhood[i].getStatus() === "infected")
@@ -359,13 +361,16 @@ function innerGraph(x){
             {
               neighborhood[i].setStatus("recovered"); //changing the neighborhood to recoverred
               x[i].style.backgroundColor = "green";//infected
+              numInfected--; //decrementing the number of infected neighborhoods. 
             }
             else
             {
+              numInfected++;//neighborhood is infected
               neighborhood[i].incrementInfection();//increment the number of days the neighborhood is infected
             }
           }
         }
+        if(numInfected == 0){outbreak == false}
     }
     
 
