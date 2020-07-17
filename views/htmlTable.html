@@ -93,14 +93,14 @@
       //console.log(neighborhood[i].getStatus());
       //numInfected++;
     }
-    else if(infection > (size * .02) && infection <= (size * .03))
+    else if(infection > (size * .02) && infection <= (size * .6))
     {
       //console.log("vacinated at " +i);
       x[i].style.backgroundColor = "blue";//vacinated
       neighborhood[i].setStatus("blue");
       //console.log(neighborhood[i].getStatus());
     }
-    else if(infection > (size *.03) && infection <= (size *.04))
+    else if(infection > (size *.6) && infection <= (size *.8))
     {
       x[i].style.backgroundColor = "green";//recovered
       neighborhood[i].setStatus("green");
@@ -111,7 +111,7 @@
       x[i].style.backgroundColor = "yellow";//susceptible
       neighborhood[i].setStatus("yellow");
     }
-    infection = Math.floor(Math.random()*size);
+    infection = Math.floor(Math.random()*(size * size));
   }
   //console.log(neighborhood[50].getStatus());
 </script>
