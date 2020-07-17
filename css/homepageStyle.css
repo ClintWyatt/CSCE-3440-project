@@ -56,28 +56,11 @@ p a:hover {
 	padding: 30vh 0;
 	z-index: 3;
 }
-#banner {
-	position: relative;
-	color: white;
-	width: 100%;
-	height: 160px;
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	align-content: center;
-	flex-direction: column;
-	background-image: url("../images/virus-banner.jpg");
-	background-size: 100% 300%;
-	z-index: 3;
-}
 @media (max-width: 1500px) {
 	.banner-homepage {
 		background-size: 2000px 100%;
 		background-blend-mode: multiply;
 		opacity: 0.95;
-	}
-	#banner {
-		background-size: 1500px 300%;
 	}
 	.wide-image {
 		width: 1500px;

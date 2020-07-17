@@ -31,12 +31,29 @@ td {
 #grey-overlay.active {
   opacity: 50%;
 }
-#banner {
-  height: 100px;
-  background-size: 100% 400%;
+.nav__list {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  top: 32px;
+  left: 10px;
+}
+#banner-simulation {
+	position: relative;
+	color: white;
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-content: center;
+	flex-direction: column;
+	background-image: url("../images/virus-banner.jpg");
+	background-size: 100% 400%;
+	z-index: 3;
 }
 @media (max-width: 1500px) {
-  #banner {
+  #banner-simulation {
     background-size: 1500px 400%;
   }
 }
@@ -45,12 +62,6 @@ td {
   bottom: 6px;
   right: 10px;
   font-size: 45px;
-}
-#return-shortcut {
-  position: absolute;
-  width: 80px;
-  height: 25px;
-  z-index: 2;
 }
 #slide-menu {
   left: 0px;
@@ -94,4 +105,138 @@ td {
   left: 20px;
   top: 55px;
   transform: scale(var(--ggs,1.2))
+}
+#menu-heading {
+  position: relative;
+  margin: 0 auto;
+  left: 0px;
+  right: 0px;
+  top: 30px;
+  width: 120px;
+  font-size: 25px;
+  color: white;
+}
+#create-disease-heading {
+  position: relative;
+  right: 70px;
+  color: white;
+  font-size: 20px;
+}
+#input-boxes {
+  position: relative;
+  top: 30px;
+  right: 140px;
+  padding-left: 10px;
+  text-align: right;
+  float: left;
+}
+#input-boxes label {
+  color: white;
+}
+#input-boxes input {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+  background-color: white;
+  transition: background-color 0.4s ease;
+}
+#input-boxes input:focus{
+  background-color: lightgray;
+}
+#popups {
+  position: relative;
+  left: 450px;
+  bottom: 138px;
+}
+.popup-style {
+  opacity: 0%;
+  transition: opacity 0.4s;
+  background-color: rgb(88, 88, 88);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 0px;
+  margin-bottom: -28px;
+  border-radius: 10px;
+  height: 50px;
+}
+.popup-style:hover {
+  cursor: pointer;
+}
+#diseaseName-popup {
+  position: relative;
+  width: 150px;
+}
+#infRate-popup {
+  position: relative;
+  width: 300px;
+}
+#threshold-popup {
+  position: relative;
+  width: 410px;
+}
+#numDays-popup {
+  position: relative;
+  width: 200px;
+}
+#popup-arrow {
+  position: relative;
+  right: 20px;
+  bottom: 25px;
+  width: 0px;
+  height: 0px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid rgb(88, 88, 88);
+}
+.input-btn {
+  transition: background-color 0.2s;
+  position: relative;
+  width: 45px;
+  height: 45px;
+  color: white;
+  border: 1px rgb(92, 92, 92) solid;
+  border-radius: 10px;
+  z-index: 2;
+}
+.input-btn:hover {
+  background-color: rgb(73, 73, 73);
+  cursor: pointer;
+}
+.input-btn:active {
+  transition: background-color 0s;
+  background-color: rgb(36, 36, 36);
+}
+#save-btn {
+  left: 320px;
+  top: 134px;
+}
+#erase-btn {
+  left: 375px;
+  top: 87px;
+}
+#save-btn-text {
+  left: 7px;
+  top: 25px;
+}
+#erase-btn-text {
+  left: 5px;
+  top: 25px;
+}
+.btn-text-style {
+  transition: color 0.2s;
+  position: absolute;
+  width: 50px;
+  height: 15px;
+}
+#save-btn-icon {
+  position: relative;
+  top: 9px;
+  left: 14px;
+}
+#erase-btn-icon {
+  position: relative;
+  top: 5px;
+  left: 14px;
 }

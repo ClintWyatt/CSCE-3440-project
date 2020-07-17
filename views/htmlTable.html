@@ -1,5 +1,6 @@
 <!--Each table row is defined with the <tr> tag. A table header is defined with the <th> tag.
   By default, table headings are bold and centered. A table data/cell is defined with the <td> tag.-->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,37 +9,83 @@
     <!-- Inherits some styles from the homepage -->
     <link href="../css/homepageStyle.css" rel="stylesheet">
     <link href="../css/htmlTableStyle.css" rel="stylesheet">
-    <link href='https://css.gg/arrow-left-o.css' rel='stylesheet'>
     <link href='https://css.gg/menu.css' rel='stylesheet'>
-    
+    <link href='https://css.gg/import.css' rel='stylesheet'>
+    <link href='https://css.gg/erase.css' rel='stylesheet'>
+
+    <script src="../scripts/popupBoxes.js"></script>
+
     <script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
-    
   </head>
   
   <body>
     <div id="grey-overlay"></div>
     
-    <div id="banner">
+    <nav class="main-nav">
+      <ul class="nav__list">
+          <li class="nav__list-item"><a href="../views/homepage.html" class="nav__link">Home</a></li>
+          <li class="nav__list-item">
+              <a href="#" class="nav__link">About us</a>
+          </li>
+      </ul>
+    </nav>
+
+    <div id="banner-simulation">
       <div id="title">The Simulator</div>
     </div>
     
     <div id="slide-menu">
-      <div id="menu-text">
-        This menu is where you could create a disease by entering things into fields or choose a premade one from a dropdown list. This is also where buttons like 'reset',
-        'save disease' (sql), 'start', etc. could go. Once the simulation has started, those text fields should become inactive until the reset button is pressed.
-        The menu could automatically pause the simulation when opened and resume when minimized.
+      <div id="menu-heading">Options</div>
+
+      <div id="create-disease-container">
+        <div id="input-boxes">
+          <div id="create-disease-heading">Create Disease</div>
+          <label for="diseaseName">Disease Name: </label>
+          <input type="text" name="diseaseName" value="Name" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
+          <br>
+          <label for="infRate">Infection Rate: </label>
+          <input type="text" name="infRate" value="0" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
+          <br>
+          <label for="threshold">Threshold: </label>
+          <input type="text" name="threshold" value="0" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
+          <br>
+          <label for="numDays">No. of Days: </label>
+          <input type="text" name="numDays" value="365" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
+  
+          <div id="popups">
+            <div id="diseaseName-popup" class="popup-style">
+              <b>Name: </b>Enter a name for the disease.
+              <div id=popup-arrow></div>
+            </div>
+            <div id="infRate-popup" class="popup-style">
+              <b>Infection Rate: </b>The rate at which the disease spreads. Enter a number between 0 and 100.
+              <div id=popup-arrow></div>
+            </div>
+            <div id="threshold-popup" class="popup-style">
+              <b>Threshold: </b>How many adjacent infected neighborhoods are required to infect a neighborhood? Enter a number from 1 to 8.
+              <div id=popup-arrow></div>
+            </div>
+            <div id="numDays-popup" class="popup-style">
+              <b>No. of Days: </b>Enter the number of days the disease will last.
+              <div id=popup-arrow></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="save-btn" class="input-btn">
+          <i id="save-btn-icon" class="gg-import"></i>
+          <div id="save-btn-text" class="btn-text-style">Save</div>
+        </div>
+        <div id="erase-btn" class="input-btn">
+          <i id="erase-btn-icon" class="gg-erase"></i>
+          <div id="erase-btn-text" class="btn-text-style">Erase</div>
+        </div>
       </div>
+
       <div id="slide-menu-btn" onclick="toggleSlideMenu()">
         <i id="slide-menu-btn-icon" class="gg-menu"></i>
       </div>
     </div>
-    
-    <a id="return-shortcut" class="special-link-format" href="homepage.html#screenshot">
-      <div class="shortcut-text">Return</div>
-      <i class="shortcut-icon gg-arrow-left-o"></i>
-    </a>
-
-
 
 <script>
   threshold = 1;//represents the amount of adjacent neighbors that can cause a suceptible neighbor to become infected
@@ -391,10 +438,8 @@ function innerGraph(x){
       var table = document.getElementById("graph");
       var row = table.insertRow(0);
       row.height="5px";
-      
     </script>
 
     <script src="../scripts/toggleSlideMenu.js"></script>
-
   </body>
 </html>
