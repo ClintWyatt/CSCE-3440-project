@@ -16,6 +16,7 @@
     <script src="../scripts/popupBoxes.js"></script>
 
     <script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
+    <script src="../scripts/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
   </head>
   
   <body>
@@ -133,21 +134,21 @@
   //randomly set states to the graph
   for(i=0; i < x.length; i++)//number of columns in the graph
   {
-    if(infection === 0)
+    if(infection < 2)
     {
       x[i].style.backgroundColor = "red";//infected
       neighborhood[i].setStatus("red");
       //console.log(neighborhood[i].getStatus());
       //numInfected++;
     }
-    else if(infection > (size * .02) && infection <= (size * .6))
+    else if(infection > (size * .02) && infection <= (size * 2.6))
     {
       //console.log("vacinated at " +i);
       x[i].style.backgroundColor = "blue";//vacinated
       neighborhood[i].setStatus("blue");
       //console.log(neighborhood[i].getStatus());
     }
-    else if(infection > (size *.6) && infection <= (size *.8))
+    else if(infection > (size *2.6) && infection <= (size *3.0))
     {
       x[i].style.backgroundColor = "green";//recovered
       neighborhood[i].setStatus("green");
@@ -163,235 +164,57 @@
   //console.log(neighborhood[50].getStatus());
 </script>
 <script>
-  function topLeftCorner(x){//top left corner of the graph
-      
-      if(neighborhood[x].getStatus() === "susceptible"){//if the current neighborhood is suceptible
-
-        if(neighborhood[x+1].getStatus() === "infected")//if the neighbor to the right is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-        if(neighborhood[x+ size].getStatus() === "infected")//if the neighbor below is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-        if(neighborhood[x + (size +1)].getStatus() === "infected")//if the neighbor's bottom right diagonal is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-      }
-    }
-    function topRightCorner(x){//top right corner of the graph
-      
-      if(neighborhood[x].getStatus() === "susceptible"){//if the current neighborhood is suceptible
-        
-        if(neighborhood[x-1].getStatus() === "infected")//if the neighbor to the left is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-        if(neighborhood[(x + size)].getStatus() === "infected")//if the neighbor below is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-        if(neighborhood[(x + size) -1].getStatus() === "infected")//if the neighbor bottom left diagonal is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-      }
-    }
-    function bottomLeftCorner(x){
-      if(neighborhood[x].getStatus() === "susceptible"){//if the current neighborhood is suceptible
-
-        if(neighborhood[x - size].getStatus() === "infected")//if the neighbor above is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-        if(neighborhood[(x - size) +1].getStatus() === "infected")//if the upper right neighbor is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-        if(neighborhood[x +1].getStatus() === "infected")//if the neighbor to the right is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-      }
-    } 
-    function bottomRightCorner(x){
-      if(neighborhood[x].getStatus() === "susceptible"){//if the current neighborhood is suceptible
-
-        if(neighborhood[x - size].getStatus() === "infected")//if the neighbor above is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-        if(neighborhood[(x - size) - 1].getStatus() === "infected")//if the upper left neighbor is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-        if(neighborhood[x -1].getStatus() === "infected")//if the neighbor to the left is infected
-        {
-          neighborhood[x].incrementThreshold();
-        }
-      }
-    }
-function leftSide(x){
-  if(neighborhood[x].getStatus() === "susceptible"){
-
-    if(neighborhood[x - size].getStatus()  === "infected"){//if the neighbor above is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x - size +1].getStatus() === "infected"){//if the neighbor to the top right is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x+1].getStatus() === "infected"){//if the neighbor to the right is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + size +1].getStatus() === "infected"){//if the neighbor to the bottom right is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + size].getStatus() === "infected"){//if the neighbor to the bottom is infected
-      neighborhood[x].incrementThreshold();
-    }
-  }
-}
-function rightSide(x){
-  if(neighborhood[x].getStatus() === "susceptible"){//if the neighbor has not been infected yet and is not vacinated
-
-    if(neighborhood[x - size].getStatus()  === "infected"){//if the neighbor above is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x -(size + 1)].getStatus() === "infected"){//if the neighbor to the top left is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x-1].getStatus() === "infected"){//if the neighbor to the left is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + (size - 1)].getStatus() === "infected"){//if the neighbor to the bottom left is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + size].getStatus() === "infected"){//if the neighbor to the bottom is infected
-      neighborhood[x].incrementThreshold();
-    }
-  }
-}
-function topRow(x){
-  if(neighborhood[x].getStatus() === "susceptible"){//if the neighbor has not been infected yet and is not vacinated
-
-    if(neighborhood[x - 1].getStatus() === "infected"){//if the neighbor to the left is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[(x -1) + size].getStatus() === "infected"){//if the neighbor to the bottom left is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + size].getStatus() === "infected"){//if the neighbor below is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + (size + 1)].getStatus() === "infected"){//if the bottom right neighbor is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + 1].getStatus() === "infected"){//if the neighbor right is infected
-      neighborhood[x].incrementThreshold();
-    }
-  }
-}
-function bottomRow(x){
-  if(neighborhood[x].getStatus() === "susceptible"){//if the neighbor has not been infected yet and is not vacinated
-
-    if(neighborhood[x - 1].getStatus() === "infected"){//if the neighbor to the left is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x - (size -1)].getStatus() === "infected"){//if the neighbor to the top left is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x - size].getStatus() === "infected"){//if the neighbor above is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x - (size + 1)].getStatus() === "infected"){//if the top right neighbor is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + 1].getStatus() === "infected"){//if the neighbor right is infected
-      neighborhood[x].incrementThreshold();
-    }
-  }
-}
-function innerGraph(x){
   
-  if(neighborhood[x].getStatus() === "susceptible"){//if the neighbor has not been infected yet and is not vacinated
-    
-    if(neighborhood[x - 1].getStatus() === "infected"){//if the neighbor to the left is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x - (size -1)].getStatus() === "infected"){//if the neighbor to the top left is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x - size].getStatus() === "infected"){//if the neighbor above is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x - (size + 1)].getStatus() === "infected"){//if the top right neighbor is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + 1].getStatus() === "infected"){//if the neighbor right is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + (size -1)].getStatus() === "infected"){//if the neighbor to the bottom left is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + size].getStatus() === "infected"){//if the neighbor below is infected
-      neighborhood[x].incrementThreshold();
-    }
-    if(neighborhood[x + (size + 1)].getStatus() === "infected"){//if the bottom right neighbor is infected
-      neighborhood[x].incrementThreshold();
-    }
-  }
-}
-
       //start outbreak
+      var Check = new GraphCheck();//using the GaphCheck object to simulate the virus outbreak
       let z =0;
       let outbreak = true;
       console.log(outbreak);
       while(outbreak === true)
       {
         z++;
-        if(z === 15){break;}
+        console.log("here");
+        if(z === 60){break;}
         numInfected =0; //resetting the number of infected neighborhoods
         //console.log("here");
         for(i=0; i < neighborhood.length; i++)//number of columns in the graph
         {
           if(i === 0)
           {
-            topLeftCorner(i);
+            Check.topLeftCorner(neighborhood, i);
           }
           else if(i === size*(size -1))
           {
-            bottomLeftCorner(i);
+            Check.bottomLeftCorner(neighborhood, i);
           }
           else if(i === size - 1)
           {
             //x[i].style.backgroundColor = "black";//infected
-            topRightCorner(i);
+            Check.topRightCorner(neighborhood, i);
           }
           else if(i === (size * size) -1)
           {
-            bottomRightCorner(i);
+            Check.bottomRightCorner(neighborhood, i);
           }
           else if(i % size ===0)
           {
-            leftSide(i);
+            Check.leftSide(neighborhood, i);
           }
           else if(i % size === size-1)
           {
-            rightSide(i);
+            Check.rightSide(neighborhood, i);
           }
           else if(i > (size * size) - size)
           {
-            bottomRow(i);
+            Check.bottomRow(neighborhood, i);
           }
           else if(i < size)
           {
-            topRow(i);
+            Check.topRow(neighborhood, i);
           }
           else
           {
-            innerGraph(i);
+            Check.innerGraph(neighborhood, i);
           }
         }
         //outbreak = true;//for debugging purposes
