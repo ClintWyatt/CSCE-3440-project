@@ -91,6 +91,7 @@
       x[i].style.backgroundColor = "red";//infected
       neighborhood[i].setStatus("red");
       //console.log(neighborhood[i].getStatus());
+      //numInfected++;
     }
     else if(infection > (size * .02) && infection <= (size * .03))
     {
@@ -297,11 +298,13 @@ function innerGraph(x){
 }
 
       //start outbreak
-      console.log("here");
-      var outbreak = true;
-      while(outbreak === false)
+      
+      let outbreak = true;
+      console.log(outbreak);
+      while(outbreak === true)
       {
-        
+        numInfected =0; //resetting the number of infected neighborhoods
+        //console.log("here");
         for(i=0; i < neighborhood.length; i++)//number of columns in the graph
         {
           if(i === 0)
@@ -352,7 +355,7 @@ function innerGraph(x){
             {
               neighborhood[i].setStatus("infected");
               x[i].style.backgroundColor = "red";//infected
-              numInfected++;
+              
             }
           }
           else if(neighborhood[i].getStatus() === "infected")
@@ -366,12 +369,15 @@ function innerGraph(x){
             }
             else
             {
-              numInfected++;//neighborhood is infected
               neighborhood[i].incrementInfection();//increment the number of days the neighborhood is infected
             }
           }
         }
-        if(numInfected == 0){outbreak == false;}
+        for(k =0; k < neighborhood.length; k++)
+        {
+          if(neighborhood[k].getStatus() === "infected"){numInfected++;}
+        }
+        if(numInfected === 0){outbreak = false;}
     }
     
 
