@@ -31,11 +31,7 @@ constructor()
 
 class Neighborhood extends State{//represents the squares on the graph in htmlTable.html
 
-    /*constructor(color){
-        super(color);
-        this.status = color;
-    }
-    */
+
    constructor()
    {
        super();
