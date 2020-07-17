@@ -42,7 +42,7 @@
 
 <script>
   threshold = 1;//represents the amount of adjacent neighbors that can cause a suceptible neighbor to become infected
-  infectionPeriod =0;//represetns how long the neighborhood is infected
+  infectionPeriod =7;//represetns how long the neighborhood is infected
    
 
   /*end of simulation functions */
@@ -298,11 +298,13 @@ function innerGraph(x){
 }
 
       //start outbreak
-      
+      let z =0;
       let outbreak = true;
       console.log(outbreak);
       while(outbreak === true)
       {
+        z++;
+        if(z === 15){break;}
         numInfected =0; //resetting the number of infected neighborhoods
         //console.log("here");
         for(i=0; i < neighborhood.length; i++)//number of columns in the graph
@@ -353,7 +355,7 @@ function innerGraph(x){
             //console.log("threshold at " + i + ": " + neighborhood[i].getThreshold());
             if(neighborhood[i].getThreshold() >= threshold)
             {
-              neighborhood[i].setStatus("infected");
+              neighborhood[i].setStatus("red");//infected
               x[i].style.backgroundColor = "red";//infected
               
             }
@@ -361,9 +363,9 @@ function innerGraph(x){
           else if(neighborhood[i].getStatus() === "infected")
           {
             //console.log("infection at " + i);
-            if(neighborhood[i].getInfection() > infection)
+            if(neighborhood[i].getInfection() > infectionPeriod)
             {
-              neighborhood[i].setStatus("recovered"); //changing the neighborhood to recoverred
+              neighborhood[i].setStatus("green"); //changing the neighborhood to recoverred
               x[i].style.backgroundColor = "green";//infected
               numInfected--; //decrementing the number of infected neighborhoods. 
             }
