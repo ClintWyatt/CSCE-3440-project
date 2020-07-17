@@ -81,7 +81,7 @@
   let numVacinated =0;
   let numRecovered =0;
   let numsusceptible =0;
-  var outbreak = true;
+ 
 
   //randomly set states to the graph
   for(i=0; i < x.length; i++)//number of columns in the graph
@@ -297,10 +297,11 @@ function innerGraph(x){
 }
 
       //start outbreak
-      
-      while(outbreak===false)
+      console.log("here");
+      var outbreak = true;
+      while(outbreak === false)
       {
-
+        
         for(i=0; i < neighborhood.length; i++)//number of columns in the graph
         {
           if(i === 0)
@@ -370,7 +371,7 @@ function innerGraph(x){
             }
           }
         }
-        if(numInfected == 0){outbreak == false}
+        if(numInfected == 0){outbreak == false;}
     }
     
 
