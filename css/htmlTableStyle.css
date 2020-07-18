@@ -1,10 +1,12 @@
 #graph {
+  position: relative;
   table-layout: fixed;
   border-collapse: collapse;
   border: 1px solid black;
-  margin: 75px auto 50px;
+  margin: 25px auto 50px;
   width: 1250px;
   height: 469px;
+  z-index: 2;
 }
 .row {
   height: 5px;
@@ -30,10 +32,11 @@ td {
 }
 #grey-overlay.active {
   opacity: 50%;
+  z-index: 3;
 }
 .nav__list {
   position: absolute;
-  z-index: 10;
+  z-index: 6;
   color: white;
   top: 32px;
   left: 10px;
@@ -50,7 +53,7 @@ td {
 	flex-direction: column;
 	background-image: url("../images/virus-banner.jpg");
 	background-size: 100% 400%;
-	z-index: 3;
+	z-index: 5;
 }
 @media (max-width: 1500px) {
   #banner-simulation {
@@ -74,6 +77,7 @@ td {
   transition: 0.4s;
   background-image: linear-gradient(rgb(19, 19, 19), rgb(48, 48, 48));
   border-radius: 20px;
+  z-index: 4;
 }
 #slide-menu.active {
   top: 84px;
@@ -239,4 +243,70 @@ td {
   position: relative;
   top: 5px;
   left: 14px;
+}
+.simulation-btns-style {
+  position: relative;
+  width: 42px;
+  height: 60px;
+  padding: 8px;
+  margin-right: 5px;
+  float: left;
+  background-color: rgb(44, 44, 44);
+  color: white;
+  border: 1px black solid;
+  border-radius: 10px;
+  transition: transform 0.2s, background-color 0.4s;
+}
+.simulation-btns-style:hover {
+  transform: translateY(-7px);
+  background-color: rgb(83, 83, 83);
+  cursor: pointer;
+}
+.simulation-btns-style:active {
+  transition: background-color 0s;
+  background-color: rgb(37, 37, 37);
+}
+.simulation-btns-style div{
+  font-size: 18px;
+}
+.simulation-btns-style i{
+  transform: scale(var(--ggs,1.2));
+}
+#simulation-btns {
+  margin: 0 auto;
+  position: relative;
+  width: 200px;
+  height: 64px;
+  left: 535px;
+  top: 40px;
+  z-index: 1;
+}
+#start-btn-text {
+  position: relative;
+  bottom: 2px;
+  left: 4px;
+}
+#start-btn-icon {
+  position: relative;
+  bottom: 2px;
+  left: 10px;
+}
+#pause-btn-text {
+  position: relative;
+  bottom: 2px;
+}
+#pause-btn-icon {
+  position: relative;
+  bottom: 2px;
+  left: 10px;
+}
+#reset-btn-text {
+  position: relative;
+  top: 6px;
+}
+#reset-btn-icon {
+  position: relative;
+  top: 2px;
+  left: 14px;
+  transform: scale(var(--ggs,1.3));
 }

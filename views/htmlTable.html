@@ -12,9 +12,12 @@
     <link href='https://css.gg/menu.css' rel='stylesheet'>
     <link href='https://css.gg/import.css' rel='stylesheet'>
     <link href='https://css.gg/erase.css' rel='stylesheet'>
+    <link href='https://css.gg/play-button-o.css' rel='stylesheet'>
+    <link href='https://css.gg/undo.css' rel='stylesheet'>
+    <link href='https://css.gg/play-pause-o.css' rel='stylesheet'>
 
     <script src="../scripts/popupBoxes.js"></script>
-
+  
     <script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
     <script src="../scripts/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
   </head>
@@ -25,9 +28,7 @@
     <nav class="main-nav">
       <ul class="nav__list">
           <li class="nav__list-item"><a href="../views/homepage.html" class="nav__link">Home</a></li>
-          <li class="nav__list-item">
-              <a href="#" class="nav__link">About us</a>
-          </li>
+          <li class="nav__list-item"><a href="#" class="nav__link">About us</a></li>
       </ul>
     </nav>
 
@@ -85,6 +86,21 @@
 
       <div id="slide-menu-btn" onclick="toggleSlideMenu()">
         <i id="slide-menu-btn-icon" class="gg-menu"></i>
+      </div>
+    </div>
+
+    <div id="simulation-btns">
+      <div id="start-btn" class="simulation-btns-style">
+        <i id="start-btn-icon" class="gg-play-button-o"></i>
+        <div id="start-btn-text">Start</div>
+      </div>
+      <div id="pause-btn" class="simulation-btns-style">
+        <i id="pause-btn-icon" class="gg-play-pause-o"></i>
+        <div id="pause-btn-text">Pause</div>
+      </div>
+      <div id="reset-btn" class="simulation-btns-style">
+        <i id="reset-btn-icon" class="gg-undo"></i>
+        <div id="reset-btn-text">Reset</div>
       </div>
     </div>
 
