@@ -15,9 +15,13 @@
     <link href='https://css.gg/play-button-o.css' rel='stylesheet'>
     <link href='https://css.gg/undo.css' rel='stylesheet'>
     <link href='https://css.gg/play-pause-o.css' rel='stylesheet'>
+    <link href='https://css.gg/arrow-down-r.css' rel='stylesheet'>
+    <link href='https://css.gg/arrow-up-r.css' rel='stylesheet'>
+    <link href='https://css.gg/export.css' rel='stylesheet'>
 
     <script src="../scripts/popupBoxes.js"></script>
     <script src="../scripts/createDisease.js"></script>
+    <script src="../scripts/loadDisease.js"></script>
     <script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
     <script src="../scripts/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
   </head>
@@ -84,6 +88,39 @@
         </div>
       </div>
 
+      <div id="load-disease-container">
+        <div id="load-btn" class="input-btn" onclick="loadDisease()">
+          <i id="load-btn-icon" class="gg-export"></i>
+          <div id="load-btn-text" class="btn-text-style">Load</div>
+        </div>
+
+        <div id="load-disease-heading">Load Disease</div>
+        <div id="dropdown-box-container">
+          <label for="selectedDisease">Selected: </label>
+          <input id="dropdown-field" type="text" name="selectedDisease" value="" readonly>
+          <i id="dropdown-icon" class="gg-arrow-down-r" onclick="toggleDropdownBox()"></i>
+
+          <table id="dropdown-box">
+            <!--Sample data. SQL needed-->
+            <tr>
+              <td onclick="selectDisease(this)">Covid-19</td>
+            </tr>
+            <tr>
+              <td onclick="selectDisease(this)">Bubonic Plague</td>
+            </tr>
+            <tr>
+              <td onclick="selectDisease(this)">Yellow Fever</td>
+            </tr>
+            <tr>
+              <td onclick="selectDisease(this)">SARS</td>
+            </tr>
+            <tr>
+              <td onclick="selectDisease(this)">Ebola</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
       <div id="slide-menu-toggler" onclick="toggleSlideMenu()">
         <i id="slide-menu-toggler-icon" class="gg-menu"></i>
       </div>
@@ -130,14 +167,14 @@
           table += "<tr>"
           for(j = 0; j < size; j++)
           {
-            table +="<td></td>";
+            table +="<td class=\"graph-td\"></td>";
           }
         table += "</tr>"
       }
       table += "</table>";
       
       document.write(table); //writting the table to the document
-      var x = document.getElementsByTagName("td");//getting all the columns in the table
+      var x = document.getElementsByClassName("graph-td");//getting all the columns in the table
       var infection = Math.floor(Math.random()*size); 
     
       /*variables for the count of different states neighborhoods could be in */

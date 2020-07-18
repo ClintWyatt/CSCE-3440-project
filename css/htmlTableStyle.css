@@ -72,9 +72,9 @@ td {
   top: -150px;
   position: absolute;
   margin: 0 auto;
-  width: 1150px;
+  width: 900px;
   height: 250px;
-  transition: 0.4s;
+  transition: top 0.4s;
   background-image: linear-gradient(rgb(19, 19, 19), rgb(48, 48, 48));
   border-radius: 20px;
   z-index: 4;
@@ -98,6 +98,7 @@ td {
   width: 60px;
   height: 80px;
   background-image: linear-gradient(rgb(43, 43, 43), rgb(56, 56, 56));
+  transition: color 0.2s;
   border-radius: 50px;
   color: white;
 }
@@ -128,8 +129,8 @@ td {
 }
 #input-boxes {
   position: relative;
-  top: 30px;
-  right: 140px;
+  top: 40px;
+  right: 130px;
   padding-left: 10px;
   text-align: right;
   float: left;
@@ -164,6 +165,7 @@ td {
   margin-bottom: -28px;
   border-radius: 10px;
   height: 50px;
+  position: relative;
 }
 .popup-style:hover {
   cursor: pointer;
@@ -213,12 +215,12 @@ td {
   background-color: rgb(36, 36, 36);
 }
 #save-btn {
-  left: 320px;
-  top: 134px;
+  left: 330px;
+  top: 144px;
 }
 #clear-btn {
-  left: 375px;
-  top: 87px;
+  left: 385px;
+  top: 97px;
 }
 #save-btn-text {
   left: 7px;
@@ -309,4 +311,85 @@ td {
   top: 2px;
   left: 14px;
   transform: scale(var(--ggs,1.3));
+}
+#load-disease-container {
+  position: relative;
+  left: 550px;
+  bottom: 30px;
+  width: 300px;
+  height: 100px;
+}
+#load-disease-container label {
+  color: white;
+}
+#load-disease-container input {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  text-align: center;
+}
+#load-disease-heading {
+  position: relative;
+  color: white;
+  font-size: 20px;
+  bottom: 180px;
+  left: 30px;
+}
+#dropdown-box-container {
+  position: relative;
+  right: 50px;
+  bottom: 170px;
+}
+#dropdown-icon {
+  position: relative;
+  left: 230px;
+  bottom: 22px;
+  color: black;
+  transform: scale(var(--ggs,1.1));
+  transition: background-color 0.2s;
+  background-color: white;
+}
+#dropdown-icon:hover {
+  background-color: rgb(161, 161, 161);
+}
+#dropdown-icon:active {
+  transition: background-color 0s;
+  background-color: rgb(78, 78, 78);
+}
+#dropdown-box {
+  overflow: auto;
+  display: none;
+  position: relative;
+  left: 63px;
+  bottom: 22px;
+  width: 187px;
+  height: 90px;
+  border-collapse: collapse;
+}
+#dropdown-box td {
+  width: 187px;
+  background-color: white;
+  padding: 5px;
+}
+#dropdown-box td:hover {
+  cursor: pointer;
+  background-color: rgb(161, 161, 161);
+}
+#dropdown-box td:active {
+  cursor: pointer;
+  background-color: rgb(105, 105, 105);
+}
+#load-btn {
+  position: relative;
+  left: 215px;
+  top: 23px;
+}
+#load-btn-icon {
+  position: relative;
+  left: 14px;
+  top: 10px;
+}
+#load-btn-text {
+  position: relative;
+  left: 6px;
+  bottom: 159px;
 }

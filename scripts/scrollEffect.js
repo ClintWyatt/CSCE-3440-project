@@ -1,6 +1,6 @@
 const sectionOne = document.querySelector('.bubonic-plague');
 const header = document.querySelector('header');
-const sectionTwo = document.querySelector('.banner-homepage');
+const sectionTwo = document.querySelector('#banner-homepage');
 
 const faders = document.querySelectorAll('.fade-in');
 const sliders = document.querySelectorAll('.slide-in');

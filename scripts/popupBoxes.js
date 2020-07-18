@@ -8,11 +8,11 @@ function showPopup(field) {
 
 function resetAllPopups() {
   document.getElementById("diseaseName-popup").style.opacity = "0%";
-  document.getElementById("diseaseName-popup").style.zIndex = "1";
+  document.getElementById("diseaseName-popup").style.zIndex = "-1";
   document.getElementById("infRate-popup").style.opacity = "0%";
-  document.getElementById("infRate-popup").style.zIndex = "1";
+  document.getElementById("infRate-popup").style.zIndex = "-1";
   document.getElementById("threshold-popup").style.opacity = "0%";
-  document.getElementById("threshold-popup").style.zIndex = "1";
+  document.getElementById("threshold-popup").style.zIndex = "-1";
   document.getElementById("numDays-popup").style.opacity = "0%";
-  document.getElementById("numDays-popup").style.zIndex = "1";
+  document.getElementById("numDays-popup").style.zIndex = "-1";
 }

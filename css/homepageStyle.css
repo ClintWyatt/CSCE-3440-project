@@ -41,7 +41,7 @@ p a:hover {
 	color: grey;
 	text-decoration: underline;
 }
-.banner-homepage {
+#banner-homepage {
 	position: relative;
 	color: white;
 	width: 100%;
@@ -57,7 +57,7 @@ p a:hover {
 	z-index: 3;
 }
 @media (max-width: 1500px) {
-	.banner-homepage {
+	#banner-homepage {
 		background-size: 2000px 100%;
 		background-blend-mode: multiply;
 		opacity: 0.95;
