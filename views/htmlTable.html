@@ -92,7 +92,7 @@
     <div id="simulation-btns">
       <div id="start-btn" class="simulation-btns-style">
         <i id="start-btn-icon" class="gg-play-button-o"></i>
-        <div id="start-btn-text">Start</div>
+        <div id="start-btn-text">Start/Continue</div>
       </div>
       <div id="pause-btn" class="simulation-btns-style">
         <i id="pause-btn-icon" class="gg-play-pause-o"></i>
@@ -179,19 +179,23 @@
   }
   //console.log(neighborhood[50].getStatus());
 </script>
+
 <script>
-  document.getElementById("start-btn").onclick = function() {diseaseOutbreak()};
+
+  
+  document.getElementById("start-btn").onclick = function() {diseaseOutbreak()};//will start the disease outbreak after the start 
+  //button has been pressed.
+
     function diseaseOutbreak(){
       //start outbreak
       var Check = new GraphCheck();//using the GaphCheck object to simulate the virus outbreak
       let z =0;
+      display = 2; //represents the stoping point 
       let outbreak = true;
       console.log(outbreak);
-      while(outbreak === true)
+      while(outbreak === true && z < display)
       {
-        z++;
-        console.log("here");
-        if(z === 60){break;}
+        
         numInfected =0; //resetting the number of infected neighborhoods
         //console.log("here");
         for(i=0; i < neighborhood.length; i++)//number of columns in the graph
@@ -267,9 +271,8 @@
           if(neighborhood[k].getStatus() === "infected"){numInfected++;}
         }
         if(numInfected === 0){outbreak = false;}
+        z++;
     }
-    
-
   }
   //another loop needed to chenge states (infected to recovered or susceptible to infected)
 </script>
