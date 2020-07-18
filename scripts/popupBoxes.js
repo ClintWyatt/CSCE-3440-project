@@ -3,6 +3,7 @@ function showPopup(field) {
 
   document.getElementById(field + "-popup").style.opacity = "100%";
   document.getElementById(field + "-popup").style.zIndex = "3";
+  document.getElementsByName(field)[0].style.backgroundColor = 'white';
 }
 
 function resetAllPopups() {

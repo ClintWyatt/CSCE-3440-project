@@ -89,7 +89,7 @@ td {
   font-size: 20px;
   color: white;
 }
-#slide-menu-btn {
+#slide-menu-toggler {
   position: absolute;
   top: 210px;
   left: 0px;
@@ -101,10 +101,10 @@ td {
   border-radius: 50px;
   color: white;
 }
-#slide-menu-btn:hover {
+#slide-menu-toggler:hover {
   color: grey;
 }
-#slide-menu-btn-icon {
+#slide-menu-toggler-icon {
   position: relative;
   left: 20px;
   top: 55px;
@@ -216,7 +216,7 @@ td {
   left: 320px;
   top: 134px;
 }
-#erase-btn {
+#clear-btn {
   left: 375px;
   top: 87px;
 }
@@ -224,7 +224,7 @@ td {
   left: 7px;
   top: 25px;
 }
-#erase-btn-text {
+#clear-btn-text {
   left: 5px;
   top: 25px;
 }
@@ -239,10 +239,10 @@ td {
   top: 9px;
   left: 14px;
 }
-#erase-btn-icon {
+#clear-btn-icon {
   position: relative;
   top: 5px;
-  left: 14px;
+  left: 12px;
 }
 .simulation-btns-style {
   position: relative;
