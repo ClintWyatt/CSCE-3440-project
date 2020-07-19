@@ -15,16 +15,21 @@ function toggleDropdownBox() {
 }
 
 function selectDisease(cell) {
-    document.getElementById('dropdown-field').value = cell.innerText;
-    document.getElementById('dropdown-field').style.backgroundColor = 'white';
+    var dropdownField = document.getElementById('dropdown-field');
+    
+    dropdownField.value = cell.innerText;
+    dropdownField.style.backgroundColor = 'white';
     toggleDropdownBox();
 }
 
 function loadDisease() {
-    if (document.getElementById('dropdown-field').value == "") {
-        document.getElementById('dropdown-field').style.backgroundColor = 'lightcoral';
+    var dropdownField = document.getElementById('dropdown-field');
+
+    if (dropdownField.value == "") {
+        dropdownField.style.backgroundColor = 'lightcoral';
     }
     else {
-        console.log("Load disease"); //SQL
+        //SQL
+        console.log("Load disease: " + dropdownField.value);
     }
 }

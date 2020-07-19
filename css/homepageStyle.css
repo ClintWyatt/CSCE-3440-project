@@ -58,9 +58,8 @@ p a:hover {
 }
 @media (max-width: 1500px) {
 	#banner-homepage {
-		background-size: 2000px 100%;
+		background-size: 1500px 100%;
 		background-blend-mode: multiply;
-		opacity: 0.95;
 	}
 	.wide-image {
 		width: 1500px;
