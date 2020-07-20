@@ -100,24 +100,8 @@
           <input id="dropdown-field" type="text" name="selectedDisease" value="" readonly>
           <i id="dropdown-icon" class="gg-arrow-down-r" onclick="toggleDropdownBox()"></i>
 
-          <table id="dropdown-box">
-            <!--Sample data. SQL needed-->
-            <tr>
-              <td onclick="selectDisease(this)">Covid-19</td>
-            </tr>
-            <tr>
-              <td onclick="selectDisease(this)">Bubonic Plague</td>
-            </tr>
-            <tr>
-              <td onclick="selectDisease(this)">Yellow Fever</td>
-            </tr>
-            <tr>
-              <td onclick="selectDisease(this)">SARS</td>
-            </tr>
-            <tr>
-              <td onclick="selectDisease(this)">Ebola</td>
-            </tr>
-          </table>
+          <div id="dropdown-box-placeholder"></div>
+          <script src="../scripts/createDropdownBox.js"></script>
         </div>
       </div>
 
@@ -127,7 +111,7 @@
     </div>
 
     <div id="simulation-btns">
-      <div id="start-btn" onclick="diseaseOutbreak()" class="simulation-btns-style">
+      <div id="start-btn" class="simulation-btns-style" onclick="diseaseOutbreak()">
         <i id="start-btn-icon" class="gg-play-button-o"></i>
         <div id="start-btn-text">Start/Continue</div>
       </div>
@@ -140,6 +124,8 @@
         <div id="reset-btn-text">Reset</div>
       </div>
     </div>
+
+    <script src="../scripts/toggleSlideMenu.js"></script>
 
     <script>
       threshold = 1;//represents the amount of adjacent neighbors that can cause a suceptible neighbor to become infected
@@ -319,7 +305,5 @@
       var row = table.insertRow(0);
       row.height="5px";
     </script>
-
-    <script src="../scripts/toggleSlideMenu.js"></script>
   </body>
 </html>
