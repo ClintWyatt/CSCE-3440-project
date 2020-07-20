@@ -17,10 +17,10 @@ td {
 }
 .redOnHover:hover {
   background-color: red;
-  opacity: 75%;
+  opacity: 0.75;
 }
 .redOnHover {
-  opacity: 20%;
+  opacity: 0.2;
 }
 .blueOnClick:active {
   background-color: blue;
