@@ -3,4 +3,4 @@ function toggleSlideMenu() {
   document.getElementById("grey-overlay").classList.toggle("active");
 }
 
-toggleSlideMenu();
+//toggleSlideMenu();

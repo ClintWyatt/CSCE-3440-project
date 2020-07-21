@@ -22,6 +22,8 @@
     <script src="../scripts/popupBoxes.js"></script>
     <script src="../scripts/createDisease.js"></script>
     <script src="../scripts/loadDisease.js"></script>
+    <script src="../scripts/startSimulation.js"></script>
+    <script src="../scripts/sleep.js"></script>
     <script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
     <script src="../scripts/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
   </head>
@@ -111,7 +113,7 @@
     </div>
 
     <div id="simulation-btns">
-      <div id="start-btn" class="simulation-btns-style" onclick="diseaseOutbreak()">
+      <div id="start-btn" class="simulation-btns-style" onclick="startSimulation()">
         <i id="start-btn-icon" class="gg-play-button-o"></i>
         <div id="start-btn-text">Start/Continue</div>
       </div>
@@ -206,7 +208,7 @@
     <script>
     
       
-      document.getElementById("start-btn").onclick = function() {diseaseOutbreak()};//will start the disease outbreak after the start 
+      document.getElementById("start-btn").onclick = function() {startSimulation()};//will start the disease outbreak after the start 
       //button has been pressed.
     
         function diseaseOutbreak(){
