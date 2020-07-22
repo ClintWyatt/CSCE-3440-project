@@ -22,7 +22,7 @@
     <script src="../scripts/popupBoxes.js"></script>
     <script src="../scripts/createDisease.js"></script>
     <script src="../scripts/loadDisease.js"></script>
-    <script src="../scripts/startSimulation.js"></script>
+    <script src="../scripts/simulationControls.js"></script>
     <script src="../scripts/sleep.js"></script>
     <script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
     <script src="../scripts/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
@@ -115,9 +115,9 @@
     <div id="simulation-btns">
       <div id="start-btn" class="simulation-btns-style" onclick="startSimulation()">
         <i id="start-btn-icon" class="gg-play-button-o"></i>
-        <div id="start-btn-text">Start/Continue</div>
+        <div id="start-btn-text">Start</div>
       </div>
-      <div id="pause-btn" class="simulation-btns-style">
+      <div id="pause-btn" class="simulation-btns-style" onclick="pauseSimulation()">
         <i id="pause-btn-icon" class="gg-play-pause-o"></i>
         <div id="pause-btn-text">Pause</div>
       </div>
