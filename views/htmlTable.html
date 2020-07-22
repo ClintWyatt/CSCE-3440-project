@@ -136,12 +136,14 @@
     
       /*end of simulation functions */
       var table = "<table Id = graph>";//represents a html table
-      const size = 200;
+      const size = 50;
+      const numRows = 50;
+      const numCols = 75;
       //creating the neighborhood object
       let neighborhood = [];
       var n = new Neighborhood();
       n.setInfectionPeriod(infectionPeriod);//setting the time period a neighborhood will be infected for
-      for(i =0; i < size*size; i++)
+      for(i =0; i < numRows*numCols; i++)
       {
         neighborhood.push(n);
         n = new Neighborhood();//must do this to prevent all objects refering to 1 object
@@ -150,10 +152,10 @@
       //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
       
       //generating tha table graph  
-      for(i = 0; i < size; i++)
+      for(i = 0; i < numRows; i++)
       {
           table += "<tr>"
-          for(j = 0; j < size; j++)
+          for(j = 0; j < numCols; j++)
           {
             table +="<td class=\"graph-td\"></td>";
           }

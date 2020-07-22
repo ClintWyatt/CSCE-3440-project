@@ -1,7 +1,7 @@
 const numDays = 30;
-var daysElapsed = 0;
 var simulationStarted = false;
 var isPaused = false;
+var playSpeed = 2000; //2 second intervals
 
 async function startSimulation() {
     if (!simulationStarted) {
@@ -13,7 +13,7 @@ async function startSimulation() {
             }
 
             diseaseOutbreak();
-            await sleep(1000);
+            await sleep(playSpeed);
         }
 
         simulationStarted = false;
