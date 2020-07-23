@@ -1,7 +1,7 @@
 const numDays = 30;
 var simulationStarted = false;
 var isPaused = false;
-var playSpeed = 2000; //2 second intervals
+var playSpeed = 2500; //2.5 second intervals
 
 async function startSimulation() {
     if (!simulationStarted) {

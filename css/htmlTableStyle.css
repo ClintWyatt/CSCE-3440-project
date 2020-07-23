@@ -4,7 +4,7 @@
   border-collapse: collapse;
   border: 2px solid black;
   margin: 25px auto 50px;
-  width: 1000px;
+  width: 800px;
   height: 600px;
   background-image: url(../images/testMap.jpg);
   background-size: 101% 100%;
@@ -28,12 +28,12 @@
   border: 1px solid black;
 }
 #graph tr {
-  height: 12px;
+  height: 13px;
 }
 #graph td {
-  width: 12px;
+  width: 11px;
   opacity: 0.4;
-  border: 0px black solid;
+  border: 0px rgb(71, 71, 71) solid;
 }
 #grey-overlay {
   position: fixed;
@@ -296,7 +296,7 @@
   position: relative;
   width: 200px;
   height: 64px;
-  left: 410px;
+  left: 431px;
   top: 40px;
   z-index: 1;
 }
