@@ -77,5 +77,14 @@ app.get('/scripts/outbreak.js', function(request, response){
 	
 
 });
+
+app.get('/Register', function(request, response){
+
+	return response.sendFile(path.join(__dirname, 'views', 'register.html'));//must return for this method to work. Will redirect to the htmlTable.html	
+})
+
+app.get('/BackToLogin', function(request, response){
+	return response.sendFile(path.join(__dirname, 'views', 'login.html'));//must return for this method to work. Will redirect to the htmlTable.html	
+})
 app.listen(3000);//listening on port 3000
 console.log("Server running on port 3000!");
