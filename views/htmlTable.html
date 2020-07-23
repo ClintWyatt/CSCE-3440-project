@@ -137,13 +137,13 @@
       /*end of simulation functions */
       var table = "<table Id = graph>";//represents a html table
       const size = 50;
-      //const size = 50;
-      //const size = 75;
+      const numRows = 50;
+      const numCols = 75;
       //creating the neighborhood object
       let neighborhood = [];
       var n = new Neighborhood();
       n.setInfectionPeriod(infectionPeriod);//setting the time period a neighborhood will be infected for
-      for(i =0; i < size*size; i++)
+      for(i =0; i < numRows*numCols; i++)
       {
         neighborhood.push(n);
         n = new Neighborhood();//must do this to prevent all objects refering to 1 object
@@ -152,10 +152,10 @@
       //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
       
       //generating tha table graph  
-      for(i = 0; i < size; i++)
+      for(i = 0; i < numRows; i++)
       {
           table += "<tr>"
-          for(j = 0; j < size; j++)
+          for(j = 0; j < numCols; j++)
           {
             table +="<td class=\"graph-td\"></td>";
           }
@@ -230,39 +230,39 @@
             {
               if(i === 0)
               {
-                Check.topLeftCorner(neighborhood, i, size);
+                Check.topLeftCorner(neighborhood, i, numRows);
               }
-              else if(i === size*(size -1))
+              else if(i === numRows*(numCols -1))
               {
-                Check.bottomLeftCorner(neighborhood, i, size);
+                Check.bottomLeftCorner(neighborhood, i, numRows);
               }
-              else if(i === size - 1)
+              else if(i === numCols - 1)
               {
-                Check.topRightCorner(neighborhood, i, size);
+                Check.topRightCorner(neighborhood, i, numRows);
               }
-              else if(i === (size * size) -1)
+              else if(i === (numRows * numCols) -1)
               {
-                Check.bottomRightCorner(neighborhood, i, size);
+                Check.bottomRightCorner(neighborhood, i, numRows);
               }
-              else if(i % size === 0)
+              else if(i % numCols === 0)
               {
-                Check.leftSide(neighborhood, i, size);
+                Check.leftSide(neighborhood, i, numRows);
               }
-              else if(i % size === size -1)
+              else if(i % numCols === numCols -1)
               {
-                Check.rightSide(neighborhood, i, size);
+                Check.rightSide(neighborhood, i, numRows);
               }
-              else if(i > (size * size) - size)
+              else if(i > (numRows * numCols) - numCols)
               {
-                Check.bottomRow(neighborhood, i, size);
+                Check.bottomRow(neighborhood, i, numRows);
               }
-              else if(i < size)
+              else if(i < numCols)
               {
-                Check.topRow(neighborhood, i, size);
+                Check.topRow(neighborhood, i, numRows);
               }
               else
               {
-                Check.innerGraph(neighborhood, i, size);
+                Check.innerGraph(neighborhood, i, numRows);
               }
             }
             //outbreak = true;//for debugging purposes
