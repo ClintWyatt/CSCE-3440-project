@@ -136,9 +136,8 @@
     
       /*end of simulation functions */
       var table = "<table Id = graph>";//represents a html table
-      const size = 50;
       const numRows = 50;
-      const numCols = 75;
+      const numCols = 80;
       //creating the neighborhood object
       let neighborhood = [];
       var n = new Neighborhood();
@@ -154,26 +153,30 @@
       //generating tha table graph  
       for(i = 0; i < numRows; i++)
       {
-          table += "<tr>"
-          for(j = 0; j < numCols; j++)
-          {
-            table +="<td class=\"graph-td\"></td>";
+        table += "<tr>";
+        for(j = 0; j < numCols; j++)
+        {
+          if (i == 0) {
+            table += '<td class="graph-td" style="border-top: 2px solid black"></td>'; //adds a top border to the graph
           }
+          else {
+            table += '<td class="graph-td"></td>';
+          }
+        }
         table += "</tr>"
       }
       table += "</table>";
       
       document.write(table); //writting the table to the document
       var x = document.getElementsByClassName("graph-td");//getting all the columns in the table
-      var infection = Math.floor(Math.random()*size); 
+      var infection = Math.floor(Math.random()*numRows); 
     
       /*variables for the count of different states neighborhoods could be in */
       let numInfected =0;
       let numVacinated =0;
       let numRecovered =0;
       let numsusceptible =0;
-    
-    
+      
       //randomly set states to the graph
       for(i=0; i < x.length; i++)//number of columns in the graph
       {
@@ -184,14 +187,14 @@
           //console.log(neighborhood[i].getStatus());
           //numInfected++;
         }
-        else if(infection > (size * .02) && infection <= (size * 2.6))
+        else if(infection > (numRows * .02) && infection <= (numRows * 2.6))
         {
           //console.log("vacinated at " +i);
           x[i].style.backgroundColor = "blue";//vacinated
           neighborhood[i].setStatus("blue");
           //console.log(neighborhood[i].getStatus());
         }
-        else if(infection > (size *2.6) && infection <= (size *3.0))
+        else if(infection > (numRows *2.6) && infection <= (numRows *3.0))
         {
           x[i].style.backgroundColor = "green";//recovered
           neighborhood[i].setStatus("green");
@@ -202,14 +205,12 @@
           x[i].style.backgroundColor = "yellow";//susceptible
           neighborhood[i].setStatus("yellow");
         }
-        infection = Math.floor(Math.random()*(size * size));
+        infection = Math.floor(Math.random()*(numRows * numRows));
       }
       //console.log(neighborhood[50].getStatus());
     </script>
-    
+
     <script>
-    
-      
       document.getElementById("start-btn").onclick = function() {startSimulation()};//will start the disease outbreak after the start 
       //button has been pressed.
     
@@ -225,44 +226,44 @@
           {
             
             numInfected =0; //resetting the number of infected neighborhoods
-            //console.log("here");
+            console.log('nb: ' + neighborhood.length);
             for(i=0; i < neighborhood.length; i++)//number of columns in the graph
             {
               if(i === 0)
               {
-                Check.topLeftCorner(neighborhood, i, numRows);
+                Check.topLeftCorner(neighborhood, i, numCols);
               }
               else if(i === numRows*(numCols -1))
               {
-                Check.bottomLeftCorner(neighborhood, i, numRows);
+                Check.bottomLeftCorner(neighborhood, i, numCols);
               }
               else if(i === numCols - 1)
               {
-                Check.topRightCorner(neighborhood, i, numRows);
+                Check.topRightCorner(neighborhood, i, numCols);
               }
               else if(i === (numRows * numCols) -1)
               {
-                Check.bottomRightCorner(neighborhood, i, numRows);
+                Check.bottomRightCorner(neighborhood, i, numCols);
               }
               else if(i % numCols === 0)
               {
-                Check.leftSide(neighborhood, i, numRows);
+                Check.leftSide(neighborhood, i, numCols - 2);
               }
               else if(i % numCols === numCols -1)
               {
-                Check.rightSide(neighborhood, i, numRows);
+                Check.rightSide(neighborhood, i, numCols);
               }
               else if(i > (numRows * numCols) - numCols)
               {
-                Check.bottomRow(neighborhood, i, numRows);
+                Check.bottomRow(neighborhood, i, numCols);
               }
               else if(i < numCols)
               {
-                Check.topRow(neighborhood, i, numRows);
+                Check.topRow(neighborhood, i, numCols);
               }
               else
               {
-                Check.innerGraph(neighborhood, i, numRows);
+                Check.innerGraph(neighborhood, i, numCols);
               }
             }
             //outbreak = true;//for debugging purposes
