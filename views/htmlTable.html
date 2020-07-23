@@ -131,19 +131,19 @@
 
     <script>
       threshold = 1;//represents the amount of adjacent neighbors that can cause a suceptible neighbor to become infected
-      infectionPeriod =7;//represetns how long the neighborhood is infected
+      infectionPeriod =5;//represetns how long the neighborhood is infected
       
     
       /*end of simulation functions */
       var table = "<table Id = graph>";//represents a html table
       const size = 50;
-      const numRows = 50;
-      const numCols = 75;
+      //const size = 50;
+      //const size = 75;
       //creating the neighborhood object
       let neighborhood = [];
       var n = new Neighborhood();
       n.setInfectionPeriod(infectionPeriod);//setting the time period a neighborhood will be infected for
-      for(i =0; i < numRows*numCols; i++)
+      for(i =0; i < size*size; i++)
       {
         neighborhood.push(n);
         n = new Neighborhood();//must do this to prevent all objects refering to 1 object
@@ -152,10 +152,10 @@
       //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
       
       //generating tha table graph  
-      for(i = 0; i < numRows; i++)
+      for(i = 0; i < size; i++)
       {
           table += "<tr>"
-          for(j = 0; j < numCols; j++)
+          for(j = 0; j < size; j++)
           {
             table +="<td class=\"graph-td\"></td>";
           }
@@ -220,6 +220,7 @@
           display = 2; //represents the stoping point 
           let outbreak = true;
           console.log(outbreak);
+          console.log(neighborhood.length);
           while(outbreak === true && z < display)
           {
             
@@ -229,40 +230,39 @@
             {
               if(i === 0)
               {
-                Check.topLeftCorner(neighborhood, i);
+                Check.topLeftCorner(neighborhood, i, size);
               }
               else if(i === size*(size -1))
               {
-                Check.bottomLeftCorner(neighborhood, i);
+                Check.bottomLeftCorner(neighborhood, i, size);
               }
               else if(i === size - 1)
               {
-                //x[i].style.backgroundColor = "black";//infected
-                Check.topRightCorner(neighborhood, i);
+                Check.topRightCorner(neighborhood, i, size);
               }
               else if(i === (size * size) -1)
               {
-                Check.bottomRightCorner(neighborhood, i);
+                Check.bottomRightCorner(neighborhood, i, size);
               }
-              else if(i % size ===0)
+              else if(i % size === 0)
               {
-                Check.leftSide(neighborhood, i);
+                Check.leftSide(neighborhood, i, size);
               }
-              else if(i % size === size-1)
+              else if(i % size === size -1)
               {
-                Check.rightSide(neighborhood, i);
+                Check.rightSide(neighborhood, i, size);
               }
               else if(i > (size * size) - size)
               {
-                Check.bottomRow(neighborhood, i);
+                Check.bottomRow(neighborhood, i, size);
               }
               else if(i < size)
               {
-                Check.topRow(neighborhood, i);
+                Check.topRow(neighborhood, i, size);
               }
               else
               {
-                Check.innerGraph(neighborhood, i);
+                Check.innerGraph(neighborhood, i, size);
               }
             }
             //outbreak = true;//for debugging purposes

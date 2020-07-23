@@ -57,7 +57,7 @@ app.post('/login', function(request, response) {
 			response.end();
 		});
 	} else {
-		response.send('Please enter Username and Password!');
+		//response.send('Please enter Username and Password!');
 		response.end();
 	}
 });
