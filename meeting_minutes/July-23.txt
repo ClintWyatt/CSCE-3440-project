@@ -1,0 +1,3 @@
+Javascript for simluation being cleaned up.
+Login database working.
+Design has been completely reworked and adjusted.
