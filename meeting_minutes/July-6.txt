@@ -1,0 +1,3 @@
+We discussed the feedback we recieved for our code in the code review.
+We also discussed how we could implement some of those changes that the
+other group suggested.

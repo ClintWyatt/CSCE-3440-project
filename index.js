@@ -72,7 +72,7 @@ app.get('/home', function(request, response) {
 	response.end();
 });
 
-app.get('/scripts/outbreak.js', function(request, response){
+app.get('/scripts/outbreak/outbreak.js', function(request, response){
 	console.log(request.params);
 	
 

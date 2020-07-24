@@ -18,15 +18,16 @@
     <link href='https://css.gg/arrow-down-r.css' rel='stylesheet'>
     <link href='https://css.gg/arrow-up-r.css' rel='stylesheet'>
     <link href='https://css.gg/export.css' rel='stylesheet'>
-
+    
     <script src="../scripts/popupBoxes.js"></script>
     <script src="../scripts/createDisease.js"></script>
     <script src="../scripts/loadDisease.js"></script>
-    <script src="../scripts/simulationControls.js"></script>
     <script src="../scripts/sleep.js"></script>
-    <script src="../scripts/oceanCells.js"></script>
-    <script src="../scripts/outbreak.js"></script><!--including the neighborhood class and state class-->
-    <script src="../scripts/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
+    <script src="../scripts/outbreak/simulationControls.js"></script>
+    <script src="../scripts/outbreak/oceanCells.js"></script>
+    <script src="../scripts/outbreak/outbreak.js"></script><!--including the neighborhood class and state class-->
+    <script src="../scripts/outbreak/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
+    <script src="../scripts/outbreak/diseaseOutbreak.js"></script>
   </head>
   
   <body>
@@ -128,191 +129,7 @@
       </div>
     </div>
 
+    <script src="../scripts/outbreak/createTable.js"></script>
     <script src="../scripts/toggleSlideMenu.js"></script>
-
-    <script>
-      threshold = 2;//represents the amount of adjacent neighbors that can cause a suceptible neighbor to become infected
-      infectionPeriod =5;//represetns how long the neighborhood is infected
-      
-    
-      /*end of simulation functions */
-      var table = "<table Id = graph>";//represents a html table
-      const numRows = 50;
-      const numCols = 80;
-      //creating the neighborhood object
-      let neighborhood = [];
-      var n = new Neighborhood();
-      n.setInfectionPeriod(infectionPeriod);//setting the time period a neighborhood will be infected for
-      for(i =0; i < numRows*numCols; i++)
-      {
-        neighborhood.push(n);
-        n = new Neighborhood();//must do this to prevent all objects refering to 1 object
-        n.setInfectionPeriod(infectionPeriod);
-      }
-      //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
-      
-      //generating tha table graph  
-      for(i = 0; i < numRows; i++)
-      {
-        table += "<tr>";
-        for(j = 0; j < numCols; j++)
-        {
-          table += '<td id="' + (i * numCols + j).toString() + '" class="graph-td"></td>';
-        }
-        table += "</tr>"
-      }
-      table += "</table>";
-      
-      document.write(table); //writting the table to the document
-      var x = document.getElementsByClassName("graph-td");//getting all the columns in the table
-      var infection = Math.floor(Math.random()*numRows); 
-    
-      /*variables for the count of different states neighborhoods could be in */
-      let numInfected =0;
-      let numVacinated =0;
-      let numRecovered =0;
-      let numsusceptible =0;
-      
-      while (numInfected == 0) { //ensures at least 1 starting location is chosen
-        //randomly set states to the graph
-        for(i=0; i < x.length; i++)//number of columns in the graph
-        {
-          if (!isOceanCell(i)) {
-            if(infection < 2 && numInfected < 1) //1 starting location
-            {
-              x[i].style.backgroundColor = "red";//infected
-              neighborhood[i].setStatus("red");
-              //console.log(neighborhood[i].getStatus());
-              numInfected++;
-            }
-            else if(infection > (numRows * .02) && infection <= (numRows * 2.6))
-            {
-              //console.log("vacinated at " +i);
-              x[i].style.backgroundColor = "blue";//vacinated
-              neighborhood[i].setStatus("blue");
-              //console.log(neighborhood[i].getStatus());
-            }
-            else if(infection > (numRows *2.6) && infection <= (numRows *3.0))
-            {
-              x[i].style.backgroundColor = "green";//recovered
-              neighborhood[i].setStatus("green");
-              //console.log(neighborhood[i].getStatus());
-            }
-            else
-            {
-              x[i].style.backgroundColor = "yellow";//susceptible
-              neighborhood[i].setStatus("yellow");
-            }
-            infection = Math.floor(Math.random()*(numRows * numRows));
-          }
-        }
-        //console.log(neighborhood[50].getStatus());
-      }
-      
-    </script>
-
-    <script>
-      
-      document.getElementById("start-btn").onclick = function() {startSimulation()};//will start the disease outbreak after the start 
-      //button has been pressed.
-    
-        function diseaseOutbreak(){
-          //start outbreak
-          var Check = new GraphCheck();//using the GaphCheck object to simulate the virus outbreak
-          let z =0;
-          display = 2; //represents the stoping point 
-          let outbreak = true;
-          //console.log(outbreak);
-          //console.log(neighborhood.length);
-          while(outbreak === true && z < display)
-          {
-            
-            numInfected =0; //resetting the number of infected neighborhoods
-            for(i=0; i < neighborhood.length; i++)//number of columns in the graph
-            {
-              if(i === 0)
-              {
-                Check.topLeftCorner(neighborhood, i, numCols);
-              }
-              else if(i === numRows*(numCols -1))
-              {
-                Check.bottomLeftCorner(neighborhood, i, numCols);
-              }
-              else if(i === numCols - 1)
-              {
-                Check.topRightCorner(neighborhood, i, numCols);
-              }
-              else if(i === (numRows * numCols) -1)
-              {
-                Check.bottomRightCorner(neighborhood, i, numCols);
-              }
-              else if(i % numCols === 0)
-              {
-                Check.leftSide(neighborhood, i, numCols - 2);
-              }
-              else if(i % numCols === numCols -1)
-              {
-                Check.rightSide(neighborhood, i, numCols);
-              }
-              else if(i > (numRows * numCols) - numCols)
-              {
-                Check.bottomRow(neighborhood, i, numCols);
-              }
-              else if(i < numCols)
-              {
-                Check.topRow(neighborhood, i, numCols);
-              }
-              else
-              {
-                Check.innerGraph(neighborhood, i, numCols);
-              }
-            }
-            //outbreak = true;//for debugging purposes
-            for(i =0; i < neighborhood.length; i++)
-            {
-              if(neighborhood[i].getStatus() === "susceptible")
-              {
-                //console.log("threshold at " + i + ": " + neighborhood[i].getThreshold());
-                if(neighborhood[i].getThreshold() >= threshold)
-                {
-                  neighborhood[i].setStatus("red");//infected
-                  x[i].style.backgroundColor = "red";//infected
-                  
-                }
-              }
-              else if(neighborhood[i].getStatus() === "infected")
-              {
-                //console.log("infection at " + i);
-                if(neighborhood[i].getInfection() > infectionPeriod)
-                {
-                  neighborhood[i].setStatus("green"); //changing the neighborhood to recoverred
-                  x[i].style.backgroundColor = "green";//infected
-                  numInfected--; //decrementing the number of infected neighborhoods. 
-                }
-                else
-                {
-                  neighborhood[i].incrementInfection();//increment the number of days the neighborhood is infected
-                }
-              }
-            }
-            for(k =0; k < neighborhood.length; k++)
-            {
-              if(neighborhood[k].getStatus() === "infected"){numInfected++;}
-            }
-            if(numInfected === 0){outbreak = false;}
-            z++;
-        }
-      }
-      //another loop needed to chenge states (infected to recovered or susceptible to infected)
-      
-    </script>
-  <!--
-    <script>
-      var table = document.getElementById("graph");
-      var row = table.insertRow(0);
-      row.height="5px";
-    </script>
-
-  -->
   </body>
 </html>
