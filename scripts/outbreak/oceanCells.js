@@ -1,5 +1,5 @@
 function isOceanCell(id) {
-    return oceanCells.includes(id);
+  return oceanCells.includes(id);
 }
 
 var oceanCells = [
@@ -1062,7 +1062,6 @@ var oceanCells = [
   3348,
   3347,
   3428,
-  3987,
   3989,
   3990,
   3991,

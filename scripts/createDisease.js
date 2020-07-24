@@ -1,25 +1,29 @@
 function clearAllFields() {
     var diseaseNameField = document.getElementById('disease-name-field');
     var infRateField = document.getElementById('infection-rate-field');
+    var deathRateField = document.getElementById('death-rate-field');
     var thresholdField = document.getElementById('threshold-field');
-    var numDaysField = document.getElementById('num-days-field');
+    var numWeeksField = document.getElementById('num-weeks-field');
 
     diseaseNameField.value = "";
     infRateField.value = "";
+    deathRateField.value = "";
     thresholdField.value = "";
-    numDaysField.value = "";
+    numWeeksField.value = "";
 
     diseaseNameField.style.backgroundColor = 'white';
     infRateField.style.backgroundColor = 'white';
+    deathRateField.style.backgroundColor = 'white';
     thresholdField.style.backgroundColor = 'white';
-    numDaysField.style.backgroundColor = 'white';
+    numWeeksField.style.backgroundColor = 'white';
 }
 
 function validateFields() {
     var diseaseNameField = document.getElementById('disease-name-field');
     var infRateField = document.getElementById('infection-rate-field');
+    var deathRateField = document.getElementById('death-rate-field');
     var thresholdField = document.getElementById('threshold-field');
-    var numDaysField = document.getElementById('num-days-field');
+    var numWeeksField = document.getElementById('num-weeks-field');
     var allFieldsValid = true;
 
     if (diseaseNameField.value.length == 0) { //or if name already exists (SQL)
@@ -30,13 +34,17 @@ function validateFields() {
         allFieldsValid = false;
         infRateField.style.backgroundColor = 'lightcoral';
     }
+    if (!isNumber(deathRateField.value) || deathRateField.value < 1 || deathRateField.value > 100 || deathRateField.value == '') {
+        allFieldsValid = false;
+        deathRateField.style.backgroundColor = 'lightcoral';
+    }
     if (!isNumber(thresholdField.value) || thresholdField.value < 1 || thresholdField.value > 8 || thresholdField.value == '') {
         allFieldsValid = false;
         thresholdField.style.backgroundColor = 'lightcoral';
     }
-    if (!isNumber(numDaysField.value) || numDaysField.value < 1 || numDaysField.value == '') {
+    if (!isNumber(numWeeksField.value) || numWeeksField.value < 1 || numWeeksField.value == '') {
         allFieldsValid = false;
-        numDaysField.style.backgroundColor = 'lightcoral';
+        numWeeksField.style.backgroundColor = 'lightcoral';
     }
 
     if (allFieldsValid) {

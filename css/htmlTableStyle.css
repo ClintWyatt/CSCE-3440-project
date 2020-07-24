@@ -10,16 +10,6 @@
   background-size: 101% 100%;
   z-index: 2;
 }
-#graph_LEGACY {
-  position: relative;
-  table-layout: fixed;
-  border-collapse: collapse;
-  border: 1px solid black;
-  margin: 25px auto 50px;
-  width: 1250px;
-  height: 469px;
-  z-index: 2;
-}
 #graph .row {
   height: 0px;
 }
@@ -55,18 +45,18 @@
   left: 10px;
 }
 #banner-simulation {
-	position: relative;
-	color: white;
-	width: 100%;
-	height: 100px;
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	align-content: center;
-	flex-direction: column;
-	background-image: url("../images/virus-banner.jpg");
-	background-size: 100% 400%;
-	z-index: 5;
+  position: relative;
+  color: white;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  flex-direction: column;
+  background-image: url("../images/virus-banner.jpg");
+  background-size: 100% 400%;
+  z-index: 5;
 }
 @media (max-width: 1500px) {
   #banner-simulation {
@@ -86,7 +76,7 @@
   position: absolute;
   margin: 0 auto;
   width: 800px;
-  height: 250px;
+  height: 275px;
   transition: top 0.4s;
   background-image: linear-gradient(rgb(19, 19, 19), rgb(48, 48, 48));
   border-radius: 20px;
@@ -104,7 +94,7 @@
 }
 #slide-menu-toggler {
   position: absolute;
-  top: 210px;
+  top: 225px;
   left: 0px;
   right: 40px;
   margin: 0 auto;
@@ -122,7 +112,7 @@
   position: relative;
   left: 20px;
   top: 55px;
-  transform: scale(var(--ggs,1.2))
+  transform: scale(var(--ggs, 1.2));
 }
 #menu-heading {
   position: relative;
@@ -152,7 +142,7 @@
   color: white;
 }
 #create-disease-container input {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 14px;
   margin-top: 10px;
   text-align: center;
@@ -160,13 +150,13 @@
   transition: background-color 0.4s ease;
   width: 175px;
 }
-#create-disease-container input:focus{
+#create-disease-container input:focus {
   background-color: lightgray;
 }
 #popups {
   position: relative;
   left: 450px;
-  bottom: 138px;
+  bottom: 170px;
 }
 .popup-style {
   opacity: 0;
@@ -192,13 +182,17 @@
   position: relative;
   width: 300px;
 }
+#deathRate-popup {
+  position: relative;
+  width: 300px;
+}
 #threshold-popup {
   position: relative;
   width: 410px;
 }
-#numDays-popup {
+#numWeeks-popup {
   position: relative;
-  width: 200px;
+  width: 230px;
 }
 #popup-arrow {
   position: relative;
@@ -237,7 +231,7 @@
 #create-disease-btns {
   position: relative;
   left: 445px;
-  bottom: 173px;
+  bottom: 206px;
   width: 100px;
   height: 50px;
 }
@@ -285,11 +279,11 @@
   transition: background-color 0s;
   background-color: rgb(37, 37, 37);
 }
-.simulation-btns-style div{
+.simulation-btns-style div {
   font-size: 18px;
 }
-.simulation-btns-style i{
-  transform: scale(var(--ggs,1.2));
+.simulation-btns-style i {
+  transform: scale(var(--ggs, 1.2));
 }
 #simulation-btns {
   margin: 0 auto;
@@ -327,12 +321,12 @@
   position: relative;
   top: 2px;
   left: 14px;
-  transform: scale(var(--ggs,1.3));
+  transform: scale(var(--ggs, 1.3));
 }
 #load-disease-container {
   position: relative;
   left: 500px;
-  bottom: 75px;
+  bottom: 120px;
   width: 300px;
   height: 100px;
 }
@@ -340,7 +334,7 @@
   color: white;
 }
 #load-disease-container input {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   font-size: 14px;
   text-align: center;
   transition: background-color 0.4s ease;
@@ -363,7 +357,7 @@
   left: 230px;
   bottom: 22px;
   color: black;
-  transform: scale(var(--ggs,1.1));
+  transform: scale(var(--ggs, 1.1));
   transition: background-color 0.2s;
   background-color: white;
 }
@@ -400,7 +394,7 @@
 #load-btn {
   position: relative;
   left: 215px;
-  top: 165px;
+  top: 230px;
 }
 #load-btn-icon {
   position: relative;
@@ -410,5 +404,5 @@
 #load-btn-text {
   position: relative;
   left: 6px;
-  bottom: 303px;
+  bottom: 367px;
 }
