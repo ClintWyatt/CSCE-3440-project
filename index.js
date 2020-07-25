@@ -78,6 +78,37 @@ app.get('/scripts/outbreak/outbreak.js', function(request, response){
 
 });
 
+//method is used for registering a new user
+app.post('/register', function(request, response){
+	var username = request.body.username;
+	var passWord = request.body.password;
+	var firstname = request.body.firstname;
+	var lastname = request.body.lastname;
+
+	if(username && passWord)
+	{
+		connection.query('SELECT * FROM login WHERE userName = ?', [username], function(error, results, fields) {
+			console.log(results.length);
+
+			if (results.length > 0) {
+				console.log("ERROR: username already exists!");
+				//response.sendFile(path.join(__dirname, 'views', '/htmlTable.html'));
+				//return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
+				response.redirect('/');
+			} 
+			else {
+				var sql = "INSERT INTO login (first_name, last_name, userName, password) VALUES('"+firstname+"', '"+lastname+"','"+username+"', '"+passWord+"')";
+				connection.query(sql, function(err, result){
+					
+					if(err){throw err;}
+					return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
+				});
+			}	
+		});
+	}
+});
+
+
 app.get('/Register', function(request, response){
 
 	return response.sendFile(path.join(__dirname, 'views', 'register.html'));//must return for this method to work. Will redirect to the htmlTable.html	
