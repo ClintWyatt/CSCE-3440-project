@@ -27,6 +27,13 @@ app.get('/', function(request, response){
 //the app method below will validate the user login credientals
 app.post('/login', function(request, response) {
 
+	//creating the table if it does not exist
+	var sql = "CREATE TABLE if not exists login(first_name varchar(30), last_name varchar(30), username varchar(30) not null, password varchar(30))";
+	connection.query(sql, function(err, result){
+					
+		if(err){throw err;}
+	});
+
 	if (request.body.username && request.body.password) {
 		
 		connection.query('SELECT * FROM login WHERE userName = ? AND password = ?', [request.body.username, request.body.password], function(error, results, fields) {
@@ -60,6 +67,13 @@ app.post('/register', function(request, response){
 	var passWord = request.body.password;
 	var firstname = request.body.firstname;
 	var lastname = request.body.lastname;
+	
+	//creating the table if it does not exist
+	var sql = "CREATE TABLE if not exists login(first_name varchar(30), last_name varchar(30), username varchar(30) not null, password varchar(30))";
+	connection.query(sql, function(err, result){
+					
+		if(err){throw err;}
+	});
 
 	if(username && passWord)
 	{
