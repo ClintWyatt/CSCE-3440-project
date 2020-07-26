@@ -15,11 +15,6 @@ var connection = mysql.createConnection({
 var app = express();
 app.use(express.static(__dirname));
 
-app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-}));
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
 
@@ -29,26 +24,15 @@ app.get('/', function(request, response){
     response.sendFile(path.join(__dirname, 'views', '/login.html'));
 });
 
-/*
-app.get('/views', function(request, response){
-	response.sendFile(path.join(__dirname + '../views/htmlTable.html'));
-});
-*/
-
 //the app method below will validate the user login credientals
 app.post('/login', function(request, response) {
-	var userName = request.body.username;
-	var password = request.body.password;
-	//console.log(userName);
-	//console.log(password);
-	if (userName && password) {
+
+	if (request.body.username && request.body.password) {
 		
-		connection.query('SELECT * FROM login WHERE userName = ? AND password = ?', [userName, password], function(error, results, fields) {
+		connection.query('SELECT * FROM login WHERE userName = ? AND password = ?', [request.body.username, request.body.password], function(error, results, fields) {
 			console.log(results.length);
 			if (results.length > 0) {
-				request.session.loggedin = true;
-				request.session.username = userName;
-				//response.sendFile(path.join(__dirname, 'views', '/htmlTable.html'));
+
 				return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
 			} else {
 				//response.send('Incorrect Username and/or Password!');
@@ -62,20 +46,12 @@ app.post('/login', function(request, response) {
 	}
 });
 
-//happens whenever you are logged into the home page
-app.get('/home', function(request, response) {
-	if (request.session.loggedin) {
-		response.send('Welcome back, ' + request.session.username + '!');
-	} else {
-		response.send('Please login to view this page!');
-	}
-	response.end();
+app.get('/homepage', function(request, response){
+	return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
 });
 
 app.get('/scripts/outbreak/outbreak.js', function(request, response){
 	console.log(request.params);
-	
-
 });
 
 //method is used for registering a new user
