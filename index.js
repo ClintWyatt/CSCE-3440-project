@@ -109,6 +109,11 @@ app.post('/register', function(request, response){
 });
 
 
+app.get('/Simulation', function(request, response){
+
+	return response.sendFile(path.join(__dirname, 'views', 'htmlTable.html'));//going to the simulation page
+});
+
 app.get('/Register', function(request, response){
 
 	return response.sendFile(path.join(__dirname, 'views', 'register.html'));//must return for this method to work. Will redirect to the htmlTable.html	
