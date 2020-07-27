@@ -1,0 +1,2 @@
+We discussed which files we would like to send in for the code review.
+We also discussed what we would be working on next in the project.

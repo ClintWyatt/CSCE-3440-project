@@ -1,31 +1,31 @@
-const numDays = 30;
+const numWeeks = 30;
 var simulationStarted = false;
 var isPaused = false;
 var playSpeed = 2500; //2.5 second intervals
 
 async function startSimulation() {
-    if (!simulationStarted) {
-        simulationStarted = true;
+  if (!simulationStarted) {
+    simulationStarted = true;
 
-        for (let i=0; i < numDays; i++) {
-            while (isPaused) {
-                await sleep(50);
-            }
+    for (let i = 0; i < numWeeks; i++) {
+      while (isPaused) {
+        await sleep(50);
+      }
 
-            diseaseOutbreak();
-            await sleep(playSpeed);
-        }
-
-        simulationStarted = false;
+      diseaseOutbreak();
+      await sleep(playSpeed);
     }
 
-    if (simulationStarted) {
-        isPaused = false;
-    }
+    simulationStarted = false;
+  }
+
+  if (simulationStarted) {
+    isPaused = false;
+  }
 }
 
 function pauseSimulation() {
-    if (simulationStarted) {
-        isPaused = true;
-    }
+  if (simulationStarted) {
+    isPaused = true;
+  }
 }

@@ -1,0 +1,3 @@
+We discussed the certain attributes that the diseases we
+are creating should have, and how to implement a "create disease"
+portion of a webpage.

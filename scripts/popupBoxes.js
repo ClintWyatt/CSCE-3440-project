@@ -11,8 +11,10 @@ function resetAllPopups() {
   document.getElementById("diseaseName-popup").style.zIndex = "0";
   document.getElementById("infRate-popup").style.opacity = "0";
   document.getElementById("infRate-popup").style.zIndex = "0";
+  document.getElementById("deathRate-popup").style.opacity = "0";
+  document.getElementById("deathRate-popup").style.zIndex = "0";
   document.getElementById("threshold-popup").style.opacity = "0";
   document.getElementById("threshold-popup").style.zIndex = "0";
-  document.getElementById("numDays-popup").style.opacity = "0";
-  document.getElementById("numDays-popup").style.zIndex = "0";
+  document.getElementById("numWeeks-popup").style.opacity = "0";
+  document.getElementById("numWeeks-popup").style.zIndex = "0";
 }
