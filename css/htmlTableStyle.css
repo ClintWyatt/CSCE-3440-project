@@ -72,7 +72,7 @@
 #slide-menu {
   left: 0px;
   right: 0px;
-  top: -150px;
+  top: -175px;
   position: absolute;
   margin: 0 auto;
   width: 800px;
@@ -94,7 +94,7 @@
 }
 #slide-menu-toggler {
   position: absolute;
-  top: 225px;
+  top: 235px;
   left: 0px;
   right: 40px;
   margin: 0 auto;
