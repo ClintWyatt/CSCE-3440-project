@@ -10,4 +10,4 @@ function toggleSlideMenu() {
   }
 }
 
-toggleSlideMenu();
+//toggleSlideMenu();

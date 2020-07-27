@@ -2,6 +2,7 @@ function isOceanCell(id) {
   return oceanCells.includes(id);
 }
 
+//represents all of the ocean tiles in the map
 var oceanCells = [
   0,
   1,

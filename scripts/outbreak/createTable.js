@@ -2,6 +2,7 @@ threshold = 2;       //represents the amount of adjacent neighbors that can caus
 infectionPeriod = 5; //represetns how long the neighborhood is infected
 infectionRate = 30;  //represents how likely a neighborhood while become infected
 deathRate = 10;      //represents how likely a neighborhood while die
+numRandomJumps = 0;  //represents how many times the disease has jumped randomly
 
 /*end of simulation functions */
 var table = "<table Id = graph>"; //represents a html table
@@ -38,7 +39,7 @@ var infection = generateNumber(0, numRows);
 let numInfected = 0;
 let numVacinated = 0;
 let numRecovered = 0;
-let numsusceptible = 0;
+let numSusceptible = 0;
 let numDead = 0;
 
 while (numInfected == 0) { //ensures at least 1 starting location is chosen
@@ -53,14 +54,17 @@ while (numInfected == 0) { //ensures at least 1 starting location is chosen
       else if (infection > numRows * 0.02 && infection <= numRows * 2.6) {
         x[i].style.backgroundColor = "blue"; //vacinated
         neighborhood[i].setStatus("blue");
+        numVacinated++;
       }
       else if (infection > numRows * 2.6 && infection <= numRows * 3.0) {
         x[i].style.backgroundColor = "green"; //recovered
         neighborhood[i].setStatus("green");
+        numRecovered++;
       }
       else {
         x[i].style.backgroundColor = "yellow"; //susceptible
         neighborhood[i].setStatus("yellow");
+        numSusceptible++;
       }
 
       infection = generateNumber(0, (numRows * numRows));
