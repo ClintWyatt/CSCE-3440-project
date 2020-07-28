@@ -48,7 +48,7 @@ function diseaseOutbreak() {
         }
       }
       else if (neighborhood[i].getStatus() === "infected") {
-        if (neighborhood[i].getInfection() > infectionPeriod && numInfected > 1) {
+        if (neighborhood[i].getInfection() > infectionPeriod && (numInfected > 1 || numSusceptible == 0) && generateNumber(1, 100) <= (100 - infectionRate)) {
           if (generateNumber(1, 100) <= deathRate) {
             neighborhood[i].setStatus("black"); //changing the neighborhood to recoverred
             x[i].style.backgroundColor = "black"; //infected
@@ -56,7 +56,7 @@ function diseaseOutbreak() {
             numInfected--; //decrementing the number of infected neighborhoods.
             numDead++;
           }
-          else if (generateNumber(1, 100) <= 75) {
+          else {
             neighborhood[i].setStatus("green"); //changing the neighborhood to recoverred
             x[i].style.backgroundColor = "green"; //infected
             numInfected--; //decrementing the number of infected neighborhoods.
@@ -74,7 +74,7 @@ function diseaseOutbreak() {
     z++;
 
     //chance to see if the disease will jump randomly on the map (only 2 jumps total allowed)
-    if (numRandomJumps < 2 && generateNumber(1, 100) <= infectionRate / 3) {
+    if (numRandomJumps < 2 && weeksElapsed > 3 && generateNumber(1, 100) <= infectionRate / 3 ) {
       var randomLocation = pickRandomDenseCell();
       var loopTimeout = 0; //just in case there are no open spots, the loop won't be infinite
 

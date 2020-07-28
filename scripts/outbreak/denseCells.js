@@ -1,6 +1,6 @@
 //will randomly pick one of the population-dense cells
 function pickRandomDenseCell() {
-    return denseCells[generateNumber(0, denseCells.length - 1)];
+  return denseCells[generateNumber(0, denseCells.length - 1)];
 }
 
 //represents certain population-dense cells in the map

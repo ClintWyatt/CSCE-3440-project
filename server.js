@@ -40,7 +40,7 @@ app.post('/login', function(request, response) {
 			console.log(results.length);
 			if (results.length > 0) {
 
-				return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
+				return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the simulator.html
 			} else {
 				//response.send('Incorrect Username and/or Password!');
 				response.redirect('/');
@@ -54,7 +54,7 @@ app.post('/login', function(request, response) {
 });
 
 app.get('/homepage', function(request, response){
-	return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
+	return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the simulator.html
 });
 
 app.get('/scripts/outbreak/outbreak.js', function(request, response){
@@ -88,8 +88,8 @@ app.post('/register', function(request, response){
 
 			if (results.length > 0) {
 				console.log("ERROR: username already exists!");
-				//response.sendFile(path.join(__dirname, 'views', '/htmlTable.html'));
-				//return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
+				//response.sendFile(path.join(__dirname, 'views', '/simulator.html'));
+				//return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the simulator.html
 				response.redirect('/');
 			} 
 			else {
@@ -97,7 +97,7 @@ app.post('/register', function(request, response){
 				connection.query(sql, function(err, result){
 					
 					if(err){throw err;}
-					return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the htmlTable.html
+					return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the simulator.html
 				});
 			}	
 		});
@@ -107,16 +107,16 @@ app.post('/register', function(request, response){
 
 app.get('/Simulation', function(request, response){
 
-	return response.sendFile(path.join(__dirname, 'views', 'htmlTable.html'));//going to the simulation page
+	return response.sendFile(path.join(__dirname, 'views', 'simulator.html'));//going to the simulation page
 });
 
 app.get('/Register', function(request, response){
 
-	return response.sendFile(path.join(__dirname, 'views', 'register.html'));//must return for this method to work. Will redirect to the htmlTable.html	
+	return response.sendFile(path.join(__dirname, 'views', 'register.html'));//must return for this method to work. Will redirect to the simulator.html	
 })
 
 app.get('/BackToLogin', function(request, response){
-	return response.sendFile(path.join(__dirname, 'views', 'login.html'));//must return for this method to work. Will redirect to the htmlTable.html	
+	return response.sendFile(path.join(__dirname, 'views', 'login.html'));//must return for this method to work. Will redirect to the simulator.html	
 })
 app.listen(3000);//listening on port 3000
 console.log("Server running on port 3000!");
