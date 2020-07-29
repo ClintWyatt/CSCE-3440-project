@@ -128,13 +128,20 @@ app.post('/', function(request, response){
 	var deathRate = request.body.deathRate;
 	var threshold = request.body.threshold;
 
-
-	var sql = "INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username) VALUES('"+diseaseName+"','"+infectionRate+"','"+deathRate+"', '"+threshold+"', '"+user+"')";
-	connection.query(sql, function(err, result){
-		if(err){throw err;}
-		else{console.log("virus saved");}
+	//checking to see if the virus is already in the database
+	connection.query('SELECT * FROM login WHERE virusName = ?, infectionRate =?, deathRate =?, threshold =?, username=?', [diseaseName, infectRate, deathRate, threshold, user], function(error, results, fields) {
+		//if the virus is already in the data base, do not insert the virus info
+		if(results.length > 0){
+			console.log("ERROR: virus already exist in the database. ");
+		}
+		else{//virus does not exist in the database yet
+			var sql = "INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username) VALUES('"+diseaseName+"','"+infectionRate+"','"+deathRate+"', '"+threshold+"', '"+user+"')";
+			connection.query(sql, function(err, result){
+				if(err){throw err;}
+				else{console.log("virus saved");}
+			});
+		}
 	});
-
 })
 app.listen(3000);//listening on port 3000
 console.log("Server running on port 3000!");
