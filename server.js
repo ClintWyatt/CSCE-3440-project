@@ -67,20 +67,20 @@ app.post('/register', function(request, response){
 	var passWord = request.body.password;
 	var firstname = request.body.firstname;
 	var lastname = request.body.lastname;
-	
-	//creating the database if it does not exist
-	/*
-	connection.query("CREATE DATABASE userInfo", function (err, result){
-		if(err){throw err};
-	});
-	*/
+
 	//creating the table if it does not exist
-	var sql = "CREATE TABLE if not exists login(first_name varchar(30), last_name varchar(30), username varchar(30) not null, password varchar(30))";
+	var sql = "CREATE TABLE if not exists login(first_name varchar(30), last_name varchar(30), username varchar(30) not null, password varchar(30), PRIMARY KEY (username))";
 	connection.query(sql, function(err, result){
 					
 		if(err){throw err;}
 	});
-	
+
+	sql = "CREATE TABLE if not exists virus(virusName varchar(50) not null, infectionRate int, deathRate int, threshold int, weeks int, username varchar(30), FOREIGN KEY (username) REFERENCES login(username))";
+	connection.query(sql, function(err, result){
+					
+		if(err){throw err;}
+	});
+
 	if(username && passWord)
 	{
 		connection.query('SELECT * FROM login WHERE userName = ?', [username], function(error, results, fields) {
