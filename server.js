@@ -130,7 +130,7 @@ app.post('/', function(request, response){
 	var threshold = request.body.threshold;
 
 	//checking to see if the virus is already in the database
-	connection.query('SELECT * FROM login WHERE virusName = ?, infectionRate =?, deathRate =?, threshold =?, username=?', [diseaseName, infectRate, deathRate, threshold, user], function(error, results, fields) {
+	connection.query('SELECT * FROM login WHERE virusName = ?, infectionRate = ?, deathRate = ?, threshold = ?, username= ?', [diseaseName, infectRate, deathRate, threshold, user], function(error, results, fields) {
 		//if the virus is already in the data base, do not insert the virus info
 		if(results.length > 0){
 			console.log("ERROR: virus already exist in the database. ");
