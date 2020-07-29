@@ -5,6 +5,7 @@ var bodyparser = require('body-parser');
 var path = require('path');
 const { connect } = require('http2');
 var user; //will be used for inserting info into the virus table
+var stringResponse;//used to tell the user the status of their request to the database for logging in, viurs updates, etc.
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
