@@ -4,7 +4,7 @@ var session = require('express-session');
 var bodyparser = require('body-parser');
 var path = require('path');
 const { connect } = require('http2');
-
+var user; //will be used for inserting info into the virus table
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -39,7 +39,7 @@ app.post('/login', function(request, response) {
 		connection.query('SELECT * FROM login WHERE userName = ? AND password = ?', [request.body.username, request.body.password], function(error, results, fields) {
 			console.log(results.length);
 			if (results.length > 0) {
-
+				user = request.body.username;
 				return response.sendFile(path.join(__dirname, 'views', 'homepage.html'));//must return for this method to work. Will redirect to the simulator.html
 			} else {
 				//response.send('Incorrect Username and/or Password!');
@@ -93,6 +93,7 @@ app.post('/register', function(request, response){
 				response.redirect('/');
 			} 
 			else {
+				user = username;
 				var sql = "INSERT INTO login (first_name, last_name, userName, password) VALUES('"+firstname+"', '"+lastname+"','"+username+"', '"+passWord+"')";
 				connection.query(sql, function(err, result){
 					
@@ -117,6 +118,23 @@ app.get('/Register', function(request, response){
 
 app.get('/BackToLogin', function(request, response){
 	return response.sendFile(path.join(__dirname, 'views', 'login.html'));//must return for this method to work. Will redirect to the simulator.html	
+})
+
+//getting data for the disease saved by the user.
+app.post('/', function(request, response){
+
+	var diseaseName = request.body.diseaseName;
+	var infectRate = request.body.infRate;
+	var deathRate = request.body.deathRate;
+	var threshold = request.body.threshold;
+
+
+	var sql = "INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username) VALUES('"+diseaseName+"','"+infectionRate+"','"+deathRate+"', '"+threshold+"', '"+user+"')";
+	connection.query(sql, function(err, result){
+		if(err){throw err;}
+		else{console.log("virus saved");}
+	});
+
 })
 app.listen(3000);//listening on port 3000
 console.log("Server running on port 3000!");
