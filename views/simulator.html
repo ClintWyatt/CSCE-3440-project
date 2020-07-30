@@ -26,6 +26,8 @@
     <script src="../scripts/outbreak/outbreak.js"></script><!--including the neighborhood class and state class-->
     <script src="../scripts/outbreak/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
     <script src="../scripts/outbreak/diseaseOutbreak.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
   </head>
   
   <body>
@@ -46,6 +48,7 @@
       <div id="menu-heading">Options</div>
 
       <div id="create-disease-container">
+
         <div id="create-disease-heading">Create Disease</div>
         <label for="diseaseName">Disease Name: </label>
         <input id="disease-name-field" type="text" name="diseaseName" value="Name" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
@@ -61,7 +64,7 @@
         <br>
         <label for="numWeeks">No. of Weeks: </label>
         <input id="num-weeks-field" type="text" name="numWeeks" value="52" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
-
+        
         <div id="popups">
           <div id="diseaseName-popup" class="popup-style">
             <b>Name: </b>Enter a name for the disease.

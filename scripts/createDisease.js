@@ -18,6 +18,7 @@ function clearAllFields() {
   numWeeksField.style.backgroundColor = "white";
 }
 
+
 function validateFields() {
   var diseaseNameField = document.getElementById("disease-name-field");
   var infRateField = document.getElementById("infection-rate-field");
@@ -25,7 +26,7 @@ function validateFields() {
   var thresholdField = document.getElementById("threshold-field");
   var numWeeksField = document.getElementById("num-weeks-field");
   var allFieldsValid = true;
-
+  console.log(diseaseNameField.value+ " " + thresholdField.value);
   if (diseaseNameField.value.length == 0) { //or if name already exists (SQL)
     allFieldsValid = false;
     diseaseNameField.style.backgroundColor = "lightcoral";
@@ -50,6 +51,27 @@ function validateFields() {
 
   if (allFieldsValid) {
     console.log("Disease creation successful!"); //store disease (SQL)
+    
+    var xhttp = new XMLHttpRequest();
+    
+    var inputFields = {
+       disease: document.getElementById("disease-name-field").value,
+       infRate: document.getElementById("infection-rate-field").value,
+       deathRate: document.getElementById("death-rate-field").value,
+       threshold: document.getElementById("threshold-field").value,
+       numWeeks: document.getElementById("num-weeks-field").value
+
+    };
+
+    $.ajax({
+  method: "POST",
+  url: "virusData",
+  data: { disease: document.getElementById("disease-name-field").value,
+       infRate: document.getElementById("infection-rate-field").value,
+       deathRate: document.getElementById("death-rate-field").value,
+       threshold: document.getElementById("threshold-field").value,
+       numWeeks: document.getElementById("num-weeks-field").value }
+    });
   }
 }
 

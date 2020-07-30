@@ -122,21 +122,23 @@ app.get('/BackToLogin', function(request, response){
 })
 
 //getting data for the disease saved by the user.
-app.post('/', function(request, response){
+app.post('/virusData', function(request, response){
 
-	var diseaseName = request.body.diseaseName;
-	var infectRate = request.body.infRate;
+	var diseaseName = request.body.disease;
+	var infectionRate = request.body.infRate;
 	var deathRate = request.body.deathRate;
 	var threshold = request.body.threshold;
+	var weeks = request.body.numWeeks;
 
 	//checking to see if the virus is already in the database
-	connection.query('SELECT * FROM login WHERE virusName = ?, infectionRate = ?, deathRate = ?, threshold = ?, username= ?', [diseaseName, infectRate, deathRate, threshold, user], function(error, results, fields) {
+	connection.query('SELECT * FROM virus WHERE virusName = ?', [diseaseName], function(error, results, fields) {
 		//if the virus is already in the data base, do not insert the virus info
+		console.log(results.length);
 		if(results.length > 0){
 			console.log("ERROR: virus already exist in the database. ");
 		}
 		else{//virus does not exist in the database yet
-			var sql = "INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username) VALUES('"+diseaseName+"','"+infectionRate+"','"+deathRate+"', '"+threshold+"', '"+user+"')";
+			var sql = "INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES('"+diseaseName+"','"+infectionRate+"','"+deathRate+"', '"+threshold+"', '"+user+"', '"+weeks+"')";
 			connection.query(sql, function(err, result){
 				if(err){throw err;}
 				else{console.log("virus saved");}
