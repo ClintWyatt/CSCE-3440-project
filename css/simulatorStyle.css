@@ -407,19 +407,42 @@
 	left: 6px;
 	bottom: 367px;
 }
-#legend {
-	color: #313333;
-	margin-left: 75px;
-	margin-right: 100px;
-	text-align: center;
-	font-size: 32px;
-	font-weight: 700;
+.my-legend .legend-title {
+	text-align: left;
+	margin-bottom: 15px;
+	font-weight: bold;
+	font-size: 30px;
+	margin-left: 550px;
+	opacity: .8;
+	font-family: 'Raleway', sans-serif;
 }
-.legend-text {
-	color: #313333;
-	margin-left: 75px;
-	margin-right: 100px;
+.my-legend .legend-scale ul {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
 	text-align: center;
-	font-size: 18px;
-	font-weight: 300;
+}
+.my-legend .legend-scale ul li {
+	display: block;
+	float: left;
+	width: 50px;
+	margin-bottom: 6px;
+	text-align: right;
+	font-size: 20px;
+	list-style: none;
+	margin-left: 215px;
+	font-family: 'Raleway', sans-serif;
+}
+.my-legend ul.legend-labels li span {
+	display: block;
+	float: left;
+	height: 30px;
+	width: 100px;
+}
+.my-legend a {
+	color: #777;
+}
+.my-legend {
+	max-width: 1500px !important;
 }

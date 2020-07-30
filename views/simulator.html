@@ -15,6 +15,8 @@
     <link href='https://css.gg/arrow-down-r.css' rel='stylesheet'>
     <link href='https://css.gg/arrow-up-r.css' rel='stylesheet'>
     <link href='https://css.gg/export.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Condensed:wght@300&display=swap"
+      rel="stylesheet">
     
     <script src="../scripts/popupBoxes.js"></script>
     <script src="../scripts/createDisease.js"></script>
@@ -26,8 +28,6 @@
     <script src="../scripts/outbreak/outbreak.js"></script><!--including the neighborhood class and state class-->
     <script src="../scripts/outbreak/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
     <script src="../scripts/outbreak/diseaseOutbreak.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
   </head>
   
   <body>
@@ -48,7 +48,6 @@
       <div id="menu-heading">Options</div>
 
       <div id="create-disease-container">
-
         <div id="create-disease-heading">Create Disease</div>
         <label for="diseaseName">Disease Name: </label>
         <input id="disease-name-field" type="text" name="diseaseName" value="Name" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
@@ -64,7 +63,7 @@
         <br>
         <label for="numWeeks">No. of Weeks: </label>
         <input id="num-weeks-field" type="text" name="numWeeks" value="52" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
-        
+
         <div id="popups">
           <div id="diseaseName-popup" class="popup-style">
             <b>Name: </b>Enter a name for the disease.
@@ -138,10 +137,18 @@
     </div>
 
     <div id="graph-placeholder"></div>
-    <div id="legend">
-      <h3>Legend</h3>
-      </div>
-      <div class="legend-text">
+
+        <div class='my-legend'>
+          <div class='legend-title'>Simulation Legend</div>
+          <div class='legend-scale'>
+            <ul class='legend-labels'>
+              <li><span style='background:#3bb117c2;'></span>Recovered</li>
+              <li><span style='background: #3e24e6b9;;'></span>Vacinated</li>
+              <li><span style='background:#e62424b2;'></span>Infected</li>
+              <li><span style='background:#2c2b2bad;'></span>Dead</li>
+            </ul>
+          </div>
+        </div>
         
       </div>
     <script src="../scripts/outbreak/createTable.js"></script>
