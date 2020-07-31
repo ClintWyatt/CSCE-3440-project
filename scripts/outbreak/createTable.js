@@ -16,7 +16,7 @@ var numDead = 0;
 var infection;
 
 function createTable() {
-  var table = "<table Id = graph>"; //represents a html table
+  var table = '<table id="graph">'; //represents a html table
   var n = new Neighborhood();
 
   //resetting values
@@ -41,7 +41,7 @@ function createTable() {
   for (i = 0; i < numRows; i++) {
     table += "<tr>";
     for (j = 0; j < numCols; j++) {
-      table += '<td id="' + (i * numCols + j).toString() + '" class="graph-td"></td>';
+      table += '<td class="graph-td"></td>';
     }
     table += "</tr>";
   }

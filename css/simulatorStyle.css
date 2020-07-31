@@ -3,7 +3,7 @@
 	table-layout: fixed;
 	border-collapse: collapse;
 	border: 2px solid black;
-	margin: 25px auto 50px;
+	margin: -10px auto 50px;
 	width: 800px;
 	height: 600px;
 	background-image: url(../images/testMap.jpg);
@@ -408,6 +408,13 @@
 	left: 6px;
 	bottom: 367px;
 }
+#week-counter {
+	font-size: 32px;
+	font-weight: 700;
+	position: relative;
+	right: 605px;
+	bottom: 10px;
+}
 .my-legend .legend-title {
 	text-align: left;
 	margin-bottom: 15px;
@@ -446,4 +453,7 @@
 }
 .my-legend {
 	max-width: 1500px !important;
+	margin: 0px auto;
+	position: relative;
+	left: 90px;
 }

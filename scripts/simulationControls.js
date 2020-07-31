@@ -3,7 +3,7 @@ const numWeeks = 52;
 var weeksElapsed = 0;
 var simulationStarted = false;
 var isPaused = false;
-var playSpeed = 2500; //2.5 second intervals
+var playSpeed = 2000; //2 second intervals
 var isReset = false;
 
 async function startSimulation() {
@@ -21,6 +21,7 @@ async function startSimulation() {
       }
 
       diseaseOutbreak();
+      updateWeekCounter(weeksElapsed);
       await sleep(playSpeed);
     }
 
@@ -40,7 +41,12 @@ function pauseSimulation() {
 
 function resetSimulation() {
   createTable();
+  updateWeekCounter(0);
   simulationStarted = false;
   isPaused = false;
   isReset = true;
+}
+
+function updateWeekCounter(weeks) {
+  document.getElementById('week-counter').innerText = 'Week: ' + weeks;
 }
