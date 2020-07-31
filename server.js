@@ -145,10 +145,6 @@ app.post('/virusData', function(request, response){
 			});
 		}
 	});
-<<<<<<< HEAD
-})
-
-=======
 });
 
 //used to get the viruses from the database
@@ -161,6 +157,5 @@ app.get('/virusData', function(request, response){
 	});
 	
 });
->>>>>>> myb
 app.listen(3000);//listening on port 3000
 console.log("Server running on port 3000!");
