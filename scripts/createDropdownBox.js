@@ -9,6 +9,8 @@ diseases.push("Yellow Fever");
 diseases.push("SARS");
 diseases.push("Ebola");
 
+//shows the diseases, must integrate database with this part, then use a function to load the information into
+//the simulation itself
 for (let i = 0; i < diseases.length; i++) {
   dropdownBox += '<tr><td onclick="selectDisease(this)">' + diseases[i] + "</td></tr>";
 }
