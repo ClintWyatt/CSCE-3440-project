@@ -145,7 +145,22 @@ app.post('/virusData', function(request, response){
 			});
 		}
 	});
+<<<<<<< HEAD
 })
 
+=======
+});
+
+//used to get the viruses from the database
+app.get('/virusData', function(request, response){
+
+	console.log("here!!!!");
+	connection.query('SELECT * FROM virus WHERE username = ?', [user], function(error, results){
+
+		response.send(JSON.stringify(results));//sending back all the viruses to the simulation page
+	});
+	
+});
+>>>>>>> myb
 app.listen(3000);//listening on port 3000
 console.log("Server running on port 3000!");
