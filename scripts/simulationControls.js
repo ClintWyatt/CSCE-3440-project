@@ -1,17 +1,23 @@
 //global variables
-const numWeeks = 52;
 var weeksElapsed = 0;
 var simulationStarted = false;
+var simulationDone = false;
 var isPaused = false;
 var playSpeed = 2000; //2 second intervals
 var isReset = false;
 
 async function startSimulation() {
-  if (!simulationStarted) {
+  if (simulationDone) {
+    resetSimulation();
+  }
+  
+  if (!simulationStarted && !simulationDone) {
     isReset = false;
     simulationStarted = true;
+    weeksElapsed = 1;
+    updateWeekCounter(1);
 
-    for (weeksElapsed = 0; weeksElapsed < numWeeks; weeksElapsed++) {
+    for (weeksElapsed = 1; weeksElapsed < numWeeks; weeksElapsed++) {
       while (isPaused) {
         await sleep(50);
       }
@@ -23,9 +29,14 @@ async function startSimulation() {
       diseaseOutbreak();
       updateWeekCounter(weeksElapsed);
       await sleep(playSpeed);
+
+      if (numSusceptible == 0 && numInfected == 0) {
+        break;
+      }
     }
 
     simulationStarted = false;
+    simulationDone = true;
   }
 
   if (simulationStarted) {
@@ -43,6 +54,7 @@ function resetSimulation() {
   createTable();
   updateWeekCounter(0);
   simulationStarted = false;
+  simulationDone = false;
   isPaused = false;
   isReset = true;
 }

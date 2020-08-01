@@ -14,12 +14,28 @@ function loadDisease() {
     dropdownField.style.backgroundColor = "lightcoral";
   }
   else {
-    //SQL
-    console.log("Load disease: " + dropdownField.value);
-  
-      $.get("virusData", function(data, status){//will need to send the virus name to the database and search for the virus, then return it and use it for the simulation
-        console.log(data);
-      });
-     
-    }
+    $.get('/virusData', function(results) {
+      var indexOfDisease = 0;
+      var diseaseFound = false;
+
+      for (indexOfDisease = 0; indexOfDisease < results.length; indexOfDisease++) {
+        if (results[indexOfDisease].virusName == dropdownField.value) {
+          diseaseFound = true;
+          break;
+        }
+      }
+
+      if (diseaseFound) {
+        //set the global variables
+        diseaseName = results[indexOfDisease].virusName;
+        infectionRate = Math.floor(results[indexOfDisease].infectionRate / 2);
+        deathRate = results[indexOfDisease].deathRate;
+        threshold = results[indexOfDisease].threshold;
+        numWeeks = results[indexOfDisease].weeks;
+      }
+
+      toggleSlideMenu();
+      resetSimulation();
+    });
   }
+}

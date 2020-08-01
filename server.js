@@ -131,13 +131,14 @@ app.post('/virusData', function(request, response){
 	var weeks = request.body.numWeeks;
 
 	//checking to see if the virus is already in the database
-	connection.query('SELECT * FROM virus WHERE virusName = ?', [diseaseName], function(error, results, fields) {
+	connection.query('SELECT * FROM virus WHERE virusName = ? AND userName = ?', [diseaseName, user], function(error, results, fields) {
 		//if the virus is already in the data base, do not insert the virus info
 		console.log(results.length);
 		if(results.length > 0){
 			console.log("ERROR: virus already exist in the database. ");
 		}
 		else{//virus does not exist in the database yet
+			console.log(user);
 			var sql = "INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES('"+diseaseName+"','"+infectionRate+"','"+deathRate+"', '"+threshold+"', '"+user+"', '"+weeks+"')";
 			connection.query(sql, function(err, result){
 				if(err){throw err;}
@@ -147,15 +148,12 @@ app.post('/virusData', function(request, response){
 	});
 });
 
-//used to get the viruses from the database
+//used to get ALL of the viruses from the database
 app.get('/virusData', function(request, response){
-
-	console.log("here!!!!");
-	connection.query('SELECT * FROM virus WHERE username = ?', [user], function(error, results){
-
-		response.send(JSON.stringify(results));//sending back all the viruses to the simulation page
+	connection.query('SELECT * FROM virus WHERE username = ? OR username = "antivaxer"', [user], function(error, results){
+		response.send(results);//sending back all the viruses to the simulation page
 	});
-	
 });
+
 app.listen(3000);//listening on port 3000
 console.log("Server running on port 3000!");
