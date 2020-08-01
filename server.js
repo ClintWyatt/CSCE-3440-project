@@ -9,7 +9,7 @@ var stringResponse; //used to tell the user the status of their request to the d
 var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'Sky_Onward11010!',
+	password: 'Samus2647!',
 	database: 'userInfo'
 });
 
@@ -120,6 +120,7 @@ app.post('/register', function(request, response) {
 	}
 });
 
+/* routing to other pages */
 app.get('/Simulation', function(request, response) {
 	return response.sendFile(path.join(__dirname, 'views', 'simulator.html')); //going to the simulation page
 });
@@ -131,8 +132,9 @@ app.get('/Register', function(request, response) {
 app.get('/BackToLogin', function(request, response) {
 	return response.sendFile(path.join(__dirname, 'views', 'login.html')); //must return for this method to work. Will redirect to the simulator.html
 });
+/*routing to pages end */
 
-//getting data for the disease saved by the user.
+//Inserting a virus into the database
 app.post('/virusData', function(request, response) {
 	var diseaseName = request.body.disease;
 	var infectionRate = request.body.infRate;
@@ -187,7 +189,7 @@ app.get('/virusData', function(request, response) {
 		response.send(results); //sending back all the viruses to the simulation page
 	});
 });
-
+//method sends the username to the homepage, which will result in "Welcome username (in the userInfo table)"
 app.get('/username', function(request, response) {
 	if (user == '') {
 		response.send('?');
