@@ -15,27 +15,27 @@ function loadDisease() {
   }
   else {
     $.get('/virusData', function(results) {
-      var indexOfDisease = 0;
-      var diseaseFound = false;
+      //search for disease in results array
+      for (let i = 0; i < results.length; i++) {
+        if (results[i].virusName == dropdownField.value) {
+          //set the global variables
+          diseaseName = results[i].virusName;
+          infectionRate = Math.floor(results[i].infectionRate / 2);
+          deathRate = results[i].deathRate;
+          threshold = results[i].threshold;
+          numWeeks = results[i].weeks;
 
-      for (indexOfDisease = 0; indexOfDisease < results.length; indexOfDisease++) {
-        if (results[indexOfDisease].virusName == dropdownField.value) {
-          diseaseFound = true;
+          toggleSlideMenu();
+          resetSimulation();
+          setDiseaseNameLabel(diseaseName);
+          
+          if (!simulationStarted) {
+            simulationDone = false;
+          }
+
           break;
         }
       }
-
-      if (diseaseFound) {
-        //set the global variables
-        diseaseName = results[indexOfDisease].virusName;
-        infectionRate = Math.floor(results[indexOfDisease].infectionRate / 2);
-        deathRate = results[indexOfDisease].deathRate;
-        threshold = results[indexOfDisease].threshold;
-        numWeeks = results[indexOfDisease].weeks;
-      }
-
-      toggleSlideMenu();
-      resetSimulation();
     });
   }
 }

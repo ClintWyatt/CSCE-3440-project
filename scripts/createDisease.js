@@ -27,7 +27,7 @@ function validateFields() {
   var numWeeksField = document.getElementById("num-weeks-field");
   var allFieldsValid = true;
 
-  if (diseaseNameField.value.length == 0) { //or if name already exists (SQL)
+  if (diseaseNameField.value.length == 0 || diseaseNameField.value.length > 22) { //or if name already exists (SQL)
     allFieldsValid = false;
     diseaseNameField.style.backgroundColor = "lightcoral";
   }

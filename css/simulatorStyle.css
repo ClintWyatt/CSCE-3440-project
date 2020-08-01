@@ -3,7 +3,7 @@
 	table-layout: fixed;
 	border-collapse: collapse;
 	border: 2px solid black;
-	margin: -10px auto 50px;
+	margin: -50px auto 50px;
 	width: 800px;
 	height: 600px;
 	background-image: url(../images/testMap.jpg);
@@ -185,7 +185,7 @@
 
 #diseaseName-popup {
 	position: relative;
-	width: 150px;
+	width: 200px;
 }
 #infRate-popup {
 	position: relative;
@@ -422,6 +422,13 @@
 	right: 605px;
 	bottom: 10px;
 }
+#disease-name-label {
+	position: relative;
+	right: 20px;
+	bottom: 50px;
+	text-align: center;
+	font-size: 35px;
+}
 .my-legend .legend-title {
 	text-align: left;
 	margin-bottom: 15px;
@@ -461,6 +468,7 @@
 .my-legend {
 	max-width: 1500px !important;
 	margin: 0px auto;
+	width: 1500px;
 	position: relative;
-	left: 90px;
+	left: 150px;
 }

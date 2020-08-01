@@ -4,7 +4,7 @@ var session = require('express-session');
 var bodyparser = require('body-parser');
 var path = require('path');
 const { connect } = require('http2');
-var user; //will be used for inserting info into the virus table
+var user = ""; //will be used for inserting info into the virus table
 var stringResponse;//used to tell the user the status of their request to the database for logging in, viurs updates, etc.
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -153,5 +153,13 @@ app.get('/virusData', function(request, response){
 	});
 });
 
+app.get('/username', function(request, response) {
+	if (user == "") {
+		response.send('?')
+	}
+	else {
+		response.send(user);
+	}
+})
 app.listen(3000);//listening on port 3000
 console.log("Server running on port 3000!");

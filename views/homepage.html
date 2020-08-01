@@ -14,14 +14,12 @@
     </head>
 
     <body> 
-
+        <div id="top-of-page" style="position: absolute; left: 0px; top: -1000px;"></div>
+        
         <header>
             <a href="homepage" class="site-logo" aria-label="homepage">Project Outbreak</a>
             <nav class="main-nav">
                 <ul class="nav__list">
-                    <li class="nav__list-item">
-                        <a href="homepage" class="nav__link">Home</a>
-                    </li>
                     <li class="nav__list-item">
                         <a href="Simulation" class="nav__link">Simulation</a>
                     </li>
@@ -33,9 +31,12 @@
                     </li>
                 </ul>
             </nav>
-            <div id="login-btns-placeholder"></div>
+            
             <nav class="account">
                 <ul class="nav__list">
+                    <li>
+                        <div id="welcome-message">Welcome, ?</div>
+                    </li>
                     <li class="nav__list-item">
                         <a class="nav__link nav__link--btn nav__link--btn--highlight" href="BackToLogin">Logout</a>
                     </li>
@@ -149,7 +150,7 @@
             <div id="simulator-page-link-text">Go to Simulator</div>
             <i id="simulator-page-link-icon" class="gg-arrow-right-o"></i>
         </a>
-        <a id="top-shortcut" class="special-link-format" href="homepage">
+        <a id="top-shortcut" class="special-link-format" href="#top-of-page">
             <div class="shortcut-text">Top</div>
             <i class="shortcut-icon gg-push-chevron-up"></i>
         </a>
@@ -168,5 +169,6 @@
         
         <!--javascript file for fading scroll effect-->
         <script src="../scripts/scrollEffect.js"></script>
+        <script src="../scripts/welcomeMessage.js"></script>
     </body>
 </html>

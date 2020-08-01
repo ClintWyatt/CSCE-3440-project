@@ -102,5 +102,3 @@ class Neighborhood extends State{//represents the squares on the graph in htmlTa
     }
 
 }
-
-

@@ -9,10 +9,7 @@ const sectionOneOptions = {
   rootMargin: "-200px 0px 0px 0px",
 };
 
-const sectionOneObserver = new IntersectionObserver(function (
-  entries,
-  sectionOneObserver
-) {
+const sectionOneObserver = new IntersectionObserver(function (entries, sectionOneObserver) {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) {
       header.classList.add("nav-scrolled");
@@ -49,10 +46,7 @@ const appearOptions = {
   rootMargin: "0px 0px -250px 0px",
 };
 
-const appearOnScroll = new IntersectionObserver(function (
-  entries,
-  appearOnScroll
-) {
+const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) {
       return;

@@ -9,36 +9,44 @@ var isReset = false;
 async function startSimulation() {
   if (simulationDone) {
     resetSimulation();
+    simulationDone = false;
   }
   
   if (!simulationStarted && !simulationDone) {
     isReset = false;
     simulationStarted = true;
-    weeksElapsed = 1;
-    updateWeekCounter(1);
 
-    for (weeksElapsed = 1; weeksElapsed < numWeeks; weeksElapsed++) {
+    for (weeksElapsed = 1; weeksElapsed < numWeeks + 1; weeksElapsed++) {
       while (isPaused) {
         await sleep(50);
       }
 
       if (isReset) {
+        isReset = false;
+        simulationStarted = false;
         return;
       }
-
+      
       diseaseOutbreak();
       updateWeekCounter(weeksElapsed);
-      await sleep(playSpeed);
-
+      
       if (numSusceptible == 0 && numInfected == 0) {
         break;
+      }
+      
+      await sleep(playSpeed);
+
+      if (isReset) {
+        isReset = false;
+        simulationStarted = false;
+        return;
       }
     }
 
     simulationStarted = false;
     simulationDone = true;
   }
-
+  
   if (simulationStarted) {
     isPaused = false;
   }
@@ -51,14 +59,19 @@ function pauseSimulation() {
 }
 
 function resetSimulation() {
+  isReset = true;
   createTable();
   updateWeekCounter(0);
-  simulationStarted = false;
-  simulationDone = false;
   isPaused = false;
-  isReset = true;
 }
 
 function updateWeekCounter(weeks) {
   document.getElementById('week-counter').innerText = 'Week: ' + weeks;
+}
+
+function setDiseaseNameLabel(name) {
+  var diseaseNameLabel = document.getElementById('disease-name-label');
+  diseaseNameLabel.innerText = name;/*
+  diseaseNameLabel.style.width = Math.floor((name.length / 1.5) * 30).toString() + 'px';
+  console.log(window.getComputedStyle(diseaseNameLabel, null).getPropertyValue("width"));*/
 }

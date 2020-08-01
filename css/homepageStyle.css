@@ -72,6 +72,10 @@ p a:hover {
 	font-size: 0.8rem;
 	color: var(--text);
 	text-decoration: none;
+	transition: color 0.4s;
+}
+.site-logo:hover {
+	color: rgb(182, 182, 182);
 }
 
 header {
@@ -90,6 +94,10 @@ header {
 	transition: background 250ms ease-in;
 	background: var(--background);
 	color: var(--text);
+}
+.main-nav {
+	position: relative;
+	left: 50px;
 }
 .nav__list {
 	list-style: none;
