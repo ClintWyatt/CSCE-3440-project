@@ -41,7 +41,7 @@ app.post('/login', function(request, response) {
 			'SELECT * FROM login WHERE userName = ? AND password = ?',
 			[ request.body.username, request.body.password ],
 			function(error, results, fields) {
-				console.log(results.length);
+				
 				if (results.length > 0) {
 					user = request.body.username;
 					return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //must return for this method to work. Will redirect to the simulator.html
@@ -49,13 +49,11 @@ app.post('/login', function(request, response) {
 					//response.send('Incorrect Username and/or Password!');
 					response.redirect('/');
 				}
-				response.end();
+				
 			}
 		);
-	} else {
-		//response.send('Please enter Username and Password!');
-		response.end();
-	}
+	} 
+	
 });
 
 app.get('/homepage', function(request, response) {
