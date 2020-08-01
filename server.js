@@ -148,7 +148,11 @@ app.post('/virusData', function(request, response){
 	});
 });
 
+<<<<<<< HEAD
 //used to get ALL of the viruses from the database
+=======
+//used to get all of the viruses from the database
+>>>>>>> c5129c9c402f0af545c8d2f8ca01ee38c210e9e1
 app.get('/virusData', function(request, response){
 	connection.query('SELECT * FROM virus WHERE username = ? OR username = "antivaxer"', [user], function(error, results){
 		response.send(results);//sending back all the viruses to the simulation page
