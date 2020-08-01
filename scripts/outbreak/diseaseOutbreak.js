@@ -74,7 +74,7 @@ function diseaseOutbreak() {
     z++;
 
     //chance to see if the disease will jump randomly on the map (only 2 jumps total allowed)
-    if (numRandomJumps < 2 && weeksElapsed > 3 && generateNumber(1, 100) <= infectionRate / 3 ) {
+    if (numRandomJumps < 2 && weeksElapsed > 3 && generateNumber(1, 100) <= Math.floor((infectionRate * 2) / 3)) {
       var randomLocation = pickRandomDenseCell();
       var loopTimeout = 0; //just in case there are no open spots, the loop won't be infinite
 

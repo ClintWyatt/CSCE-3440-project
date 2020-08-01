@@ -1,10 +1,12 @@
 //global variables
 const numRows = 50;
 const numCols = 80;
-var threshold = 2;       //represents the amount of adjacent neighbors that can cause a suceptible neighbor to become infected
+var diseaseName = "";
+var infectionRate = 0;  //represents how likely a neighborhood while become infected
+var deathRate = 0;      //represents how likely a neighborhood while die
+var threshold = 0;       //represents the amount of adjacent neighbors that can cause a suceptible neighbor to become infected
+var numWeeks = 0;
 var infectionPeriod = 5; //represetns how long the neighborhood is infected
-var infectionRate = 30;  //represents how likely a neighborhood while become infected
-var deathRate = 10;      //represents how likely a neighborhood while die
 var numRandomJumps = 0;  //represents how many times the disease has jumped randomly
 var neighborhood = [];
 var x;
