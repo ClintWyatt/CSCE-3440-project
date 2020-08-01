@@ -1,3 +1,6 @@
+<!--Each table row is defined with the <tr> tag. A table header is defined with the <th> tag.
+  By default, table headings are bold and centered. A table data/cell is defined with the <td> tag.-->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,7 +8,7 @@
 
     <!-- Inherits some styles from the homepage -->
     <link href="../css/homepageStyle.css" rel="stylesheet">
-    <link href="../css/simulatorStyle.css" rel="stylesheet">
+    <link href="../css/htmlTableStyle.css" rel="stylesheet">
     <link href='https://css.gg/menu.css' rel='stylesheet'>
     <link href='https://css.gg/import.css' rel='stylesheet'>
     <link href='https://css.gg/erase.css' rel='stylesheet'>
@@ -15,10 +18,7 @@
     <link href='https://css.gg/arrow-down-r.css' rel='stylesheet'>
     <link href='https://css.gg/arrow-up-r.css' rel='stylesheet'>
     <link href='https://css.gg/export.css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Condensed:wght@300&display=swap"
-      rel="stylesheet">
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
     <script src="../scripts/popupBoxes.js"></script>
     <script src="../scripts/createDisease.js"></script>
     <script src="../scripts/loadDisease.js"></script>
@@ -30,11 +30,15 @@
     <script src="../scripts/outbreak/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
     <script src="../scripts/outbreak/diseaseOutbreak.js"></script>
   </head>
-  <header>
-    <a href="homepage" class="site-logo" aria-label="homepage">Project Outbreak</a>
-  </header>
+  
   <body>
     <div id="grey-overlay"></div>
+    
+    <nav class="main-nav">
+      <ul class="nav__list">
+          <li class="nav__list-item"><a href="homepage" class="nav__link">Home</a></li>
+          <li class="nav__list-item"><a href="#" class="nav__link">About us</a></li>
+      </ul>
     </nav>
 
     <div id="banner-simulation">
@@ -56,10 +60,10 @@
         <input id="death-rate-field" type="text" name="deathRate" value="10" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
         <br>
         <label for="threshold">Threshold: </label>
-        <input id="threshold-field" type="text" name="threshold" value="2" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
+        <input id="threshold-field" type="text" name="threshold" value="1" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
         <br>
         <label for="numWeeks">No. of Weeks: </label>
-        <input id="num-weeks-field" type="text" name="numWeeks" value="52" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
+        <input id="num-weeks-field" type="text" name="numWeeks" value="365" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
 
         <div id="popups">
           <div id="diseaseName-popup" class="popup-style">
@@ -133,25 +137,7 @@
       </div>
     </div>
 
-    <div id="week-counter">Week: 0</div>
-
-    <div id="graph-placeholder"></div>
-
-        <div class='my-legend'>
-          <div class='legend-title'>Simulation Legend</div>
-          <div class='legend-scale'>
-            <ul class='legend-labels'>
-              <li><span style='background:#3bb117c2;'></span>Recovered</li>
-              <li><span style='background: #3e24e6b9;;'></span>Vaccinated</li>
-              <li><span style='background:#e62424b2;'></span>Infected</li>
-              <li><span style='background:#2c2b2bad;'></span>Dead</li>
-            </ul>
-          </div>
-        </div>
-        
-      </div>
     <script src="../scripts/outbreak/createTable.js"></script>
     <script src="../scripts/toggleSlideMenu.js"></script>
-    
   </body>
 </html>

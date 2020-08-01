@@ -37,6 +37,13 @@
 	opacity: 0.5;
 	z-index: 3;
 }
+.site-logo {
+	font-weight: 900;
+	font-size: 0.8rem;
+	color: var(--text);
+	text-decoration: none;
+	padding-top: 0.75em;
+}
 .nav__list {
 	position: absolute;
 	z-index: 6;
@@ -57,7 +64,7 @@
 	background-image: url("../images/virus-banner.jpg");
 	background-size: 100% 400%;
 	z-index: 5;
-	font-family: font-family: 'Raleway', sans-serif;;
+	font-family: 'Raleway', sans-serif;
 }
 @media (max-width: 1500px) {
 	#banner-simulation {
@@ -420,7 +427,7 @@
 	margin-bottom: 15px;
 	font-weight: bold;
 	font-size: 30px;
-	margin-left: 520px;
+	margin-left: 450px;
 	opacity: .8;
 	font-family: 'Raleway', sans-serif;
 }
@@ -439,7 +446,7 @@
 	text-align: right;
 	font-size: 20px;
 	list-style: none;
-	margin-left: 215px;
+	margin-left: 185px;
 	font-family: 'Raleway', sans-serif;
 }
 .my-legend ul.legend-labels li span {
