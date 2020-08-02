@@ -6,6 +6,7 @@ var isPaused = false;
 var playSpeed = 2000; //2 second intervals
 var isReset = false;
 
+//start playing the simulation
 async function startSimulation() {
   if (simulationDone) {
     resetSimulation();
@@ -16,7 +17,7 @@ async function startSimulation() {
     isReset = false;
     simulationStarted = true;
 
-    for (weeksElapsed = 1; weeksElapsed < numWeeks + 1; weeksElapsed++) {
+    for (weeksElapsed = 0; weeksElapsed < numWeeks + 1; weeksElapsed++) {
       while (isPaused) {
         await sleep(50);
       }
@@ -52,12 +53,14 @@ async function startSimulation() {
   }
 }
 
+//pause the simulation
 function pauseSimulation() {
   if (simulationStarted) {
     isPaused = true;
   }
 }
 
+//start a fresh graph
 function resetSimulation() {
   isReset = true;
   createTable();
@@ -65,13 +68,13 @@ function resetSimulation() {
   isPaused = false;
 }
 
+//update the week counter above the simulator
 function updateWeekCounter(weeks) {
   document.getElementById('week-counter').innerText = 'Week: ' + weeks;
 }
 
+//set the disease name label above the simulator
 function setDiseaseNameLabel(name) {
   var diseaseNameLabel = document.getElementById('disease-name-label');
-  diseaseNameLabel.innerText = name;/*
-  diseaseNameLabel.style.width = Math.floor((name.length / 1.5) * 30).toString() + 'px';
-  console.log(window.getComputedStyle(diseaseNameLabel, null).getPropertyValue("width"));*/
+  diseaseNameLabel.innerText = name;
 }

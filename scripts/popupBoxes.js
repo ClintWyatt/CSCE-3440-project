@@ -1,3 +1,4 @@
+//show help popup for a certain field that is selected
 function showPopup(field) {
   resetAllPopups();
 
@@ -6,6 +7,7 @@ function showPopup(field) {
   document.getElementsByName(field)[0].style.backgroundColor = "white";
 }
 
+//hide all popups
 function resetAllPopups() {
   document.getElementById("diseaseName-popup").style.opacity = "0";
   document.getElementById("diseaseName-popup").style.zIndex = "0";

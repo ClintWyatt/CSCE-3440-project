@@ -1,3 +1,4 @@
+//clear all of the create disease fields
 function clearAllFields() {
   var diseaseNameField = document.getElementById("disease-name-field");
   var infRateField = document.getElementById("infection-rate-field");
@@ -18,7 +19,7 @@ function clearAllFields() {
   numWeeksField.style.backgroundColor = "white";
 }
 
-
+//validate the entered information in the fields
 function validateFields() {
   var diseaseNameField = document.getElementById("disease-name-field");
   var infRateField = document.getElementById("infection-rate-field");
@@ -27,7 +28,7 @@ function validateFields() {
   var numWeeksField = document.getElementById("num-weeks-field");
   var allFieldsValid = true;
 
-  if (diseaseNameField.value.length == 0 || diseaseNameField.value.length > 22) { //or if name already exists (SQL)
+  if (diseaseNameField.value.length == 0 || diseaseNameField.value.length > 22) {
     allFieldsValid = false;
     diseaseNameField.style.backgroundColor = "lightcoral";
   }
@@ -50,9 +51,7 @@ function validateFields() {
   }
 
   if (allFieldsValid) {
-    console.log("Disease creation successful!"); //store disease (SQL)
-
-    //sending the information to the server to see if the virus entered by the user can be added to the database.
+    //sending the information to the server to see if the virus entered by the user can be added to the database
     $.ajax({
       method: "POST",
       url: "virusData",
@@ -63,10 +62,11 @@ function validateFields() {
         numWeeks: document.getElementById("num-weeks-field").value }
     });
 
-    createDropdownBox();
+    createDropdownBox(); //update dropdown box
   }
 }
 
+//returns if a value is a number or not
 function isNumber(value) {
   var str = value.toString();
   var num = parseInt(value);

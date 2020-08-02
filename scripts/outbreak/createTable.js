@@ -17,6 +17,7 @@ var numSusceptible = 0;
 var numDead = 0;
 var infection;
 
+//create the html table over the map image
 function createTable() {
   var table = '<table id="graph">'; //represents a html table
   var n = new Neighborhood();
@@ -37,9 +38,8 @@ function createTable() {
     n = new Neighborhood(); //must do this to prevent all objects refering to 1 object
     n.setInfectionPeriod(infectionPeriod);
   }
-  //const neighborhood = new Neighborhood()[67,600];//creating a 2d array of neighborhoods
   
-  //generating tha table graph
+  //generating the table graph
   for (i = 0; i < numRows; i++) {
     table += "<tr>";
     for (j = 0; j < numCols; j++) {
@@ -53,11 +53,8 @@ function createTable() {
   x = document.getElementsByClassName("graph-td"); //getting all the columns in the table
   infection = generateNumber(0, numRows);
   
-  /*variables for the count of different states neighborhoods could be in */
-  
-  
   while (numInfected == 0) { //ensures at least 1 starting location is chosen
-    //randomly set states to the graph
+    //randomly set states of the graph
     for (i = 0; i < x.length; i++) { //number of columns in the graph
       if (!isOceanCell(i)) {
         if (infection < 2 && numInfected < 1) { //1 starting location

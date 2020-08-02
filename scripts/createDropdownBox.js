@@ -1,3 +1,4 @@
+//retrieve disease data and populate the dropdown box with names
 function createDropdownBox() {
   $.get('/virusData', function(results) {
     var dropdownBox = '<table id="dropdown-box">';
@@ -17,6 +18,7 @@ function createDropdownBox() {
   });
 }
 
+//toggle the visibility of the dropdown box
 function toggleDropdownBox() {
   var dropdownBox = document.getElementById("dropdown-box");
   var dropdownIcon = document.getElementById("dropdown-icon");

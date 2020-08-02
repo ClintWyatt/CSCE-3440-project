@@ -1,7 +1,9 @@
+//returns if a cell is an ocean cell or not
 function isOceanCell(id) {
     return oceanCells.includes(id);
 }
 
+//represents the inactive cells of the table
 var oceanCells = [
   0,
   1,

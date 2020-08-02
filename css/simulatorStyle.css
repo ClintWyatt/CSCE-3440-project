@@ -62,13 +62,6 @@ header {
 	background: var(--background);
 	color: var(--text);
 }
-.nav__list {
-	position: absolute;
-	z-index: 6;
-	color: white;
-	top: 32px;
-	left: 10px;
-}
 #banner-simulation {
 	position: relative;
 	color: white;
@@ -488,5 +481,5 @@ header {
 	margin: 0px auto;
 	width: 1500px;
 	position: relative;
-	left: 150px;
+	left: 225px;
 }

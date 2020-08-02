@@ -30,17 +30,20 @@
     <script src="../scripts/outbreak/graphCheck.js"></script><!--including the GraphCheck class for the outbreak-->
     <script src="../scripts/outbreak/diseaseOutbreak.js"></script>
   </head>
+  
   <header>
       <a href="homepage" class="site-logo" aria-label="homepage">Project Outbreak</a>
   </header>
 
   <body>
+    <!--Menu the slide menu is active, this overlay becomes visible-->
     <div id="grey-overlay"></div>
 
     <div id="banner-simulation">
       <div id="title">The Simulator</div>
     </div>
     
+    <!--The create/load disease sliding menu-->
     <div id="slide-menu">
       <div id="menu-heading">Options</div>
 
@@ -61,6 +64,7 @@
         <label for="numWeeks">No. of Weeks: </label>
         <input id="num-weeks-field" type="text" name="numWeeks" value="52" onfocus="showPopup(name)" onfocusout="resetAllPopups()">
 
+        <!--Help popups for the different create disease fields-->
         <div id="popups">
           <div id="diseaseName-popup" class="popup-style">
             <b>Name: </b>Enter a name for the disease. Max 22 characters.
@@ -113,11 +117,13 @@
         </div>
       </div>
 
+      <!--The three lines icon, toggles the menu visibility-->
       <div id="slide-menu-toggler" onclick="toggleSlideMenu()">
         <i id="slide-menu-toggler-icon" class="gg-menu"></i>
       </div>
     </div>
 
+    <!--Simulation control buttons-->
     <div id="simulation-btns">
       <div id="start-btn" class="simulation-btns-style" onclick="startSimulation()">
         <i id="start-btn-icon" class="gg-play-button-o"></i>
@@ -136,21 +142,21 @@
     <div id="week-counter">Week: 0</div>
     <div id="disease-name-label">N/A</div>
 
+    <!--The graph HTML is written in createTable.js and placed here-->
     <div id="graph-placeholder"></div>
 
-        <div class='my-legend'>
-          <div class='legend-title'>Simulation Legend</div>
-          <div class='legend-scale'>
-            <ul class='legend-labels'>
-              <li><span style='background:#3bb117c2;'></span>Recovered</li>
-              <li><span style='background: #3e24e6b9;;'></span>Vaccinated</li>
-              <li><span style='background:#e62424b2;'></span>Infected</li>
-              <li><span style='background:#2c2b2bad;'></span>Dead</li>
-            </ul>
-          </div>
-        </div>
-        
+    <div class='my-legend'>
+      <div class='legend-title'>Simulation Legend</div>
+      <div class='legend-scale'>
+        <ul class='legend-labels'>
+          <li><span style='background:#3bb117c2;'></span>Recovered</li>
+          <li><span style='background: #3e24e6b9;;'></span>Vaccinated</li>
+          <li><span style='background:#e62424b2;'></span>Infected</li>
+          <li><span style='background:#2c2b2bad;'></span>Dead</li>
+        </ul>
       </div>
+    </div>
+
     <script src="../scripts/outbreak/createTable.js"></script>
     <script src="../scripts/toggleSlideMenu.js"></script>
     

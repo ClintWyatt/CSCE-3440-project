@@ -1,3 +1,4 @@
+//sets the text inside the load disease box
 function selectDisease(cell) {
   var dropdownField = document.getElementById("dropdown-field");
 
@@ -6,7 +7,7 @@ function selectDisease(cell) {
   toggleDropdownBox();
 }
 
-//need to change this method, but will be useful for the drop down menu when selecting viruses
+//gets a disease's properties from the database and loads it for the simulator
 function loadDisease() {
   var dropdownField = document.getElementById("dropdown-field");
   
@@ -20,7 +21,7 @@ function loadDisease() {
         if (results[i].virusName == dropdownField.value) {
           //set the global variables
           diseaseName = results[i].virusName;
-          infectionRate = Math.floor(results[i].infectionRate / 2);
+          infectionRate = results[i].infectionRate;
           deathRate = results[i].deathRate;
           threshold = results[i].threshold;
           numWeeks = results[i].weeks;
