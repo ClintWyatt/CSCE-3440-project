@@ -1,9 +1,7 @@
 var mysql = require('mysql');
 var express = require('express');
-var session = require('express-session');
 var bodyparser = require('body-parser');
 var path = require('path');
-const { connect } = require('http2');
 const fs = require('fs');
 
 var user = ''; //holds the username of the current user
