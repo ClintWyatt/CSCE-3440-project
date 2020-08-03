@@ -59,6 +59,7 @@ header {
 	--text: #f4f4f4;
 	--text-inverse: #333;
 	background-image: url("../images/virus-banner.jpg");
+	background-size: 100% 400%;
 	position: absolute;
 	top: 0;
 	left: 0;
