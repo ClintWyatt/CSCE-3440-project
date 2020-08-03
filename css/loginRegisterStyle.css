@@ -39,28 +39,28 @@ body {
   width: 240px;
 }
 
-.login-form h1 {
+.loginform h1 {
   text-align: center;
   color: rgb(39, 39, 39);
   font-size: 32px;
   padding: 10px 0 10px 0;
 }
 
-.login-form {
+.loginform {
   width: 400px;
   margin: 0 auto;
   margin-top: 60px;
 }
 
-.login-form input[type="password"],
-.login-form input[type="text"] {
+.loginform input[type="password"],
+.loginform input[type="text"] {
   width: 100%;
   padding: 20px;
   border: 1px solid #dddddd;
   margin-bottom: 20px;
   box-sizing: border-box;
 }
-.login-form input[type="submit"] {
+.loginform input[type="submit"] {
   width: 100%;
   padding: 10px;
   background-color: limegreen;
@@ -70,7 +70,7 @@ body {
 
   color: yellow;
 }
-.login-form input[type="submit"]:hover {
+.loginform input[type="submit"]:hover {
   background-color: rgb(40, 170, 40);
   
 }
