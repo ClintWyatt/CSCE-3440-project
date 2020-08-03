@@ -64,7 +64,8 @@ body {
   width: 100%;
   padding: 20px;
   background-color: limegreen;
-  border: 0;
+  border: 1;
+  border-color: yellow;
   box-sizing: border-box;
   cursor: pointer;
 
