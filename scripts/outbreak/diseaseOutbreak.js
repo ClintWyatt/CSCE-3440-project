@@ -45,15 +45,15 @@ function diseaseOutbreak() {
     else if (neighborhood[i].getStatus() === "infected") {
       if (neighborhood[i].getInfection() > infectionPeriod && (numInfected > 1 || numSusceptible == 0) && generateNumber(1, 100) <= (100 - infectionRate)) {
         if (generateNumber(1, 100) <= deathRate) {
-          neighborhood[i].setStatus("black"); //changing the neighborhood to recoverred
-          x[i].style.backgroundColor = "black"; //infected
+          neighborhood[i].setStatus("black"); //changing the neighborhood to dead
+          x[i].style.backgroundColor = "black"; //dead
           x[i].style.opacity = "0.5";
           numInfected--; //decrementing the number of infected neighborhoods.
           numDead++;
         }
         else {
-          neighborhood[i].setStatus("green"); //changing the neighborhood to recoverred
-          x[i].style.backgroundColor = "green"; //infected
+          neighborhood[i].setStatus("green"); //changing the neighborhood to recovered
+          x[i].style.backgroundColor = "green"; //recovered
           numInfected--; //decrementing the number of infected neighborhoods.
           numRecovered++;
         }
