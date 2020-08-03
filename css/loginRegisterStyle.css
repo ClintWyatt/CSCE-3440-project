@@ -56,13 +56,13 @@ body {
 .loginform input[type="text"] {
   width: 100%;
   padding: 20px;
-  border: 1px solid #dddddd;
+  border: 1px solid limegreen;
   margin-bottom: 20px;
   box-sizing: border-box;
 }
 .loginform input[type="submit"] {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   background-color: limegreen;
   border: 0;
   box-sizing: border-box;
