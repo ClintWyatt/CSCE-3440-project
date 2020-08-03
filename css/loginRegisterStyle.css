@@ -68,7 +68,6 @@ body {
   border-color: yellow;
   box-sizing: border-box;
   cursor: pointer;
-
   color: yellow;
 }
 .loginform input[type="submit"]:hover {
