@@ -4,13 +4,19 @@ var session = require('express-session');
 var bodyparser = require('body-parser');
 var path = require('path');
 const { connect } = require('http2');
-var user = ''; //will be used for inserting info into the virus table
-var stringResponse; //used to tell the user the status of their request to the database for logging in, viurs updates, etc.
+const fs = require('fs');
+
+var user = ''; //holds the username of the current user
+
+//get MySQL password from file
+var MySQL_password = fs.readFileSync(path.join(__dirname, 'MySQL-password.txt'), 'utf-8');
+
+//set up MySQL connection variable
 var connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	password: 'Sky_Onward11010!',
-	database: 'userInfo'
+    host: 'localhost',
+    user: 'root',
+    password: MySQL_password,
+    database: 'userInfo'
 });
 
 var app = express();
