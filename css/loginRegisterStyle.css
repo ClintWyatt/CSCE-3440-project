@@ -43,7 +43,7 @@ body {
   text-align: center;
   color: rgb(39, 39, 39);
   font-size: 32px;
-  padding: 20px 0 20px 0;
+  padding: 10px 0 10px 0;
 }
 
 .login-form {
@@ -55,9 +55,9 @@ body {
 .login-form input[type="password"],
 .login-form input[type="text"] {
   width: 100%;
-  padding: 15px;
+  padding: 20px;
   border: 1px solid #dddddd;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   box-sizing: border-box;
 }
 .login-form input[type="submit"] {
@@ -68,7 +68,7 @@ body {
   box-sizing: border-box;
   cursor: pointer;
 
-  color: #ffffff;
+  color: yellow;
 }
 .login-form input[type="submit"]:hover {
   background-color: rgb(40, 170, 40);
