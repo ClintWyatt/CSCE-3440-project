@@ -4,6 +4,8 @@ body {
 	padding: 0px;
 	margin: 0px;
 	color: black;
+	max-width: 1300px;
+	max-height: 1000px;
 }
 
 .special-link-format {
@@ -46,6 +48,7 @@ p a:hover {
 }
 
 .site-logo {
+	color: white;
 	font-weight: 900;
 	font-size: 0.8rem;
 	text-decoration: none;
@@ -91,6 +94,7 @@ header {
 	align-items: center;
 }
 .nav__link {
+	--text: #f4f4f4;
 	--spacing: 1em;
 	text-decoration: none;
 	color: inherit;
@@ -185,22 +189,24 @@ header {
 	font-family: 'Raleway', sans-serif;
 	color: #313333;
 	margin-left: 0px;
-	margin-right: 180px;
+	margin-right: 10em;
 	text-align: center;
 	font-size: 18px;
 	font-weight: 300;
-	margin-bottom: 75px;
+	margin-bottom: 5em;
+	position: relative;
 }
 
 .about-text_left {
 	font-family: 'Raleway', sans-serif;
 	color: #313333;
-	margin-left: 180px;
-	margin-right: 75px;
+	margin-left: 10em;
+	margin-right: 10em;
 	text-align: center;
 	font-size: 18px;
 	font-weight: 300;
-	margin-bottom: 75px;
+	margin-bottom: 5em;
+	position: relative;
 }
 
 .about-text_center {
@@ -212,6 +218,7 @@ header {
 	margin-bottom: 5px;
 	margin-left: 150px;
 	margin-right: 150px;
+	position: relative;
 }
 
 .fade-in {
@@ -238,22 +245,26 @@ header {
 	opacity: 1;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 5000px) {
 	.portrait_left {
 		width: 400px;
 		height: 400px;
-		margin-left: 180px;
-		margin-right: 75px;
-		margin-bottom: 75px;
+		margin-left: 10em;
+		margin-right: 5em;
+		margin-bottom: 5em;
+		position: relative;
+		align-items: center;
 	}
 
 	.portrait_right {
 		margin-top: 1em;
 		width: 400px;
 		height: 400px;
-		margin-left: 75px;
-		margin-right: 180px;
-		margin-bottom: 85px;
+		margin-left: 5em;
+		margin-right: 10em;
+		margin-bottom: 6em;
+		position: relative;
+		align-items: center;
 	}
 
 	.wide-image {
@@ -270,5 +281,4 @@ header {
 	top: 35px;
 	width: 50px;
 	height: 25px;
-	margin-bottom: 10px;
 }
