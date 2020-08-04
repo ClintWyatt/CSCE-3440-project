@@ -39,38 +39,40 @@ body {
   width: 240px;
 }
 
-.loginform h1 {
-  text-align: center;
-  color: rgb(39, 39, 39);
+.login_register h1 {
   font-size: 32px;
   padding: 10px 0 10px 0;
+  text-align: center;
+  color: rgb(39, 39, 39);
 }
 
-.loginform {
+.login_register {
   width: 400px;
-  margin: 0 auto;
   margin-top: 60px;
+  margin: 0 auto;
 }
 
-.loginform input[type="password"],
-.loginform input[type="text"] {
+.login_register input[type="submit"] {
   width: 100%;
   padding: 20px;
-  border: 1px solid limegreen;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-.loginform input[type="submit"] {
-  width: 100%;
-  padding: 20px;
-  background-color: limegreen;
   border: 1;
+  background-color: limegreen;
   border-color: yellow;
-  box-sizing: border-box;
-  cursor: pointer;
   color: yellow;
+  cursor: pointer;
+  box-sizing: border-box;
 }
-.loginform input[type="submit"]:hover {
+
+.login_register input[type="password"],
+.login_register input[type="text"] {
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid limegreen;
+  box-sizing: border-box;
+}
+
+.login_register input[type="submit"]:hover {
   background-color: rgb(40, 170, 40);
   
 }
