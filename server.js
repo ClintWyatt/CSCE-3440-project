@@ -72,9 +72,9 @@ app.post('/register', function(request, response) {
 	var passWord = request.body.password;
 	var firstname = request.body.firstname;
 	var lastname = request.body.lastname;
-
+	
 	if ((username && passWord) && (firstname && lastname)) {
-	//creating the table if it does not exist
+		//creating the table if it does not exist
 		var sql =
 			'CREATE TABLE if not exists login(first_name varchar(30), last_name varchar(30), username varchar(30) not null, password varchar(30), PRIMARY KEY (username))';
 		connection.query(sql, function(err, result) {
@@ -91,16 +91,29 @@ app.post('/register', function(request, response) {
 				throw err;
 			}
 		});
+		
+		//store premade diseases if not stored already
+		connection.query('SELECT * FROM virus WHERE username = "antivaxer"', [], function(err, results) {
+			if (err) {
+				throw err;
+			} else {
+				if (results.length != 3) {
+					connection.query('INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES("Covid-19", 30, 10, 2, "antivaxer", 52)');
+					connection.query('INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES("Ebola", 50, 20, 2, "antivaxer", 52)');
+					connection.query('INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES("Bubonic Plague", 65, 45, 2, "antivaxer", 52)');
+					console.log('stores diseases');
+				}
+			}
+		});
 
-	
-			connection.query('SELECT * FROM login WHERE userName = ?', [ username ], function(error, results, fields) {
-
-				if (results.length > 0) {
-					console.log('ERROR: username already exists!');
-					response.redirect('/');
-				} else {
-					user = username;
-					var sql =
+		connection.query('SELECT * FROM login WHERE userName = ?', [ username ], function(error, results, fields) {
+			
+			if (results.length > 0) {
+				console.log('ERROR: username already exists!');
+				response.redirect('/');
+			} else {
+				user = username;
+				var sql =
 					"INSERT INTO login (first_name, last_name, userName, password) VALUES('" +
 					firstname +
 					"', '" +
@@ -110,11 +123,11 @@ app.post('/register', function(request, response) {
 					"', '" +
 					passWord +
 					"')";
-					connection.query(sql, function(err, result) {
-						if (err) {
-							throw err;
-						}
-						return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //must return for this method to work. Will redirect to the simulator.html
+				connection.query(sql, function(err, result) {
+					if (err) {
+						throw err;
+					}
+					return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //must return for this method to work. Will redirect to the simulator.html
 				});
 			}
 		});
