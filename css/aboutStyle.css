@@ -4,7 +4,7 @@ body {
 	padding: 0px;
 	margin: 0px;
 	color: black;
-	max-width: 1300px;
+	max-width: 1600px;
 	max-height: 1000px;
 }
 
@@ -205,7 +205,8 @@ header {
 	text-align: center;
 	font-size: 18px;
 	font-weight: 300;
-	margin-bottom: 5em;
+	margin-bottom: 10em;
+	margin-top: 6em;
 	position: relative;
 }
 
@@ -251,7 +252,7 @@ header {
 		height: 400px;
 		margin-left: 10em;
 		margin-right: 5em;
-		margin-bottom: 5em;
+		margin-bottom: 2em;
 		position: relative;
 		align-items: center;
 	}
@@ -262,13 +263,13 @@ header {
 		height: 400px;
 		margin-left: 5em;
 		margin-right: 10em;
-		margin-bottom: 6em;
+		margin-bottom: 2em;
 		position: relative;
 		align-items: center;
 	}
 
 	.wide-image {
-		width: 1175px;
+		width: 1350px;
 		height: 600px;
 		margin-left: 75px;
 		margin-right: 75px;
