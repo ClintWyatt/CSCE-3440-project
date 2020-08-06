@@ -5,7 +5,10 @@ var path = require('path');
 const fs = require('fs');
 
 var user = ''; //holds the username of the current user
-
+var app = express();
+app.use(express.static(__dirname));
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json());
 //get MySQL password from file
 var MySQL_password = fs.readFileSync(path.join(__dirname, 'MySQL-password.txt'), 'utf-8');
 
@@ -17,17 +20,7 @@ var connection = mysql.createConnection({
     database: 'userInfo'
 });
 
-var app = express();
-app.use(express.static(__dirname));
-
-app.use(bodyparser.urlencoded({ extended: true }));
-app.use(bodyparser.json());
-
-//the app function below directs the user to the login.html when
-//the user goes to the port number for the site
-app.get('/', function(request, response) {
-	response.sendFile(path.join(__dirname, 'views', '/login.html'));
-});
+/*post requests */
 
 //the app method below will validate the user login credientals
 app.post('/login', function(request, response) {
@@ -58,12 +51,50 @@ app.post('/login', function(request, response) {
 	else{response.redirect('/');}
 });
 
-app.get('/homepage', function(request, response) {
-	return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //must return for this method to work. Will redirect to the simulator.html
-});
+//Inserting a virus into the database
+app.post('/virusData', function(request, response) {
+	var diseaseName = request.body.disease;
+	var infectionRate = request.body.infRate;
+	var deathRate = request.body.deathRate;
+	var threshold = request.body.threshold;
+	var weeks = request.body.numWeeks;
 
-app.get('/scripts/outbreak/outbreak.js', function(request, response) {
-	console.log(request.params);
+	//checking to see if the virus is already in the database
+	connection.query('SELECT * FROM virus WHERE virusName = ? AND userName = ?', [ diseaseName, user ], function(
+		error,
+		results,
+		fields
+	) {
+		//if the virus is already in the data base, do not insert the virus info
+		console.log(results.length);
+		if (results.length > 0) {
+			console.log('ERROR: virus already exist in the database. ');
+		} else {
+			//virus does not exist in the database yet
+			console.log(user);
+			var sql =
+				"INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES('" +
+				diseaseName +
+				"','" +
+				infectionRate +
+				"','" +
+				deathRate +
+				"', '" +
+				threshold +
+				"', '" +
+				user +
+				"', '" +
+				weeks +
+				"')";
+			connection.query(sql, function(err, result) {
+				if (err) {
+					throw err;
+				} else {
+					console.log('virus saved');
+				}
+			});
+		}
+	});
 });
 
 //method is used for registering a new user
@@ -134,7 +165,18 @@ app.post('/register', function(request, response) {
 	}else{response.redirect('/Register');}
 });
 
+/*post requests end */
+
 /* routing to other pages */
+app.get('/homepage', function(request, response) {
+	return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //must return for this method to work. Will redirect to the simulator.html
+});
+
+//directs the user to the login page when they enter the url "localhost:3000"
+app.get('/', function(request, response) {
+	response.sendFile(path.join(__dirname, 'views', '/login.html'));
+});
+
 app.get('/Simulation', function(request, response) {
 	return response.sendFile(path.join(__dirname, 'views', 'simulator.html')); //going to the simulation page
 });
@@ -152,52 +194,7 @@ app.get('/About', function(request, response) {
 });
 /*routing to pages end */
 
-//Inserting a virus into the database
-app.post('/virusData', function(request, response) {
-	var diseaseName = request.body.disease;
-	var infectionRate = request.body.infRate;
-	var deathRate = request.body.deathRate;
-	var threshold = request.body.threshold;
-	var weeks = request.body.numWeeks;
-
-	//checking to see if the virus is already in the database
-	connection.query('SELECT * FROM virus WHERE virusName = ? AND userName = ?', [ diseaseName, user ], function(
-		error,
-		results,
-		fields
-	) {
-		//if the virus is already in the data base, do not insert the virus info
-		console.log(results.length);
-		if (results.length > 0) {
-			console.log('ERROR: virus already exist in the database. ');
-		} else {
-			//virus does not exist in the database yet
-			console.log(user);
-			var sql =
-				"INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES('" +
-				diseaseName +
-				"','" +
-				infectionRate +
-				"','" +
-				deathRate +
-				"', '" +
-				threshold +
-				"', '" +
-				user +
-				"', '" +
-				weeks +
-				"')";
-			connection.query(sql, function(err, result) {
-				if (err) {
-					throw err;
-				} else {
-					console.log('virus saved');
-				}
-			});
-		}
-	});
-});
-
+/*get requests */
 //used to get all of the viruses from the database
 app.get('/virusData', function(request, response) {
 	connection.query('SELECT * FROM virus WHERE username = ? OR username = "antivaxer"', [ user ], function(
@@ -216,6 +213,12 @@ app.get('/username', function(request, response) {
 		response.send(user);
 	}
 });
+
+app.get('/scripts/outbreak/outbreak.js', function(request, response) {
+	console.log(request.params);
+});
+
+/*get requests end */
 
 app.listen(3000); //listening on port 3000
 console.log('Server running on port 3000!');
