@@ -123,12 +123,13 @@ app.post('/register', function(request, response) {
 			}
 		});
 		
-		//store premade diseases if not stored already
-		connection.query('SELECT * FROM virus WHERE username = "antivaxer"', [], function(err, results) {
+		//store premade diseases if not stored already, will require the antivaxer user to be in the login table. May need to create a special virus table for the 
+		//3 special viruses in the future
+		connection.query('SELECT * FROM login WHERE username = "antivaxer"', [], function(err, results) {
 			if (err) {
 				throw err;
 			} else {
-				if (results.length != 3) {
+				if (results.length == 1) {
 					connection.query('INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES("Covid-19", 30, 10, 2, "antivaxer", 52)');
 					connection.query('INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES("Ebola", 50, 20, 2, "antivaxer", 52)');
 					connection.query('INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES("Bubonic Plague", 65, 45, 2, "antivaxer", 52)');
