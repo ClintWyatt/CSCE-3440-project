@@ -52,14 +52,15 @@ function validateFields() {
 
   if (allFieldsValid) {
     //sending the information to the server to see if the virus entered by the user can be added to the database
-    $.ajax({
-      method: "POST",
-      url: "virusData",
-      data: { disease: document.getElementById("disease-name-field").value,
+    fetch('/virusData', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ disease: document.getElementById("disease-name-field").value,
         infRate: document.getElementById("infection-rate-field").value,
         deathRate: document.getElementById("death-rate-field").value,
         threshold: document.getElementById("threshold-field").value,
-        numWeeks: document.getElementById("num-weeks-field").value }
+        numWeeks: document.getElementById("num-weeks-field").value
+      })
     });
 
     createDropdownBox(); //update dropdown box

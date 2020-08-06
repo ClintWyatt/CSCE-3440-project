@@ -1,21 +1,23 @@
-//retrieve disease data and populate the dropdown box with names
+//fetch disease data and populate the dropdown box with names
 function createDropdownBox() {
-  $.get('/virusData', function(results) {
-    var dropdownBox = '<table id="dropdown-box">';
-    var diseases = [];
+  fetch('/virusData')
+    .then(results => results.json())
+    .then(resultsArr => {
+      var dropdownBox = '<table id="dropdown-box">';
+      var diseases = [];
     
-    for (let i = 0; i < results.length; i++) {
-      diseases.push(results[i].virusName);
-    }
+      for (let i = 0; i < resultsArr.length; i++) {
+        diseases.push(resultsArr[i].virusName);
+      }
 
-    for (let i = 0; i < diseases.length; i++) {
-      dropdownBox += '<tr><td onclick="selectDisease(this)">' + diseases[i] + "</td></tr>";
-    }
-    
-    dropdownBox += "</table>";
-    
-    document.getElementById("dropdown-box-placeholder").innerHTML = dropdownBox;
-  });
+      for (let i = 0; i < diseases.length; i++) {
+        dropdownBox += '<tr><td onclick="selectDisease(this)">' + diseases[i] + "</td></tr>";
+      }
+      
+      dropdownBox += "</table>";
+      
+      document.getElementById("dropdown-box-placeholder").innerHTML = dropdownBox;
+    });
 }
 
 //toggle the visibility of the dropdown box

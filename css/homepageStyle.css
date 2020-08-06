@@ -97,7 +97,7 @@ header {
 }
 .main-nav {
 	position: relative;
-	left: 50px;
+	left: 20px;
 }
 .nav__list {
 	list-style: none;
@@ -181,7 +181,12 @@ header {
 	--background: #f4f4f4;
 	box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
 }
-
+#welcome-message {
+	position: absolute;
+	float: right;
+	right: 170px;
+	top: 43px;
+}
 #title {
 	font-size: 60px;
 	font-weight: 700;

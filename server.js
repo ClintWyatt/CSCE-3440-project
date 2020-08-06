@@ -11,6 +11,7 @@ app.use(bodyparser.json());
 
 //get MySQL password from file
 var MySQL_password = fs.readFileSync(path.join(__dirname, 'MySQL-password.txt'), 'utf-8');
+
 var user = ''; //holds the username of the current user
 
 //set up MySQL connection variable
@@ -39,7 +40,7 @@ app.post('/login', function(request, response) {
 			'SELECT * FROM login WHERE userName = ? AND password = ?',
 			[ request.body.username, request.body.password ],
 			function(error, results, fields) {
-				if (results.length > 0) {
+				if (results.length > 0 && !request.body.username == 'antivaxer') {
 					user = request.body.username;
 					return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //must return for this method to work. Will redirect to the simulator.html
 				} else {
@@ -113,7 +114,6 @@ app.post('/register', function(request, response) {
 				throw err;
 			}
 		});
-
 		sql =
 			'CREATE TABLE if not exists virus(virusName varchar(50) not null, infectionRate int, deathRate int,' +
 			'threshold int, weeks int, username varchar(30), FOREIGN KEY (username) REFERENCES login(username))';//creating a table that represents the viruses for a user
@@ -122,21 +122,22 @@ app.post('/register', function(request, response) {
 				throw err;
 			}
 		});
-		
-		//store premade diseases if not stored already, will require the antivaxer user to be in the login table. May need to create a special virus table for the 
-		//3 special viruses in the future
-		connection.query('SELECT * FROM login WHERE username = "antivaxer"', [], function(err, results) {
+
+		//store premade diseases if not stored already. May need to create a special virus table for the 3 special viruses in the future.
+		//this code will run only once whenever the user registers an account for the first time
+		connection.query('SELECT * FROM virus WHERE username = "antivaxer"', [], function(err, results) {
 			if (err) {
 				throw err;
 			} else {
-				if (results.length == 1) {
+				if (results.length == 0) { //empty results
+					connection.query('INSERT INTO login (first_name, last_name, userName, password) VALUES("N/A", "N/A", "antivaxer", "N/A")'); //create antivaxer user
 					connection.query('INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES("Covid-19", 30, 10, 2, "antivaxer", 52)');
 					connection.query('INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES("Ebola", 50, 20, 2, "antivaxer", 52)');
 					connection.query('INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES("Bubonic Plague", 65, 45, 2, "antivaxer", 52)');
-					console.log('stores diseases');
 				}
 			}
 		});
+
 		//checking to see if the username is already in the database
 		connection.query('SELECT * FROM login WHERE userName = ?', [ username ], function(error, results, fields) {
 			
@@ -196,9 +197,19 @@ app.get('/About', function(request, response) {
 /*routing to pages end */
 
 /*get requests */
-//used to get all of the viruses from the database
+//used to get ALL of the user's viruses from the database
 app.get('/virusData', function(request, response) {
 	connection.query('SELECT * FROM virus WHERE username = ? OR username = "antivaxer"', [ user ], function(
+		error,
+		results
+	) {
+		response.send(results); //sending back all the viruses to the simulation page
+	});
+});
+
+//used to get ONE of the user's viruses from the database
+app.get('/virusData/:virusName', function(request, response) {
+	connection.query('SELECT * FROM virus WHERE (username = ? OR username = "antivaxer") AND virusName = ?', [ user, request.params.virusName ], function(
 		error,
 		results
 	) {
