@@ -40,7 +40,7 @@ app.post('/login', function(request, response) {
 			'SELECT * FROM login WHERE userName = ? AND password = ?',
 			[ request.body.username, request.body.password ],
 			function(error, results, fields) {
-				if (results.length > 0 && !request.body.username == 'antivaxer') {
+				if (results.length > 0 && !(request.body.username.toLowerCase() == 'antivaxer')) {
 					user = request.body.username;
 					return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //must return for this method to work. Will redirect to the simulator.html
 				} else {
