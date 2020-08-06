@@ -4,13 +4,14 @@ var bodyparser = require('body-parser');
 var path = require('path');
 const fs = require('fs');
 
-var user = ''; //holds the username of the current user
 var app = express();
 app.use(express.static(__dirname));
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
+
 //get MySQL password from file
 var MySQL_password = fs.readFileSync(path.join(__dirname, 'MySQL-password.txt'), 'utf-8');
+var user = ''; //holds the username of the current user
 
 //set up MySQL connection variable
 var connection = mysql.createConnection({
@@ -22,7 +23,7 @@ var connection = mysql.createConnection({
 
 /*post requests */
 
-//the app method below will validate the user login credientals
+//the app method below will validate the user login credientals. Post request from login form
 app.post('/login', function(request, response) {
 	//creating the table if it does not exist
 	var sql =
@@ -42,7 +43,6 @@ app.post('/login', function(request, response) {
 					user = request.body.username;
 					return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //must return for this method to work. Will redirect to the simulator.html
 				} else {
-					//response.send('Incorrect Username and/or Password!');
 					response.redirect('/');
 				}
 			}
@@ -97,7 +97,7 @@ app.post('/virusData', function(request, response) {
 	});
 });
 
-//method is used for registering a new user
+//post request method is used for registering a new user. Post request from registration form
 app.post('/register', function(request, response) {
 	var username = request.body.username;
 	var passWord = request.body.password;
@@ -105,7 +105,7 @@ app.post('/register', function(request, response) {
 	var lastname = request.body.lastname;
 	
 	if ((username && passWord) && (firstname && lastname)) {
-		//creating the table if it does not exist
+		//creating the table for loging in if it does not exist
 		var sql =
 			'CREATE TABLE if not exists login(first_name varchar(30), last_name varchar(30), username varchar(30) not null, password varchar(30), PRIMARY KEY (username))';
 		connection.query(sql, function(err, result) {
@@ -116,7 +116,7 @@ app.post('/register', function(request, response) {
 
 		sql =
 			'CREATE TABLE if not exists virus(virusName varchar(50) not null, infectionRate int, deathRate int,' +
-			'threshold int, weeks int, username varchar(30), FOREIGN KEY (username) REFERENCES login(username))';
+			'threshold int, weeks int, username varchar(30), FOREIGN KEY (username) REFERENCES login(username))';//creating a table that represents the viruses for a user
 		connection.query(sql, function(err, result) {
 			if (err) {
 				throw err;
@@ -136,13 +136,13 @@ app.post('/register', function(request, response) {
 				}
 			}
 		});
-
+		//checking to see if the username is already in the database
 		connection.query('SELECT * FROM login WHERE userName = ?', [ username ], function(error, results, fields) {
 			
-			if (results.length > 0) {
+			if (results.length > 0) {//case the username is in the database
 				console.log('ERROR: username already exists!');
-				response.redirect('/');
-			} else {
+				response.redirect('/');//send user to the login page
+			} else {//create new user
 				user = username;
 				var sql =
 					"INSERT INTO login (first_name, last_name, userName, password) VALUES('" +
@@ -158,11 +158,11 @@ app.post('/register', function(request, response) {
 					if (err) {
 						throw err;
 					}
-					return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //must return for this method to work. Will redirect to the simulator.html
+					return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //Redirects the user to homepage.html
 				});
 			}
 		});
-	}else{response.redirect('/Register');}
+	}else{response.redirect('/Register');}//send user back to the registration page
 });
 
 /*post requests end */
