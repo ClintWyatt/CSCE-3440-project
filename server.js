@@ -3,16 +3,16 @@ var express = require('express');
 var bodyparser = require('body-parser');
 var path = require('path');
 const fs = require('fs');
+const cookieParser = require('cookie-parser');
 
 var app = express();
 app.use(express.static(__dirname));
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
+app.use(cookieParser());
 
 //get MySQL password from file
 var MySQL_password = fs.readFileSync(path.join(__dirname, 'MySQL-password.txt'), 'utf-8');
-
-var user = ''; //holds the username of the current user
 
 //set up MySQL connection variable
 var connection = mysql.createConnection({
@@ -41,7 +41,7 @@ app.post('/login', function(request, response) {
 			[ request.body.username, request.body.password ],
 			function(error, results, fields) {
 				if (results.length > 0 && !(request.body.username.toLowerCase() == 'antivaxer')) {
-					user = request.body.username;
+					response.cookie('username', request.body.username);
 					return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //must return for this method to work. Will redirect to the simulator.html
 				} else {
 					response.redirect('/');
@@ -61,7 +61,7 @@ app.post('/virusData', function(request, response) {
 	var weeks = request.body.numWeeks;
 
 	//checking to see if the virus is already in the database
-	connection.query('SELECT * FROM virus WHERE virusName = ? AND userName = ?', [ diseaseName, user ], function(
+	connection.query('SELECT * FROM virus WHERE virusName = ? AND userName = ?', [ diseaseName, getUsernameFromRequest(request) ], function(
 		error,
 		results,
 		fields
@@ -72,7 +72,6 @@ app.post('/virusData', function(request, response) {
 			console.log('ERROR: virus already exist in the database. ');
 		} else {
 			//virus does not exist in the database yet
-			console.log(user);
 			var sql =
 				"INSERT INTO virus (virusName, infectionRate, deathRate, threshold, username, weeks) VALUES('" +
 				diseaseName +
@@ -83,7 +82,7 @@ app.post('/virusData', function(request, response) {
 				"', '" +
 				threshold +
 				"', '" +
-				user +
+				getUsernameFromRequest(request) +
 				"', '" +
 				weeks +
 				"')";
@@ -145,7 +144,6 @@ app.post('/register', function(request, response) {
 				console.log('ERROR: username already exists!');
 				response.redirect('/');//send user to the login page
 			} else {//create new user
-				user = username;
 				var sql =
 					"INSERT INTO login (first_name, last_name, userName, password) VALUES('" +
 					firstname +
@@ -160,11 +158,12 @@ app.post('/register', function(request, response) {
 					if (err) {
 						throw err;
 					}
+					response.cookie('username', username);
 					return response.sendFile(path.join(__dirname, 'views', 'homepage.html')); //Redirects the user to homepage.html
 				});
 			}
 		});
-	}else{response.redirect('/Register');}//send user back to the registration page
+	} else {response.redirect('/Register');}//send user back to the registration page
 });
 
 /*post requests end */
@@ -194,12 +193,18 @@ app.get('/BackToLogin', function(request, response) {
 app.get('/About', function(request, response) {
 	return response.sendFile(path.join(__dirname, 'views', 'about.html')); //must return for this method to work. Will redirect to the simulator.html
 });
+
+app.get('/Logout', function(request, response) {
+	response.clearCookie('username');
+	response.redirect('/BackToLogin');
+})
+
 /*routing to pages end */
 
 /*get requests */
 //used to get ALL of the user's viruses from the database
 app.get('/virusData', function(request, response) {
-	connection.query('SELECT * FROM virus WHERE username = ? OR username = "antivaxer"', [ user ], function(
+	connection.query('SELECT * FROM virus WHERE username = ? OR username = "antivaxer"', [ getUsernameFromRequest(request) ], function(
 		error,
 		results
 	) {
@@ -209,7 +214,7 @@ app.get('/virusData', function(request, response) {
 
 //used to get ONE of the user's viruses from the database
 app.get('/virusData/:virusName', function(request, response) {
-	connection.query('SELECT * FROM virus WHERE (username = ? OR username = "antivaxer") AND virusName = ?', [ user, request.params.virusName ], function(
+	connection.query('SELECT * FROM virus WHERE (username = ? OR username = "antivaxer") AND virusName = ?', [ getUsernameFromRequest(request), request.params.virusName ], function(
 		error,
 		results
 	) {
@@ -217,20 +222,16 @@ app.get('/virusData/:virusName', function(request, response) {
 	});
 });
 
-//method sends the username to the homepage, which will result in "Welcome username (in the userInfo table)"
-app.get('/username', function(request, response) {
-	if (user == '') {
-		response.send('?');
-	} else {
-		response.send(user);
-	}
-});
-
 app.get('/scripts/outbreak/outbreak.js', function(request, response) {
 	console.log(request.params);
 });
 
 /*get requests end */
+
+//returns the value of the username cookie
+function getUsernameFromRequest(request) {
+	return request.cookies[Object.keys(request.cookies)[0]];
+}
 
 app.listen(3000); //listening on port 3000
 console.log('Server running on port 3000!');
